@@ -1,10 +1,10 @@
-param ([string] $content, [hashtable] $data)
+param ([string] $content, [hashtable] $Data)
 
 doctype
 html -Lang $PSCulture {
 	head {
 		meta -Charset utf-8
-		title $data.AppName
+		title $Data.AppName
 
 		meta -Name color-scheme -Content light
 		meta -Name viewport -Content "initial-scale=1, width=device-width"
@@ -20,13 +20,13 @@ html -Lang $PSCulture {
 	}
 
 	body {
-		& "$PSScriptRoot/Header.ps1" @{ AppName = $data.AppName }
+		& "$PSScriptRoot/Header.ps1" @{ AppName = $Data.AppName }
 
 		main {
 			noscript { p "This application requires $(b JavaScript) to be enabled in your browser." }
 			article -Class container-xl { $content }
 		}
 
-		& "$PSScriptRoot/Footer.ps1" @{ Year = $data.Year }
+		& "$PSScriptRoot/Footer.ps1" @{ Year = $Data.Year }
 	}
 }

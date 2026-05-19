@@ -1,4 +1,4 @@
-param ([hashtable] $data)
+param ([hashtable] $Data)
 
 header {
 	nav -Class navbar, navbar-expand-xl {
@@ -9,7 +9,7 @@ header {
 
 			div -Class navbar-brand, d-flex, align-items-center {
 				a -Href Index.html { img -Alt "" -Src Favicon.ico -Width 30 -Height 30 }
-				div -Class ms-2 $data.AppName
+				div -Class ms-2 $Data.AppName
 			}
 		}
 	}

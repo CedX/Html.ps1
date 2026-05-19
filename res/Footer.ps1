@@ -1,5 +1,5 @@
-param ([hashtable] $data)
+param ([hashtable] $Data)
 
 footer -Class text-center {
-	"Copyright &copy; $($data.Year) - All rights reserved."
+	"Copyright &copy; $($Data.Year) - All rights reserved."
 }
