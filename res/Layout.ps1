@@ -1,4 +1,4 @@
-param ([string] $content, [hashtable] $Data)
+param ([string] $Content, [hashtable] $Data)
 
 doctype
 html -Lang $PSCulture {
@@ -24,7 +24,7 @@ html -Lang $PSCulture {
 
 		main {
 			noscript { p "This application requires $(b JavaScript) to be enabled in your browser." }
-			article -Class container-xl { $content }
+			article -Class container-xl { $Content }
 		}
 
 		& "$PSScriptRoot/Footer.ps1" @{ Year = $Data.Year }
