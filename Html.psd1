@@ -1,7 +1,7 @@
 @{
 	ModuleVersion = "2.3.0"
 	PowerShellVersion = "7.6"
-	RootModule = "bin/Belin.Html.dll"
+	RootModule = "Binaries/Belin.Html.dll"
 
 	Author = "Cédric Belin <cedx@outlook.com>"
 	CompanyName = "Cedric-Belin.fr"
@@ -11,7 +11,7 @@
 
 	AliasesToExport = "doctype", "esc", "layout"
 	FunctionsToExport = "New-HtmlDocumentType", "Protect-HtmlString", "Use-HtmlLayout", "Write-HtmlView"
-	NestedModules = , "src/Main.psm1"
+	NestedModules = , "Sources/Main.psm1"
 	VariablesToExport = @()
 
 	CmdletsToExport = @(

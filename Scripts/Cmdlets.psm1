@@ -47,16 +47,16 @@ function Publish-PSGalleryModule {
 	$root = Join-Path $PSScriptRoot .. -Resolve
 	$module = Import-PowerShellDataFile $root/Html.psd1
 
-	$output = "$root/var/PSModule"
-	New-Item $output/bin, $output/src -ItemType Directory | Out-Null
+	$output = "$root/Temp/PSModule"
+	New-Item $output/Binaries, $output/Sources -ItemType Directory | Out-Null
 	Copy-Item $root/Html.psd1 $output/Belin.Html.psd1
 	Copy-Item $root/*.md $output
-	Copy-Item $root/src/*.ps*1 $output/src
-	Copy-Item $module.RootModule $output/bin
+	Copy-Item $root/Sources/*.ps*1 $output/Sources
+	Copy-Item $module.RootModule $output/Binaries
 
-	$output = "$root/var/PSGallery"
+	$output = "$root/Temp/PSGallery"
 	New-Item $output -ItemType Directory | Out-Null
-	Compress-PSResource $root/var/PSModule $output
+	Compress-PSResource $root/Temp/PSModule $output
 	foreach ($package in Get-Item $output/*.nupkg) { Publish-PSResource -ApiKey $Env:PSGALLERY_API_KEY -NupkgPath $package -Repository PSGallery }
 }
 

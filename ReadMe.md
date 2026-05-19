@@ -2,8 +2,8 @@
 [PowerShell](https://learn.microsoft.com/en-us/powershell) cmdlets for rendering [HTML](https://developer.mozilla.org/docs/Web/HTML) documents.
 
 ## Documentation
-- [User guide](https://github.com/CedX/Html.ps1/tree/main/docs)
-- [Examples](https://github.com/CedX/Html.ps1/tree/main/example)
+- [User guide](https://github.com/CedX/Html.ps1/tree/main/Documentation)
+- [Examples](https://github.com/CedX/Html.ps1/tree/main/Examples)
 
 ## Development
 - [Git repository](https://github.com/CedX/Html.ps1)

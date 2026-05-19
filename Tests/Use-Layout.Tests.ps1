@@ -7,7 +7,7 @@ using module ../Html.psd1
 Describe "Use-Layout" {
 	It "should render the specified HTML content inside the given layout" {
 		$data = @{ AppName = "My Application"; Title = "The headline"; Year = 2025 }
-		$html = layout "$PSScriptRoot/../res/Layout.ps1" (& "$PSScriptRoot/../res/Content.ps1" $data) -Data $data
+		$html = layout "$PSScriptRoot/../Resources/Views/Layout.ps1" (& "$PSScriptRoot/../Resources/Views/Content.ps1" $data) -Data $data
 		$html | Should -BeLikeExactly '<!doctype html><html lang="*"><head>*<title>My Application</title>*'
 		$html | Should -BeLikeExactly '*<header>*<div class="ms-2">My Application</div>*</header>*'
 		$html | Should -BeLikeExactly '*<h1>The headline</h1><div class="alert alert-success">Welcome to my website!</div>*'

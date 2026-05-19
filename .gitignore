@@ -1,7 +1,7 @@
 /**/*.user
 /.idea/
 /.vs/
-/bin/
-/src/Generated/
-/src/obj/
-/var/
+/*/obj/
+/Binaries/
+/Sources/Generated/
+/Temp/
