@@ -10,7 +10,6 @@
 	GUID = "3c16800c-921e-4c31-9fc3-00052d2f30ba"
 
 	AliasesToExport = "doctype", "esc", "layout"
-	FunctionsToExport = "New-HtmlDocumentType", "Protect-HtmlString", "Use-HtmlLayout", "Write-HtmlView"
 	NestedModules = , "Sources/Main.psm1"
 	VariablesToExport = @()
 
@@ -129,6 +128,18 @@
 		"New-HtmlVarElement"
 		"New-HtmlVideoElement"
 		"New-HtmlWbrElement"
+	)
+
+	FunctionsToExport = @(
+		"Format-HtmlString"
+		"New-HtmlDocumentType"
+		"Protect-HtmlString"
+		"Use-HtmlLayout"
+		"Write-HtmlView"
+	)
+
+	RequiredAssemblies = @(
+		"Binaries/AngleSharp.dll"
 	)
 
 	PrivateData = @{
