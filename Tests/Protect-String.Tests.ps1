@@ -6,11 +6,11 @@ using module ../Html.psd1
 #>
 Describe "Protect-String" {
 	It "encode the specified string" -ForEach @(
-		@{ Value = $null; Encoder = "Html"; Expected = "" }
-		@{ Value = $null; Encoder = "Url"; Expected = "" }
-		@{ Value = '<script type="module"></script>'; Encoder = "Html"; Expected = "&lt;script type=&quot;module&quot;&gt;&lt;/script&gt;" }
-		@{ Value = " foo "; Encoder = "Url"; Expected = "%20foo%20" }
+		@{ Value = $null; Encoding = "Html"; Expected = "" }
+		@{ Value = $null; Encoding = "Url"; Expected = "" }
+		@{ Value = '<script type="module"></script>'; Encoding = "Html"; Expected = "&lt;script type=&quot;module&quot;&gt;&lt;/script&gt;" }
+		@{ Value = " foo "; Encoding = "Url"; Expected = "%20foo%20" }
 	) {
-		esc $value -Encoder $encoder | Should -BeExactly $expected
+		esc $value -Encoding $encoding | Should -BeExactly $expected
 	}
 }

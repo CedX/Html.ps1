@@ -21,14 +21,14 @@ function Protect-HtmlString {
 
 		# The character encoding to use.
 		[ValidateSet("Html", "Url")]
-		[string] $Encoder = "Html"
+		[string] $Encoding = "Html"
 	)
 
 	begin {
-		$textEncoder = $Encoder -eq "Url" ? [UrlEncoder]::Default : [HtmlEncoder]::Default
+		$encoder = $Encoding -eq "Url" ? [UrlEncoder]::Default : [HtmlEncoder]::Default
 	}
 
 	process {
-		$textEncoder.Encode($Value ?? "")
+		$encoder.Encode($Value ?? "")
 	}
 }
