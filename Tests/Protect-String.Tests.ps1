@@ -5,7 +5,7 @@ using module ../Html.psd1
 	Tests the features of the `Protect-String` cmdlet.
 #>
 Describe "Protect-String" {
-	It "encode the specified string" -ForEach @(
+	It "should encode the specified string" -ForEach @(
 		@{ Value = $null; Encoding = "Html"; Expected = "" }
 		@{ Value = $null; Encoding = "Url"; Expected = "" }
 		@{ Value = '<script type="module"></script>'; Encoding = "Html"; Expected = "&lt;script type=&quot;module&quot;&gt;&lt;/script&gt;" }
