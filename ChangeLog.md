@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [3.0.0](https://github.com/CedX/Html.ps1/compare/v2.3.0...v3.0.0)
+- Breaking change: renamed the `-Encoder` parameter of the `Protect-HtmlString` cmdlet to `-Encoding`.
+- Added the `Format-HtmlString` cmdlet.
+
 ## Version [2.3.0](https://github.com/CedX/Html.ps1/compare/v2.2.0...v2.3.0)
 - Added the `-Aria`, `-Inert`, `-Role` and `-Slot` common parameters.
 
