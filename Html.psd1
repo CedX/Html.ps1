@@ -11,6 +11,7 @@
 
 	AliasesToExport = "doctype", "esc", "layout"
 	NestedModules = , "Sources/Main.psm1"
+	RequiredAssemblies = , "Binaries/AngleSharp.dll"
 	VariablesToExport = @()
 
 	CmdletsToExport = @(
@@ -136,10 +137,6 @@
 		"Protect-HtmlString"
 		"Use-HtmlLayout"
 		"Write-HtmlView"
-	)
-
-	RequiredAssemblies = @(
-		"Binaries/AngleSharp.dll"
 	)
 
 	PrivateData = @{
