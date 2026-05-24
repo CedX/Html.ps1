@@ -22,8 +22,9 @@ function Use-HtmlLayout {
 		[Parameter(Mandatory, Position = 1, ValueFromPipeline)]
 		[object] $Content,
 
-		# The view data.
-		[hashtable] $Data
+		# The layout data.
+		[ValidateNotNull()]
+		[hashtable] $Data = @{}
 	)
 
 	process {
@@ -32,6 +33,6 @@ function Use-HtmlLayout {
 		foreach ($value in $output) { $builder.Append($value) | Out-Null }
 
 		$childContent = $builder.ToString()
-		$Data ? (& $Path $childContent $Data) : (& $Path $childContent) | Out-String -NoNewline
+		& $Path $childContent $Data | Out-String -NoNewline
 	}
 }

@@ -16,10 +16,11 @@ function Write-HtmlView {
 		[string] $Path,
 
 		# The view data.
-		[hashtable] $Data
+		[ValidateNotNull()]
+		[hashtable] $Data = @{}
 	)
 
 	process {
-		$Data ? (& $Path $Data) : (& $Path) | Out-String -NoNewline
+		& $Path $Data | Out-String -NoNewline
 	}
 }
