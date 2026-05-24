@@ -2,9 +2,9 @@ using namespace System.Text
 
 <#
 .SYNOPSIS
-	Renders the specified HTML content inside a layout.
+	Renders the specified child content inside a layout.
 .INPUTS
-	The content to be rendered inside the layout.
+	The child content of the layout.
 .OUTPUTS
 	The rendered HTML view.
 #>
@@ -18,7 +18,7 @@ function Use-HtmlLayout {
 		[ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified layout path does not exist.")]
 		[string] $Path,
 
-		# The content to be rendered inside the layout.
+		# The child content of the layout.
 		[Parameter(Mandatory, Position = 1, ValueFromPipeline)]
 		[object] $Content,
 
@@ -31,7 +31,7 @@ function Use-HtmlLayout {
 		$output = $Content -is [scriptblock] ? (& $Content) : @($Content)
 		foreach ($value in $output) { $builder.Append($value) | Out-Null }
 
-		$view = $builder.ToString()
-		$Data ? (& $Path $view $Data) : (& $Path $view) | Out-String -NoNewline
+		$childContent = $builder.ToString()
+		$Data ? (& $Path $childContent $Data) : (& $Path $childContent) | Out-String -NoNewline
 	}
 }

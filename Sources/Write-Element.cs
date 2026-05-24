@@ -49,7 +49,7 @@ public abstract class WriteElementCommand(string tagName, bool isVoid = false): 
 	public string[] Class { get; set; } = [];
 
 	/// <summary>
-	/// The inner HTML of the element.
+	/// The child content of the element.
 	/// </summary>
 	[Parameter(Position = 0, ValueFromPipeline = true)]
 	public virtual object? Content { get; set; }

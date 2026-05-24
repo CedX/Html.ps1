@@ -7,7 +7,7 @@ namespace Belin.Html;
 public class NewCustomElementCommand(): WriteElementCommand("", isVoid: false) {
 
 	/// <summary>
-	/// The inner HTML of the element.
+	/// The child content of the element.
 	/// </summary>
 	[Parameter(Position = 1, ValueFromPipeline = true)]
 	public override object? Content { get => base.Content; set => base.Content = value; }
