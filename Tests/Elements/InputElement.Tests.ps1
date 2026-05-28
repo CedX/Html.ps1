@@ -25,6 +25,14 @@ Describe "New-InputElement" {
 		input -Disabled | Should -BeExactly '<input disabled>'
 	}
 
+	It 'should support the "max", "min" attributes' -ForEach @(
+		@{ Min = 0; Max = 255 }
+		@{ Min = 8; Max = 24 }
+	) {
+		$expected = "<input max=""$max"" min=""$min"">", "<input min=""$min"" max=""$max"">"
+		input -Min $min -Max $max | Should -BeIn $expected
+	}
+
 	It 'should support the "maxlength" and "minlength" attributes' -ForEach @(
 		@{ MinLength = 0; MaxLength = 255 }
 		@{ MinLength = 8; MaxLength = 24 }
