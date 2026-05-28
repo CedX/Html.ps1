@@ -13,8 +13,8 @@ foreach ($element in (Import-PowerShellDataFile Resources/HtmlElements.psd1).Ele
 		Tag = $element.Tag
 	}
 
-	$fileName = "$($parameters.CapitalizedTag)Element"
-	$cmdletsToExport.Add("New-Html$fileName")
+	$fileName = "New-Html$($parameters.CapitalizedTag)Element"
+	$cmdletsToExport.Add($fileName)
 	if (Test-Path "Sources/Elements/$fileName.cs") { continue }
 
 	$content = $cmdletTemplate
