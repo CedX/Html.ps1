@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-VideoElement` cmdlet.
+	Tests the features of the `New-HtmlVideoElement` cmdlet.
 #>
-Describe "New-VideoElement" {
+Describe "New-HtmlVideoElement" {
 	It 'should support the "autoplay", "controls", "loop" and "muted" attributes' {
 		video -AutoPlay | Should -BeExactly "<video autoplay></video>"
 		video -Controls | Should -BeExactly "<video controls></video>"

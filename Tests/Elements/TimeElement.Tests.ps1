@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-TimeElement` cmdlet.
+	Tests the features of the `New-HtmlTimeElement` cmdlet.
 #>
-Describe "New-TimeElement" {
+Describe "New-HtmlTimeElement" {
 	It 'should support [DateOnly] objects for the "datetime" attribute' {
 		$value = [DateOnly]::FromDateTime((Get-Date -Year 1974 -Month 5 -Day 3))
 		time -DateTime $value | Should -BeExactly '<time datetime="1974-05-03"></time>'

@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-OptgroupElement` cmdlet.
+	Tests the features of the `New-HtmlOptgroupElement` cmdlet.
 #>
-Describe "New-OptgroupElement" {
+Describe "New-HtmlOptgroupElement" {
 	It 'should support the "disabled" attribute' {
 		optgroup -Disabled | Should -BeExactly "<optgroup disabled></optgroup>"
 	}

@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-DetailsElement` cmdlet.
+	Tests the features of the `New-HtmlDetailsElement` cmdlet.
 #>
-Describe "New-DetailsElement" {
+Describe "New-HtmlDetailsElement" {
 	It 'should support the "name" attribute' {
 		details -Name MyGroup | Should -BeExactly '<details name="MyGroup"></details>'
 	}

@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-MeterElement` cmdlet.
+	Tests the features of the `New-HtmlMeterElement` cmdlet.
 #>
-Describe "New-MeterElement" {
+Describe "New-HtmlMeterElement" {
 	It 'should support the "min" and "max" attributes' {
 		meter -Min -100 -Max 200 | Should -BeIn '<meter min="-100" max="200"></meter>', '<meter max="200" min="-100"></meter>'
 	}

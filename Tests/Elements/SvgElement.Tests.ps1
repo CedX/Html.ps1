@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-SvgElement` cmdlet.
+	Tests the features of the `New-HtmlSvgElement` cmdlet.
 #>
-Describe "New-SvgElement" {
+Describe "New-HtmlSvgElement" {
 
 	It 'should support the "preserveAspectRatio" attribute' {
 		svg -PreserveAspectRatio "xMaxYMin slice" | Should -BeExactly '<svg preserveAspectRatio="xMaxYMin slice"></svg>'

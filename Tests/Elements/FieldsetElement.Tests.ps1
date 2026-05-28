@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-FieldsetElement` cmdlet.
+	Tests the features of the `New-HtmlFieldsetElement` cmdlet.
 #>
-Describe "New-FieldsetElement" {
+Describe "New-HtmlFieldsetElement" {
 	It 'should support the "disabled" attribute' {
 		fieldset -Disabled | Should -BeExactly "<fieldset disabled></fieldset>"
 	}

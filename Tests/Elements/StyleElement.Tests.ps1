@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-StyleElement` cmdlet.
+	Tests the features of the `New-HtmlStyleElement` cmdlet.
 #>
-Describe "New-StyleElement" {
+Describe "New-HtmlStyleElement" {
 	It 'should support the "media" attribute' -ForEach "all", "(width <= 500px)" {
 		style -Media $_ | Should -BeExactly "<style media=""$_""></style>"
 	}

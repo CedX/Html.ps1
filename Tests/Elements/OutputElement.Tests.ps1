@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-OutputElement` cmdlet.
+	Tests the features of the `New-HtmlOutputElement` cmdlet.
 #>
-Describe "New-OutputElement" {
+Describe "New-HtmlOutputElement" {
 	It 'should support the "for" attribute' {
 		output 123 -For MyID1, MyID2 | Should -BeExactly '<output for="MyID1 MyID2">123</output>'
 	}

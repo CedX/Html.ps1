@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-SourceElement` cmdlet.
+	Tests the features of the `New-HtmlSourceElement` cmdlet.
 #>
-Describe "New-SourceElement" {
+Describe "New-HtmlSourceElement" {
 	It 'should support the "src" and "type" attributes' {
 		source -Src Video.webm -Type video/webm | Should -BeIn '<source src="Video.webm" type="video/webm">', '<source type="video/webm" src="Video.webm">'
 	}

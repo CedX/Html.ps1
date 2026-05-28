@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-SelectElement` cmdlet.
+	Tests the features of the `New-HtmlSelectElement` cmdlet.
 #>
-Describe "New-SelectElement" {
+Describe "New-HtmlSelectElement" {
 	It 'should support the "autocomplete" attribute' -ForEach "off", "on", @("shipping", "street-address") {
 		selectTag -AutoComplete $_ | Should -BeExactly "<select autocomplete=""$($_ -join " ")""></select>"
 	}

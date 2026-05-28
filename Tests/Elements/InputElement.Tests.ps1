@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-InputElement` cmdlet.
+	Tests the features of the `New-HtmlInputElement` cmdlet.
 #>
-Describe "New-InputElement" {
+Describe "New-HtmlInputElement" {
 	It 'should support the "accept" attribute' {
 		input -Accept "image/*" | Should -BeExactly '<input accept="image/*">'
 	}

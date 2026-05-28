@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-InsElement` cmdlet.
+	Tests the features of the `New-HtmlInsElement` cmdlet.
 #>
-Describe "New-InsElement" {
+Describe "New-HtmlInsElement" {
 	It 'should support the "cite" attribute' {
 		ins "Lorem Ipsum" -Cite "https://example.com/" | Should -BeExactly '<ins cite="https://example.com/">Lorem Ipsum</ins>'
 	}

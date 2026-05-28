@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-AudioElement` cmdlet.
+	Tests the features of the `New-HtmlAudioElement` cmdlet.
 #>
-Describe "New-AudioElement" {
+Describe "New-HtmlAudioElement" {
 	It 'should support the "autoplay", "controls", "loop" and "muted" attributes' {
 		audio -AutoPlay | Should -BeExactly "<audio autoplay></audio>"
 		audio -Controls | Should -BeExactly "<audio controls></audio>"

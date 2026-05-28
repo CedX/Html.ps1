@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-TrackElement` cmdlet.
+	Tests the features of the `New-HtmlTrackElement` cmdlet.
 #>
-Describe "New-TrackElement" {
+Describe "New-HtmlTrackElement" {
 	It 'should support the "default" attribute' {
 		track -Src Subtitles.vtt -Default | Should -BeIn '<track src="Subtitles.vtt" default>', '<track default src="Subtitles.vtt">'
 	}

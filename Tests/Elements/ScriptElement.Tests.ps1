@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-ScriptElement` cmdlet.
+	Tests the features of the `New-HtmlScriptElement` cmdlet.
 #>
-Describe "New-ScriptElement" {
+Describe "New-HtmlScriptElement" {
 	It 'should support the "src" and "type" attributes' -ForEach @(
 		@{ Src = "Scripts.js"; Type = "module" }
 		@{ Src = "Scripts._hs"; Type = "text/hyperscript" }

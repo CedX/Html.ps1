@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-TemplateElement` cmdlet.
+	Tests the features of the `New-HtmlTemplateElement` cmdlet.
 #>
-Describe "New-TemplateElement" {
+Describe "New-HtmlTemplateElement" {
 	It 'should support the "shadowrootclonable" attribute' {
 		template -ShadowRootClonable | Should -BeExactly '<template shadowrootclonable></template>'
 	}

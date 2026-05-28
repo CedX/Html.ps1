@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-TextareaElement` cmdlet.
+	Tests the features of the `New-HtmlTextareaElement` cmdlet.
 #>
-Describe "New-TextareaElement" {
+Describe "New-HtmlTextareaElement" {
 	It 'should support the "autocomplete" attribute' -ForEach "off", "on", @("shipping", "street-address") {
 		textarea -AutoComplete $_ | Should -BeExactly "<textarea autocomplete=""$($_ -join " ")""></textarea>"
 	}

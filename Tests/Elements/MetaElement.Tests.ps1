@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-MetaElement` cmdlet.
+	Tests the features of the `New-HtmlMetaElement` cmdlet.
 #>
-Describe "New-MetaElement" {
+Describe "New-HtmlMetaElement" {
 	It 'should support the "charset" attribute' -ForEach "iso-8859-1", "utf-8" {
 		meta -Charset $_ | Should -BeExactly "<meta charset=""$_"">"
 	}

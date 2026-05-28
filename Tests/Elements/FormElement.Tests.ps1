@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-FormElement` cmdlet.
+	Tests the features of the `New-HtmlFormElement` cmdlet.
 #>
-Describe "New-FormElement" {
+Describe "New-HtmlFormElement" {
 	It 'should support the "action" attribute' {
 		form -Action "/Process.php" | Should -BeExactly '<form action="/Process.php"></form>'
 	}

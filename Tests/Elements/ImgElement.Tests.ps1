@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-ImgElement` cmdlet.
+	Tests the features of the `New-HtmlImgElement` cmdlet.
 #>
-Describe "New-ImgElement" {
+Describe "New-HtmlImgElement" {
 	It 'should support the "alt" and "src" attributes' -ForEach @(
 		@{ Src = "Image.webp"; Alt = $null }
 		@{ Src = "Assets/Icon.gif"; Alt = "" }

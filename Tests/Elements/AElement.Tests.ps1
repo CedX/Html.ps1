@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-AElement` cmdlet.
+	Tests the features of the `New-HtmlAElement` cmdlet.
 #>
-Describe "New-AElement" {
+Describe "New-HtmlAElement" {
 	It 'should support the "download" attribute' {
 		$expected = '<a href="Index.html" download="Evil.js">Click me</a>', '<a download="Evil.js" href="Index.html">Click me</a>'
 		a "Click me" -Href Index.html -Download Evil.js | Should -BeIn $expected

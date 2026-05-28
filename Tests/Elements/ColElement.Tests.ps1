@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-ColElement` cmdlet.
+	Tests the features of the `New-HtmlColElement` cmdlet.
 #>
-Describe "New-ColElement" {
+Describe "New-HtmlColElement" {
 	It 'should support the "span" attribute' -ForEach 1, 25 {
 		col -Span $_ | Should -BeExactly "<col span=""$_"">"
 	}

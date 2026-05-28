@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-TdElement` cmdlet.
+	Tests the features of the `New-HtmlTdElement` cmdlet.
 #>
-Describe "New-TdElement" {
+Describe "New-HtmlTdElement" {
 	It 'should support the "colspan" and "rowspan" attributes' {
 		td -ColSpan 1 -RowSpan 3 | Should -BeIn '<td colspan="1" rowspan="3"></td>', '<td rowspan="3" colspan="1"></td>'
 	}

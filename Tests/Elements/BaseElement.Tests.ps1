@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-BaseElement` cmdlet.
+	Tests the features of the `New-HtmlBaseElement` cmdlet.
 #>
-Describe "New-BaseElement" {
+Describe "New-HtmlBaseElement" {
 	It 'should support the "href" attribute' -ForEach "/base/", "https://localhost/base/" {
 		base -Href $_ | Should -BeExactly "<base href=""$_"">"
 	}

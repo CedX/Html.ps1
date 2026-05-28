@@ -2,9 +2,9 @@ using module ../../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-OlElement` cmdlet.
+	Tests the features of the `New-HtmlOlElement` cmdlet.
 #>
-Describe "New-OlElement" {
+Describe "New-HtmlOlElement" {
 	It 'should support the "reversed" attribute' {
 		ol -Reversed | Should -BeExactly "<ol reversed></ol>"
 	}
