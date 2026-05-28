@@ -2,9 +2,9 @@ using module ../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `Write-View` cmdlet.
+	Tests the features of the `Write-HtmlView` cmdlet.
 #>
-Describe "Write-View" {
+Describe "Write-HtmlView" {
 	It "should render the specified view file as an HTML string" -ForEach @(
 		@{ View = "Header"; Data = @{ AppName = "My Application" }; Expected = '<header>*<div class="ms-2">My Application</div>*</header>' }
 		@{ View = "Content"; Data = @{ Title = "The headline" }; Expected = '<h1>The headline</h1><div class="alert alert-success">Welcome to my website!</div>' }

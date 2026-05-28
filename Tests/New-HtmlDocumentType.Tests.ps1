@@ -2,9 +2,9 @@ using module ../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-DocumentType` cmdlet.
+	Tests the features of the `New-HtmlDocumentType` cmdlet.
 #>
-Describe "New-DocumentType" {
+Describe "New-HtmlDocumentType" {
 	It "should return a document type declaration" -ForEach @(
 		@{ Value = $null; Expected = "<!doctype html>" }
 		@{ Value = 'html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"'; Expected = '<!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">' }

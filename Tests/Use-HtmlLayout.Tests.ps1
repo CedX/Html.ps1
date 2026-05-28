@@ -2,9 +2,9 @@ using module ../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `Use-Layout` cmdlet.
+	Tests the features of the `Use-HtmlLayout` cmdlet.
 #>
-Describe "Use-Layout" {
+Describe "Use-HtmlLayout" {
 	It "should render the specified HTML content inside the given layout" {
 		$data = @{ AppName = "My Application"; Title = "The headline"; Year = 2025 }
 		$html = layout "$PSScriptRoot/../Resources/Views/Layout.ps1" (& "$PSScriptRoot/../Resources/Views/Content.ps1" $data) -Data $data

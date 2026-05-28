@@ -2,9 +2,9 @@ using module ../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `New-CustomElement` cmdlet.
+	Tests the features of the `New-HtmlCustomElement` cmdlet.
 #>
-Describe "New-CustomElement" {
+Describe "New-HtmlCustomElement" {
 	It "should create a custom HTML element from the specified tag name" {
 		tag my-element | Should -BeExactly "<my-element></my-element>"
 	}

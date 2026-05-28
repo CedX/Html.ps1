@@ -2,9 +2,9 @@ using module ../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `Format-String` cmdlet.
+	Tests the features of the `Format-HtmlString` cmdlet.
 #>
-Describe "Format-String" {
+Describe "Format-HtmlString" {
 	It "should format the specified HTML string" -ForEach @(
 		@{ Value = $null; AsDocument = $true; Expected = "" }
 		@{ Value = $null; AsDocument = $false; Expected = "" }
