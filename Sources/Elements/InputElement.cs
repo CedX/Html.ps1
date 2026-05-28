@@ -110,7 +110,7 @@ public class NewInputElementCommand(): WriteElementCommand("input", isVoid: true
 	/// <summary>
 	/// The greatest value in the range of permitted values.
 	/// </summary>
-	[Parameter, ValidateRange(ValidateRangeKind.NonNegative)]
+	[Parameter]
 	public string? Max { get; set; }
 
 	/// <summary>
@@ -122,7 +122,7 @@ public class NewInputElementCommand(): WriteElementCommand("input", isVoid: true
 	/// <summary>
 	/// The lowest value in the range of permitted values.
 	/// </summary>
-	[Parameter, ValidateRange(ValidateRangeKind.NonNegative)]
+	[Parameter]
 	public string? Min { get; set; }
 
 	/// <summary>
@@ -195,7 +195,7 @@ public class NewInputElementCommand(): WriteElementCommand("input", isVoid: true
 	/// <summary>
 	/// A number that specifies the granularity that the value must adhere to, or the special value <c>any</c>.
 	/// </summary>
-	[Parameter, ValidateRange(ValidateRangeKind.NonNegative)]
+	[Parameter]
 	public string? Step { get; set; }
 
 	/// <summary>
