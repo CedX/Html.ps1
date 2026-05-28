@@ -2,9 +2,9 @@ using module ../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `WriteHtmlElementCommand` class.
+	Tests the features of the `NewHtmlElementCommand` class.
 #>
-Describe "WriteHtmlElementCommand" {
+Describe "NewHtmlElementCommand" {
 	It "should create an HTML element from the specified tag name" -ForEach @(
 		@{ Tag = "b"; Expected = "<b></b>" }
 		@{ Tag = "html"; Expected = "<html></html>" }

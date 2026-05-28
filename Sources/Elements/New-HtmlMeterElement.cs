@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>meter</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlMeterElement"), Alias("meter"), OutputType(typeof(string))]
-public class NewHtmlMeterElementCommand(): WriteHtmlElementCommand("meter", isVoid: false) {
+public class NewHtmlMeterElementCommand(): NewHtmlElementCommand("meter", isVoid: false) {
 
 	/// <summary>
 	/// The lower numeric bound of the high end of the measured range.

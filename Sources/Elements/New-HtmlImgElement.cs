@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>img</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlImgElement"), Alias("img"), OutputType(typeof(string))]
-public class NewHtmlImgElementCommand(): WriteHtmlElementCommand("img", isVoid: true) {
+public class NewHtmlImgElementCommand(): NewHtmlElementCommand("img", isVoid: true) {
 
 	/// <summary>
 	/// A text to display on browsers that do not display images.

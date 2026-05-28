@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>a</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlAElement"), Alias("a"), OutputType(typeof(string))]
-public class NewHtmlAElementCommand(): WriteHtmlElementCommand("a", isVoid: false) {
+public class NewHtmlAElementCommand(): NewHtmlElementCommand("a", isVoid: false) {
 
 	/// <summary>
 	/// The suggested filename when the browser treats the linked URL as a download.

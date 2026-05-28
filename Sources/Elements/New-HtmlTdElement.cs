@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>th</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlTdElement"), Alias("td"), OutputType(typeof(string))]
-public class NewHtmlTdElementCommand(): WriteHtmlElementCommand("td", isVoid: false) {
+public class NewHtmlTdElementCommand(): NewHtmlElementCommand("td", isVoid: false) {
 
 	/// <summary>
 	/// An integer indicating how many columns the header cell spans or extends.

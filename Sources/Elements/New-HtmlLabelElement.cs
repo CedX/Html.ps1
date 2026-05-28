@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>label</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlLabelElement"), Alias("label"), OutputType(typeof(string))]
-public class NewHtmlLabelElementCommand(): WriteHtmlElementCommand("label", isVoid: false) {
+public class NewHtmlLabelElementCommand(): NewHtmlElementCommand("label", isVoid: false) {
 
 	/// <summary>
 	/// The identifier of the labelable form control in the same document.

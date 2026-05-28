@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>blockquote</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlBlockquoteElement"), Alias("blockquote"), OutputType(typeof(string))]
-public class NewHtmlBlockquoteElementCommand(): WriteHtmlElementCommand("blockquote", isVoid: false) {
+public class NewHtmlBlockquoteElementCommand(): NewHtmlElementCommand("blockquote", isVoid: false) {
 
 	/// <summary>
 	/// A URL that designates a source document or message for the information quoted.

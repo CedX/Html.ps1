@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>base</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlBaseElement"), Alias("base"), OutputType(typeof(string))]
-public class NewHtmlBaseElementCommand(): WriteHtmlElementCommand("base", isVoid: true) {
+public class NewHtmlBaseElementCommand(): NewHtmlElementCommand("base", isVoid: true) {
 
 	/// <summary>
 	/// The base URL to be used throughout the document for relative URLs.

@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>q</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlQElement"), Alias("q"), OutputType(typeof(string))]
-public class NewHtmlQElementCommand(): WriteHtmlElementCommand("q", isVoid: false) {
+public class NewHtmlQElementCommand(): NewHtmlElementCommand("q", isVoid: false) {
 
 	/// <summary>
 	/// A URL that designates a source document or message for the information quoted.

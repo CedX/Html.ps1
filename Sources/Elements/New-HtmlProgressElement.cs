@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>progress</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlProgressElement"), Alias("progress"), OutputType(typeof(string))]
-public class NewHtmlProgressElementCommand(): WriteHtmlElementCommand("progress", isVoid: false) {
+public class NewHtmlProgressElementCommand(): NewHtmlElementCommand("progress", isVoid: false) {
 
 	/// <summary>
 	/// Describes how much work the task requires.

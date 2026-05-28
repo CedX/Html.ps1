@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>del</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlDelElement"), Alias("delTag"), OutputType(typeof(string))]
-public class NewHtmlDelElementCommand(): WriteHtmlElementCommand("del", isVoid: false) {
+public class NewHtmlDelElementCommand(): NewHtmlElementCommand("del", isVoid: false) {
 
 	/// <summary>
 	/// A URI for a resource that explains the change.

@@ -6,7 +6,7 @@ using System.Net.Mime;
 /// Creates a new <c>form</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlFormElement"), Alias("form"), OutputType(typeof(string))]
-public class NewHtmlFormElementCommand(): WriteHtmlElementCommand("form", isVoid: false) {
+public class NewHtmlFormElementCommand(): NewHtmlElementCommand("form", isVoid: false) {
 
 	/// <summary>
 	/// The URL that processes the form submission.

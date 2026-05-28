@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 /// Creates a new <c>input</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlInputElement"), Alias("input"), OutputType(typeof(string))]
-public class NewHtmlInputElementCommand(): WriteHtmlElementCommand("input", isVoid: true) {
+public class NewHtmlInputElementCommand(): NewHtmlElementCommand("input", isVoid: true) {
 
 	/// <summary>
 	/// Defines which file types are selectable in a file upload control.

@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>style</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlStyleElement"), Alias("style"), OutputType(typeof(string))]
-public class NewHtmlStyleElementCommand(): WriteHtmlElementCommand("style", isVoid: false) {
+public class NewHtmlStyleElementCommand(): NewHtmlElementCommand("style", isVoid: false) {
 
 	/// <summary>
 	/// Defines which media the style should be applied to.

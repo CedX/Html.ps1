@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>meta</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlMetaElement", DefaultParameterSetName = nameof(Name)), Alias("meta"), OutputType(typeof(string))]
-public class NewHtmlMetaElementCommand(): WriteHtmlElementCommand("meta", isVoid: true) {
+public class NewHtmlMetaElementCommand(): NewHtmlElementCommand("meta", isVoid: true) {
 
 	/// <summary>
 	/// A charset declaration, giving the character encoding in which the document is encoded.

@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>fieldset</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlFieldsetElement"), Alias("fieldset"), OutputType(typeof(string))]
-public class NewHtmlFieldsetElementCommand(): WriteHtmlElementCommand("fieldset", isVoid: false) {
+public class NewHtmlFieldsetElementCommand(): NewHtmlElementCommand("fieldset", isVoid: false) {
 
 	/// <summary>
 	/// Value indicating whether all form controls that are descendants of the element, are disabled.
