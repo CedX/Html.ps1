@@ -4,4 +4,4 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>{Tag}</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "Html{CapitalizedTag}Element"), Alias("{Alias}"), OutputType(typeof(string))]
-public class NewHtml{CapitalizedTag}ElementCommand(): NewHtmlElementCommand("{Tag}", isVoid: {IsVoid}) {}
+public class New{CapitalizedTag}ElementCommand(): NewElementCommand("{Tag}", isVoid: {IsVoid}) {}
