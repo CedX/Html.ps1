@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>iframe</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlIframeElement"), Alias("iframe"), OutputType(typeof(string))]
-public class NewHtmlIframeElementCommand(): NewHtmlElementCommand("iframe", isVoid: false) {
+public class NewIframeElementCommand(): NewElementCommand("iframe", isVoid: false) {
 
 	/// <summary>
 	/// Specifies a permissions policy thaht defines what features are available to the frame based on the origin of the request.

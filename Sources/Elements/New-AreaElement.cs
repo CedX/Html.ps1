@@ -6,7 +6,7 @@ using System.Globalization;
 /// Creates a new <c>area</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlAreaElement"), Alias("area"), OutputType(typeof(string))]
-public class NewHtmlAreaElementCommand(): NewHtmlElementCommand("area", isVoid: true) {
+public class NewAreaElementCommand(): NewElementCommand("area", isVoid: true) {
 
 	/// <summary>
 	/// A text to display on browsers that do not display images.

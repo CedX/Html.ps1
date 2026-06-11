@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>template</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlTemplateElement"), Alias("template"), OutputType(typeof(string))]
-public class NewHtmlTemplateElementCommand(): NewHtmlElementCommand("template", isVoid: false) {
+public class NewTemplateElementCommand(): NewElementCommand("template", isVoid: false) {
 
 	/// <summary>
 	/// Value indicating whether the shadow root is clonable.

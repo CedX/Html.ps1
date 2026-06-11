@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>object</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlObjectElement"), Alias("object"), OutputType(typeof(string))]
-public class NewHtmlObjectElementCommand(): NewHtmlElementCommand("object", isVoid: false) {
+public class NewObjectElementCommand(): NewElementCommand("object", isVoid: false) {
 
 	/// <summary>
 	/// The URL of the resource being embedded.

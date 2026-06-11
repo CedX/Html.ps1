@@ -6,7 +6,7 @@ using System.Globalization;
 /// Creates a new <c>svg</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlSvgElement"), Alias("svg"), OutputType(typeof(string))]
-public class NewHtmlSvgElementCommand(): NewHtmlElementCommand("svg", isVoid: false) {
+public class NewSvgElementCommand(): NewElementCommand("svg", isVoid: false) {
 
 	/// <summary>
 	/// The intrinsic height of the image, in CSS pixels.

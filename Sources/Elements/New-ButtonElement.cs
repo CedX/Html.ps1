@@ -6,7 +6,7 @@ using System.Net.Mime;
 /// Creates a new <c>button</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlButtonElement"), Alias("button"), OutputType(typeof(string))]
-public class NewHtmlButtonElementCommand(): NewHtmlElementCommand("button", isVoid: false) {
+public class NewButtonElementCommand(): NewElementCommand("button", isVoid: false) {
 
 	/// <summary>
 	/// The action to be performed on an element being controlled via the <see cref="CommandFor"/> attribute.

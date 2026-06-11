@@ -6,7 +6,7 @@ using System.Xml;
 /// Creates a new <c>time</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlTimeElement"), Alias("time"), OutputType(typeof(string))]
-public class NewHtmlTimeElementCommand(): NewHtmlElementCommand("time", isVoid: false) {
+public class NewTimeElementCommand(): NewElementCommand("time", isVoid: false) {
 
 	/// <summary>
 	/// The time and/or date of the element.

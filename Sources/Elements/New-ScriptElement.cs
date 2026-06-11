@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>script</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlScriptElement"), Alias("script"), OutputType(typeof(string))]
-public class NewHtmlScriptElementCommand(): NewHtmlElementCommand("script", isVoid: false) {
+public class NewScriptElementCommand(): NewElementCommand("script", isVoid: false) {
 
 	/// <summary>
 	/// Value indicating whether the script will be fetched in parallel to parsing and evaluated as soon as it is available.

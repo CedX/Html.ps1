@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>embed</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlEmbedElement"), Alias("embed"), OutputType(typeof(string))]
-public class NewHtmlEmbedElementCommand(): NewHtmlElementCommand("embed", isVoid: true) {
+public class NewEmbedElementCommand(): NewElementCommand("embed", isVoid: true) {
 
 	/// <summary>
 	/// The displayed height of the resource, in CSS pixels.

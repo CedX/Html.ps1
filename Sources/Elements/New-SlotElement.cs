@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>slot</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlSlotElement"), Alias("slot"), OutputType(typeof(string))]
-public class NewHtmlSlotElementCommand(): NewHtmlElementCommand("slot", isVoid: false) {
+public class NewSlotElementCommand(): NewElementCommand("slot", isVoid: false) {
 
 	/// <summary>
 	/// The slot's name.

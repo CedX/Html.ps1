@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>textarea</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlTextareaElement"), Alias("textarea"), OutputType(typeof(string))]
-public class NewHtmlTextareaElementCommand(): NewHtmlElementCommand("textarea", isVoid: false) {
+public class NewTextareaElementCommand(): NewElementCommand("textarea", isVoid: false) {
 
 	/// <summary>
 	/// A hint for a user agent's autocomplete feature.

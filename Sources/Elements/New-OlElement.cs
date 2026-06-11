@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>ol</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlOlElement"), Alias("ol"), OutputType(typeof(string))]
-public class NewHtmlOlElementCommand(): NewHtmlElementCommand("ol", isVoid: false) {
+public class NewOlElementCommand(): NewElementCommand("ol", isVoid: false) {
 
 	/// <summary>
 	/// Value indicating whether the list's items are in reverse order.

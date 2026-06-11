@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>li</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlLiElement"), Alias("li"), OutputType(typeof(string))]
-public class NewHtmlLiElementCommand(): NewHtmlElementCommand("li", isVoid: false) {
+public class NewLiElementCommand(): NewElementCommand("li", isVoid: false) {
 
 	/// <summary>
 	/// The ordinal value of the list item as defined by the <c>ol</c> element.

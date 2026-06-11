@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>th</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlThElement"), Alias("th"), OutputType(typeof(string))]
-public class NewHtmlThElementCommand(): NewHtmlElementCommand("th", isVoid: false) {
+public class NewThElementCommand(): NewElementCommand("th", isVoid: false) {
 
 	/// <summary>
 	/// A short, abbreviated description of the header cell's content provided as an alternative label to use for the header cell when referencing the cell in other contexts.

@@ -6,7 +6,7 @@ using System.Globalization;
 /// Creates a new <c>track</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlTrackElement"), Alias("track"), OutputType(typeof(string))]
-public class NewHtmlTrackElementCommand(): NewHtmlElementCommand("track", isVoid: true) {
+public class NewTrackElementCommand(): NewElementCommand("track", isVoid: true) {
 
 	/// <summary>
 	/// Value indicating whether the track should be enabled unless the user's preferences indicate that another track is more appropriate.

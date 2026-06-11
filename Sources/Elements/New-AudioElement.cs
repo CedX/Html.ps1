@@ -4,7 +4,7 @@ namespace Belin.Html.Elements;
 /// Creates a new <c>audio</c> element.
 /// </summary>
 [Cmdlet(VerbsCommon.New, "HtmlAudioElement"), Alias("audio"), OutputType(typeof(string))]
-public class NewHtmlAudioElementCommand(): NewHtmlElementCommand("audio", isVoid: false) {
+public class NewAudioElementCommand(): NewElementCommand("audio", isVoid: false) {
 
 	/// <summary>
 	/// Value indicating whether playback should start automatically as soon as the audio signal allows.
