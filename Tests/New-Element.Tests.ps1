@@ -2,7 +2,7 @@ using module ../Html.psd1
 
 <#
 .SYNOPSIS
-	Tests the features of the `NewElementCommand` class.
+	Tests the features of the `New-Element` cmdlet.
 #>
 Describe "NewElementCommand" {
 	It "should create an HTML element from the specified tag name" -ForEach @(
