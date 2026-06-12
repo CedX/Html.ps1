@@ -4,7 +4,7 @@ using module ../Html.psd1
 .SYNOPSIS
 	Tests the features of the `New-Element` cmdlet.
 #>
-Describe "NewElementCommand" {
+Describe "New-Element" {
 	It "should create an HTML element from the specified tag name" -ForEach @(
 		@{ Tag = "b"; Expected = "<b></b>" }
 		@{ Tag = "html"; Expected = "<html></html>" }
