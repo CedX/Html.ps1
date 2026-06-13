@@ -12,7 +12,7 @@ function New-HtmlDocumentType {
 	[Alias("doctype")]
 	[CmdletBinding()]
 	[OutputType([string])]
-	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
+	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions")]
 	param (
 		# The value of the document type.
 		[Parameter(Position = 0, ValueFromPipeline)]
