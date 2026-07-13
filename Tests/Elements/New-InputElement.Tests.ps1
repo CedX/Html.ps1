@@ -30,7 +30,7 @@ Describe "New-InputElement" {
 		@{ Min = 8; Max = 24 }
 	) {
 		$expected = "<input max=""$max"" min=""$min"">", "<input min=""$min"" max=""$max"">"
-		input -Min $min -Max $max | Should -BeIn $expected
+		$expected | Should-ContainCollection (input -Min $min -Max $max)
 	}
 
 	It 'should support the "maxlength" and "minlength" attributes' -ForEach @(
@@ -38,7 +38,7 @@ Describe "New-InputElement" {
 		@{ MinLength = 8; MaxLength = 24 }
 	) {
 		$expected = "<input maxlength=""$maxLength"" minlength=""$minLength"">", "<input minlength=""$minLength"" maxlength=""$maxLength"">"
-		input -MinLength $minLength -MaxLength $maxLength | Should -BeIn $expected
+		$expected | Should-ContainCollection (input -MinLength $minLength -MaxLength $maxLength)
 	}
 
 	It 'should support the "multiple" attribute' {
@@ -69,6 +69,6 @@ Describe "New-InputElement" {
 		@{ Type = "submit"; Value = "OK" }
 	) {
 		$expected = "<input type=""$type"" value=""$value"">", "<input value=""$value"" type=""$type"">"
-		input -Type $type -Value $value | Should -BeIn $expected
+		$expected | Should-ContainCollection (input -Type $type -Value $value)
 	}
 }

@@ -16,6 +16,6 @@ Describe "New-IframeElement" {
 
 	It 'should support the "sandbox" attribute' {
 		$expected = '<iframe sandbox="allow-downloads allow-popups" src="Index.php"></iframe>', '<iframe src="Index.php" sandbox="allow-downloads allow-popups"></iframe>'
-		iframe -Src Index.php -Sandbox allow-downloads, allow-popups | Should -BeIn $expected
+		$expected | Should-ContainCollection (iframe -Src Index.php -Sandbox allow-downloads, allow-popups)
 	}
 }

@@ -60,17 +60,17 @@ Describe "New-Element" {
 
 	It "should handle custom attributes" {
 		$expected = '<input data-foo="&quot;bar&quot;" required>', '<input required data-foo="&quot;bar&quot;">'
-		input -Attributes @{ "data-foo" = '"bar"'; disabled = $false; required = $true } | Should -BeIn $expected
+		$expected | Should-ContainCollection (input -Attributes @{ "data-foo" = '"bar"'; disabled = $false; required = $true })
 	}
 
 	It "should handle data attributes" {
 		$expected = '<button data-bs-toggle="tooltip" data-push-url></button>', '<button data-push-url data-bs-toggle="tooltip"></button>'
-		button -DataSet @{ BsToggle = "tooltip"; PushUrl = $true } | Should -BeIn $expected
+		$expected | Should-ContainCollection (button -DataSet @{ BsToggle = "tooltip"; PushUrl = $true })
 	}
 
 	It "should handle event handler attributes" {
 		$expected = '<button onclick="submit(event)" oncontextmenu="showMenu()"></button>', '<button oncontextmenu="showMenu()" onclick="submit(event)"></button>'
-		button -On @{ Click = "submit(event)"; ContextMenu = "showMenu()" } | Should -BeIn $expected
+		$expected | Should-ContainCollection (button -On @{ Click = "submit(event)"; ContextMenu = "showMenu()" })
 	}
 
 	It "should handle switch parameters in attribute values" {

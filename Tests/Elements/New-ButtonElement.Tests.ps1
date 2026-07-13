@@ -7,7 +7,7 @@ using module ../../Html.psd1
 Describe "New-ButtonElement" {
 	It 'should support the "command" and "commandfor" attributes' {
 		$expected = '<button command="show-modal" commandfor="DialogBox"></button>', '<button commandfor="DialogBox" command="show-modal"></button>'
-		button -Command show-modal -CommandFor DialogBox | Should -BeIn $expected
+		$expected | Should-ContainCollection (button -Command show-modal -CommandFor DialogBox)
 	}
 
 	It 'should support the "disabled" attribute' {

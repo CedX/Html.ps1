@@ -33,17 +33,17 @@ Describe "New-CustomElement" {
 
 	It "should handle custom attributes" {
 		$expected = '<my-element data-foo="&quot;bar&quot;" required></my-element>', '<my-element required data-foo="&quot;bar&quot;"></my-element>'
-		tag my-element -Attributes @{ "data-foo" = '"bar"'; disabled = $false; required = $true } | Should -BeIn $expected
+		$expected | Should-ContainCollection (tag my-element -Attributes @{ "data-foo" = '"bar"'; disabled = $false; required = $true })
 	}
 
 	It "should handle data attributes" {
 		$expected = '<my-element data-bs-toggle="tooltip" data-push-url></my-element>', '<my-element data-push-url data-bs-toggle="tooltip"></my-element>'
-		tag my-element -DataSet @{ BsToggle = "tooltip"; PushUrl = $true } | Should -BeIn $expected
+		$expected | Should-ContainCollection (tag my-element -DataSet @{ BsToggle = "tooltip"; PushUrl = $true })
 	}
 
 	It "should handle event handler attributes" {
 		$expected = '<my-element onclick="submit(event)" oncontextmenu="showMenu()"></my-element>', '<my-element oncontextmenu="showMenu()" onclick="submit(event)"></my-element>'
-		tag my-element -On @{ Click = "submit(event)"; ContextMenu = "showMenu()" } | Should -BeIn $expected
+		$expected | Should-ContainCollection (tag my-element -On @{ Click = "submit(event)"; ContextMenu = "showMenu()" })
 	}
 
 	It "should handle the inner content" {

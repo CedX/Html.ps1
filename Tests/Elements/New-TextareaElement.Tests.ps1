@@ -29,7 +29,7 @@ Describe "New-TextareaElement" {
 		@{ MinLength = 8; MaxLength = 24 }
 	) {
 		$expected = "<textarea maxlength=""$maxLength"" minlength=""$minLength""></textarea>", "<textarea minlength=""$minLength"" maxlength=""$maxLength""></textarea>"
-		textarea -MinLength $minLength -MaxLength $maxLength | Should -BeIn $expected
+		$expected | Should-ContainCollection (textarea -MinLength $minLength -MaxLength $maxLength)
 	}
 
 	It 'should support the "readonly" attribute' {
