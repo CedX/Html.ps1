@@ -6,29 +6,29 @@ using module ../Html.psd1
 #>
 Describe "New-CustomElement" {
 	It "should create a custom HTML element from the specified tag name" {
-		tag my-element | Should -BeExactly "<my-element></my-element>"
+		Should-BeString "<my-element></my-element>" (tag my-element) -CaseSensitive
 	}
 
 	It 'should handle the "id" attribute' {
-		tag my-element -Id foo | Should -BeExactly '<my-element id="foo"></my-element>'
+		Should-BeString '<my-element id="foo"></my-element>' (tag my-element -Id foo) -CaseSensitive
 	}
 
 	It 'should handle the "class" attribute' {
-		tag my-element -Class btn, btn-danger | Should -BeExactly '<my-element class="btn btn-danger"></my-element>'
-		tag my-element -Class "btn btn-info", btn-sm | Should -BeExactly '<my-element class="btn btn-info btn-sm"></my-element>'
+		Should-BeString '<my-element class="btn btn-danger"></my-element>' (tag my-element -Class btn, btn-danger) -CaseSensitive
+		Should-BeString '<my-element class="btn btn-info btn-sm"></my-element>' (tag my-element -Class "btn btn-info", btn-sm) -CaseSensitive
 	}
 
 	It 'should handle the "style" attribute' {
 		$expected = '<my-element style="font-family: &quot;Segoe UI&quot;; font-size: 1rem"></my-element>'
-		tag my-element -Style ([ordered]@{ FontFamily = '"Segoe UI"'; FontSize = "1rem" }) | Should -BeExactly $expected
+		Should-BeString $expected (tag my-element -Style ([ordered]@{ FontFamily = '"Segoe UI"'; FontSize = "1rem" })) -CaseSensitive
 	}
 
 	It 'should handle the "tabindex" attribute' -ForEach -1, 0 {
-		tag my-element -TabIndex $_ | Should -BeExactly "<my-element tabindex=""$_""></my-element>"
+		Should-BeString "<my-element tabindex=""$_""></my-element>" (tag my-element -TabIndex $_) -CaseSensitive
 	}
 
 	It 'should handle the "title" attribute' -ForEach "", 'A "custom" label.' {
-		tag my-element -Title $_ | Should -BeExactly ($_ ? '<my-element title="A &quot;custom&quot; label."></my-element>' : "<my-element></my-element>")
+		Should-BeString ($_ ? '<my-element title="A &quot;custom&quot; label."></my-element>' : "<my-element></my-element>") (tag my-element -Title $_) -CaseSensitive
 	}
 
 	It "should handle custom attributes" {
@@ -48,6 +48,6 @@ Describe "New-CustomElement" {
 
 	It "should handle the inner content" {
 		$expected = "<outer-element><inner-element>Foo &gt; Bar <span>Baz &lt; Qux</span></inner-element></outer-element>"
-		tag outer-element { tag inner-element { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } } | Should -BeExactly $expected
+		Should-BeString $expected (tag outer-element { tag inner-element { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } }) -CaseSensitive
 	}
 }

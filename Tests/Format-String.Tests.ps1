@@ -15,6 +15,8 @@ Describe "Format-String" {
 		@{ Value = "<button>Foo</button> <button>Bar</button>"; AsDocument = $true; Expected = "<html>`n`t<head></head>`n`t<body>`n`t`t<button>Foo</button>`n`t`t<button>Bar</button>`n`t</body>`n</html>" }
 		@{ Value = "<button>Foo</button> <button>Bar</button>"; AsDocument = $false; Expected = "<button>Foo</button>`n<button>Bar</button>" }
 	) {
-		Format-HtmlString $value -AsDocument:$asDocument | Should -BeExactly $expected
+		$actual = Format-HtmlString $value -AsDocument:$asDocument
+		if ($expected) { Should-BeString $expected $actual -CaseSensitive }
+		else { Should-BeEmptyString $actual }
 	}
 }

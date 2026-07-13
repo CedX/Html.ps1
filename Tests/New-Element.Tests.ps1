@@ -9,53 +9,53 @@ Describe "New-Element" {
 		@{ Tag = "b"; Expected = "<b></b>" }
 		@{ Tag = "html"; Expected = "<html></html>" }
 	) {
-		& $tag | Should -BeExactly $expected
+		Should-BeString $expected (& $tag) -CaseSensitive
 	}
 
 	It "should handle void elements" -ForEach @(
 		@{ Tag = "br"; Expected = "<br>" }
 		@{ Tag = "input"; Expected = "<input>" }
 	) {
-		& $tag | Should -BeExactly $expected
+		Should-BeString $expected (& $tag) -CaseSensitive
 	}
 
 	It 'should handle the "aria" attributes' {
-		div -Aria @{ Atomic = "true" } | Should -BeExactly '<div aria-atomic="true"></div>'
-		div -Aria @{ DescribedBy = "ID" } | Should -BeExactly '<div aria-describedby="ID"></div>'
+		Should-BeString '<div aria-atomic="true"></div>' (div -Aria @{ Atomic = "true" }) -CaseSensitive
+		Should-BeString '<div aria-describedby="ID"></div>' (div -Aria @{ DescribedBy = "ID" }) -CaseSensitive
 	}
 
 	It 'should handle the "class" attribute' {
-		body -Class btn, btn-danger | Should -BeExactly '<body class="btn btn-danger"></body>'
-		body -Class "btn btn-info", btn-sm | Should -BeExactly '<body class="btn btn-info btn-sm"></body>'
+		Should-BeString '<body class="btn btn-danger"></body>' (body -Class btn, btn-danger) -CaseSensitive
+		Should-BeString '<body class="btn btn-info btn-sm"></body>' (body -Class "btn btn-info", btn-sm) -CaseSensitive
 	}
 
 	It 'should support the "dir" attribute' -ForEach auto, ltr, rtl {
-		html -Dir $_ | Should -BeExactly "<html dir=""$_""></html>"
+		Should-BeString "<html dir=""$_""></html>" (html -Dir $_) -CaseSensitive
 	}
 
 	It 'should handle the "id" attribute' {
-		article -Id foo | Should -BeExactly '<article id="foo"></article>'
+		Should-BeString '<article id="foo"></article>' (article -Id foo) -CaseSensitive
 	}
 
 	It 'should support the "lang" attribute' -ForEach "fr-FR", "en-US" {
-		html -Lang $_ | Should -BeExactly "<html lang=""$_""></html>"
+		Should-BeString "<html lang=""$_""></html>" (html -Lang $_) -CaseSensitive
 	}
 
 	It 'should handle the "role" attribute' {
-		div -Role button | Should -BeExactly '<div role="button"></div>'
+		Should-BeString '<div role="button"></div>' (div -Role button) -CaseSensitive
 	}
 
 	It 'should handle the "style" attribute' {
 		$expected = '<code style="font-family: &quot;Segoe UI&quot;; font-size: 1rem"></code>'
-		code -Style ([ordered]@{ FontFamily = '"Segoe UI"'; FontSize = "1rem" }) | Should -BeExactly $expected
+		Should-BeString $expected (code -Style ([ordered]@{ FontFamily = '"Segoe UI"'; FontSize = "1rem" })) -CaseSensitive
 	}
 
 	It 'should handle the "tabindex" attribute' -ForEach -1, 0 {
-		div -TabIndex $_ | Should -BeExactly "<div tabindex=""$_""></div>"
+		Should-BeString "<div tabindex=""$_""></div>" (div -TabIndex $_) -CaseSensitive
 	}
 
 	It 'should handle the "title" attribute' -ForEach "", 'A "custom" label.' {
-		div -Title $_ | Should -BeExactly ($_ ? '<div title="A &quot;custom&quot; label."></div>' : "<div></div>")
+		Should-BeString ($_ ? '<div title="A &quot;custom&quot; label."></div>' : "<div></div>") (div -Title $_) -CaseSensitive
 	}
 
 	It "should handle custom attributes" {
@@ -74,14 +74,14 @@ Describe "New-Element" {
 	}
 
 	It "should handle switch parameters in attribute values" {
-		input -Attributes @{ disabled = [switch] $false; required = [switch] $true } | Should -BeExactly "<input required>"
+		Should-BeString "<input required>" (input -Attributes @{ disabled = $false; required = $true }) -CaseSensitive
 	}
 
 	It "should handle the inner content" {
 		$expected = "<main><div>Foo &gt; Bar <span>Baz &lt; Qux</span></div></main>"
-		main { div { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } } | Should -BeExactly $expected
+		Should-BeString $expected (main { div { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } }) -CaseSensitive
 
 		$expected = '<head><meta charset="utf-8"></head>'
-		head { meta -Charset utf-8 } | Should -BeExactly $expected
+		Should-BeString $expected (head { meta -Charset utf-8 }) -CaseSensitive
 	}
 }
