@@ -21,6 +21,6 @@ Describe "New-VideoElement" {
 	}
 
 	It 'should support the "width" and "height" attributes' {
-		video -Width 460 -Height 200 | Should -BeIn '<video width="460" height="200"></video>', '<video height="200" width="460"></video>'
+		'<video width="460" height="200"></video>', '<video height="200" width="460"></video>' | Should-ContainCollection (video -Width 460 -Height 200)
 	}
 }

@@ -17,7 +17,7 @@ Describe "New-TextareaElement" {
 		@{ Cols = 80; Rows = 12 }
 		@{ Cols = 120; Rows = 5 }
 	) {
-		textarea -Cols $cols -Rows $rows | Should -BeIn "<textarea cols=""$cols"" rows=""$rows""></textarea>", "<textarea rows=""$rows"" cols=""$cols""></textarea>"
+		"<textarea cols=""$cols"" rows=""$rows""></textarea>", "<textarea rows=""$rows"" cols=""$cols""></textarea>" | Should-ContainCollection (textarea -Cols $cols -Rows $rows)
 	}
 
 	It 'should support the "disabled" attribute' {

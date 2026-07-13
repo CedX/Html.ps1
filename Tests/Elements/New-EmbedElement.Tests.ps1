@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-EmbedElement" {
 	It 'should support the "src" and "type" attributes' {
-		embed -Src Image.jpg -Type image/jpeg | Should -BeIn '<embed src="Image.jpg" type="image/jpeg">', '<embed type="image/jpeg" src="Image.jpg">'
+		'<embed src="Image.jpg" type="image/jpeg">', '<embed type="image/jpeg" src="Image.jpg">' | Should-ContainCollection (embed -Src Image.jpg -Type image/jpeg)
 	}
 }

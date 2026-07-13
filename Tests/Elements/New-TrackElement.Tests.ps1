@@ -6,10 +6,10 @@ using module ../../Html.psd1
 #>
 Describe "New-TrackElement" {
 	It 'should support the "default" attribute' {
-		track -Src Subtitles.vtt -Default | Should -BeIn '<track src="Subtitles.vtt" default>', '<track default src="Subtitles.vtt">'
+		'<track src="Subtitles.vtt" default>', '<track default src="Subtitles.vtt">' | Should-ContainCollection (track -Src Subtitles.vtt -Default)
 	}
 
 	It 'should support the "kind" attribute' -ForEach captions, chapters, descriptions, metadata, subtitles {
-		track -Src Subtitles.vtt -Kind $_ | Should -BeIn "<track src=""Subtitles.vtt"" kind=""$_"">", "<track kind=""$_"" src=""Subtitles.vtt"">"
+		"<track src=""Subtitles.vtt"" kind=""$_"">", "<track kind=""$_"" src=""Subtitles.vtt"">" | Should-ContainCollection (track -Src Subtitles.vtt -Kind $_)
 	}
 }
