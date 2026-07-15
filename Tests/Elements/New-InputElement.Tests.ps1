@@ -6,23 +6,23 @@ using module ../../Html.psd1
 #>
 Describe "New-InputElement" {
 	It 'should support the "accept" attribute' {
-		input -Accept "image/*" | Should -BeExactly '<input accept="image/*">'
+		Should-BeString '<input accept="image/*">' (input -Accept "image/*") -CaseSensitive
 	}
 
 	It 'should support the "autocomplete" attribute' -ForEach "off", "on", @("shipping", "street-address") {
-		input -AutoComplete $_ | Should -BeExactly "<input autocomplete=""$($_ -join " ")"">"
+		Should-BeString "<input autocomplete=""$($_ -join " ")"">" (input -AutoComplete $_) -CaseSensitive
 	}
 
 	It 'should support the "capture" attribute' -ForEach "environment", "user" {
-		input -Capture $_ | Should -BeExactly "<input capture=""$_"">"
+		Should-BeString "<input capture=""$_"">" (input -Capture $_) -CaseSensitive
 	}
 
 	It 'should support the "checked" attribute' {
-		input -Checked | Should -BeExactly '<input checked>'
+		Should-BeString '<input checked>' (input -Checked) -CaseSensitive
 	}
 
 	It 'should support the "disabled" attribute' {
-		input -Disabled | Should -BeExactly '<input disabled>'
+		Should-BeString '<input disabled>' (input -Disabled) -CaseSensitive
 	}
 
 	It 'should support the "max", "min" attributes' -ForEach @(
@@ -42,23 +42,23 @@ Describe "New-InputElement" {
 	}
 
 	It 'should support the "multiple" attribute' {
-		input -Multiple | Should -BeExactly '<input multiple>'
+		Should-BeString '<input multiple>' (input -Multiple) -CaseSensitive
 	}
 
 	It 'should support the "pattern" attribute' -ForEach "https?://.*", "\d{8,14}", "[a-zA-Z0-9]+", "\d[a-zA-Z][a-zA-Z\d]{1,3}", "\s*[+0][\d\s\-.\/]{9,}\s*" {
-		input -Pattern $_ | Should -BeExactly "<input pattern=""$($_ -replace "\\", "\\")"">"
+		Should-BeString "<input pattern=""$($_ -replace "\\", "\\")"">" (input -Pattern $_) -CaseSensitive
 	}
 
 	It 'should support the "readonly" attribute' {
-		input -ReadOnly | Should -BeExactly '<input readonly>'
+		Should-BeString '<input readonly>' (input -ReadOnly) -CaseSensitive
 	}
 
 	It 'should support the "required" attribute' {
-		input -Required | Should -BeExactly '<input required>'
+		Should-BeString '<input required>' (input -Required) -CaseSensitive
 	}
 
 	It 'should support the "spellcheck" attribute' -ForEach false, true {
-		input -SpellCheck $_ | Should -BeExactly "<input spellcheck=""$_"">"
+		Should-BeString "<input spellcheck=""$_"">" (input -SpellCheck $_) -CaseSensitive
 	}
 
 	It 'should support the "type" and "value" attributes' -ForEach @(

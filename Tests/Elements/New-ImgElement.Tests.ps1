@@ -11,7 +11,7 @@ Describe "New-ImgElement" {
 		@{ Src = "Assets/Picture.jpg"; Alt = "A label describing the image." }
 	) {
 		$img = img -Src $src -Alt $alt
-		if ($null -eq $alt) { $img | Should -BeExactly "<img src=""$src"">" }
+		if ($null -eq $alt) { Should-BeString "<img src=""$src"">" $img -CaseSensitive }
 		else { "<img alt=""$alt"" src=""$src"">", "<img src=""$src"" alt=""$alt"">" | Should-ContainCollection $img }
 	}
 
