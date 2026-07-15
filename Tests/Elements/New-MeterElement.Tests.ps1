@@ -6,10 +6,10 @@ using module ../../Html.psd1
 #>
 Describe "New-MeterElement" {
 	It 'should support the "min" and "max" attributes' {
-		meter -Min -100 -Max 200 | Should -BeIn '<meter min="-100" max="200"></meter>', '<meter max="200" min="-100"></meter>'
+		'<meter min="-100" max="200"></meter>', '<meter max="200" min="-100"></meter>' | Should-ContainCollection (meter -Min -100 -Max 200)
 	}
 
 	It 'should support the "low" and "high" attributes' {
-		meter -Low 50 -High 150 | Should -BeIn '<meter low="50" high="150"></meter>', '<meter high="150" low="50"></meter>'
+		'<meter low="50" high="150"></meter>', '<meter high="150" low="50"></meter>' | Should-ContainCollection (meter -Low 50 -High 150)
 	}
 }

@@ -12,20 +12,20 @@ Describe "New-ImgElement" {
 	) {
 		$img = img -Src $src -Alt $alt
 		if ($null -eq $alt) { $img | Should -BeExactly "<img src=""$src"">" }
-		else { $img | Should -BeIn "<img alt=""$alt"" src=""$src"">", "<img src=""$src"" alt=""$alt"">" }
+		else { "<img alt=""$alt"" src=""$src"">", "<img src=""$src"" alt=""$alt"">" | Should-ContainCollection $img }
 	}
 
 	It 'should support the "ismap" and "usemap" attributes' {
-		img -Src Image.webp -IsMap | Should -BeIn '<img ismap src="Image.webp">', '<img src="Image.webp" ismap>'
-		img -Src Image.webp -UseMap my-map | Should -BeIn '<img usemap="#my-map" src="Image.webp">', '<img src="Image.webp" usemap="#my-map">'
+		'<img ismap src="Image.webp">', '<img src="Image.webp" ismap>' | Should-ContainCollection (img -Src Image.webp -IsMap)
+		'<img usemap="#my-map" src="Image.webp">', '<img src="Image.webp" usemap="#my-map">' | Should-ContainCollection (img -Src Image.webp -UseMap my-map)
 	}
 
 	It 'should support the "width" and "height" attributes' {
-		img -Src Image.webp -Height 200 | Should -BeIn '<img height="200" src="Image.webp">', '<img src="Image.webp" height="200">'
-		img -Src Image.webp -Width 460 | Should -BeIn '<img width="460" src="Image.webp">', '<img src="Image.webp" width="460">'
+		'<img height="200" src="Image.webp">', '<img src="Image.webp" height="200">' | Should-ContainCollection (img -Src Image.webp -Height 200)
+		'<img width="460" src="Image.webp">', '<img src="Image.webp" width="460">' | Should-ContainCollection (img -Src Image.webp -Width 460)
 	}
 
 	It 'should support the "loading" attribute' -ForEach eager, lazy {
-		img -Src Image.webp -Loading $_ | Should -BeIn "<img loading=""$_"" src=""Image.webp"">", "<img src=""Image.webp"" loading=""$_"">"
+		"<img loading=""$_"" src=""Image.webp"">", "<img src=""Image.webp"" loading=""$_"">" | Should-ContainCollection (img -Src Image.webp -Loading $_)
 	}
 }

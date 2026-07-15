@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-QElement" {
 	It 'should support the "cite" attribute' {
-		q "Lorem Ipsum" -Cite "https://example.com/" | Should -BeExactly '<q cite="https://example.com/">Lorem Ipsum</q>'
+		Should-BeString '<q cite="https://example.com/">Lorem Ipsum</q>' (q "Lorem Ipsum" -Cite "https://example.com/") -CaseSensitive
 	}
 }
