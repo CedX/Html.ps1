@@ -6,11 +6,11 @@ using module ../../Html.psd1
 #>
 Describe "New-StyleElement" {
 	It 'should support the "media" attribute' -ForEach "all", "(width <= 500px)" {
-		style -Media $_ | Should -BeExactly "<style media=""$_""></style>"
+		Should-BeString "<style media=""$_""></style>" (style -Media $_) -CaseSensitive
 	}
 
 	It "should allow inner content" {
 		$content = "p { color: blue; background-color: yellow; }"
-		style $content | Should -BeExactly "<style>$content</style>"
+		Should-BeString "<style>$content</style>" (style $content) -CaseSensitive
 	}
 }
