@@ -6,18 +6,18 @@ using module ../../Html.psd1
 #>
 Describe "New-VideoElement" {
 	It 'should support the "autoplay", "controls", "loop" and "muted" attributes' {
-		video -AutoPlay | Should -BeExactly "<video autoplay></video>"
-		video -Controls | Should -BeExactly "<video controls></video>"
-		video -Loop | Should -BeExactly "<video loop></video>"
-		video -Muted | Should -BeExactly "<video muted></video>"
+		Should-BeString "<video autoplay></video>" (video -AutoPlay) -CaseSensitive
+		Should-BeString "<video controls></video>" (video -Controls) -CaseSensitive
+		Should-BeString "<video loop></video>" (video -Loop) -CaseSensitive
+		Should-BeString "<video muted></video>" (video -Muted) -CaseSensitive
 	}
 
 	It 'should support the "poster" attribute' {
-		video -Poster Picture.webp | Should -BeExactly '<video poster="Picture.webp"></video>'
+		Should-BeString '<video poster="Picture.webp"></video>' (video -Poster Picture.webp) -CaseSensitive
 	}
 
 	It 'should support the "preload" attribute' -ForEach auto, none, metadata {
-		video -Preload $_ | Should -BeExactly "<video preload=""$_""></video>"
+		Should-BeString "<video preload=""$_""></video>" (video -Preload $_) -CaseSensitive
 	}
 
 	It 'should support the "width" and "height" attributes' {
