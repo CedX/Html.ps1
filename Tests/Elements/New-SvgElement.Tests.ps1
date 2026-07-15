@@ -7,23 +7,23 @@ using module ../../Html.psd1
 Describe "New-SvgElement" {
 
 	It 'should support the "preserveAspectRatio" attribute' {
-		svg -PreserveAspectRatio "xMaxYMin slice" | Should -BeExactly '<svg preserveAspectRatio="xMaxYMin slice"></svg>'
+		Should-BeString '<svg preserveAspectRatio="xMaxYMin slice"></svg>' (svg -PreserveAspectRatio "xMaxYMin slice") -CaseSensitive
 	}
 
 	It 'should support the "viewBox" attribute' {
-		svg -ViewBox 0, 0, 256, 128 | Should -BeExactly '<svg viewBox="0 0 256 128"></svg>'
+		Should-BeString '<svg viewBox="0 0 256 128"></svg>' (svg -ViewBox 0, 0, 256, 128) -CaseSensitive
 	}
 
 	It 'should support the "width" and "height" attributes' {
-		svg -Width 320 -Height 200 | Should -BeIn '<svg width="320" height="200"></svg>', '<svg height="200" width="320"></svg>'
+		'<svg width="320" height="200"></svg>', '<svg height="200" width="320"></svg>' | Should-ContainCollection (svg -Width 320 -Height 200)
 	}
 
 	It 'should support the "x" and "y" attributes' {
-		svg -X 640 -Y 480 | Should -BeIn '<svg x="640" y="480"></svg>', '<svg y="480" x="640"></svg>'
+		'<svg x="640" y="480"></svg>', '<svg y="480" x="640"></svg>' | Should-ContainCollection (svg -X 640 -Y 480)
 	}
 
 	It "should allow inner content" {
 		$content = '<circle cx="25" cy="25" r="20" />'
-		svg $content | Should -BeExactly "<svg>$content</svg>"
+		Should-BeString "<svg>$content</svg>" (svg $content) -CaseSensitive
 	}
 }

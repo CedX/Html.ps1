@@ -6,11 +6,11 @@ using module ../../Html.psd1
 #>
 Describe "New-TextareaElement" {
 	It 'should support the "autocomplete" attribute' -ForEach "off", "on", @("shipping", "street-address") {
-		textarea -AutoComplete $_ | Should -BeExactly "<textarea autocomplete=""$($_ -join " ")""></textarea>"
+		Should-BeString "<textarea autocomplete=""$($_ -join " ")""></textarea>" (textarea -AutoComplete $_) -CaseSensitive
 	}
 
 	It 'should support the "autocorrect" attribute' -ForEach "off", "on" {
-		textarea -AutoCorrect $_ | Should -BeExactly "<textarea autocorrect=""$_""></textarea>"
+		Should-BeString "<textarea autocorrect=""$_""></textarea>" (textarea -AutoCorrect $_) -CaseSensitive
 	}
 
 	It 'should support the "cols" and "rows" attributes' -ForEach @(
@@ -21,7 +21,7 @@ Describe "New-TextareaElement" {
 	}
 
 	It 'should support the "disabled" attribute' {
-		textarea -Disabled | Should -BeExactly '<textarea disabled></textarea>'
+		Should-BeString '<textarea disabled></textarea>' (textarea -Disabled) -CaseSensitive
 	}
 
 	It 'should support the "maxlength" and "minlength" attributes' -ForEach @(
@@ -33,14 +33,14 @@ Describe "New-TextareaElement" {
 	}
 
 	It 'should support the "readonly" attribute' {
-		textarea -ReadOnly | Should -BeExactly '<textarea readonly></textarea>'
+		Should-BeString '<textarea readonly></textarea>' (textarea -ReadOnly) -CaseSensitive
 	}
 
 	It 'should support the "required" attribute' {
-		textarea -Required | Should -BeExactly '<textarea required></textarea>'
+		Should-BeString '<textarea required></textarea>' (textarea -Required) -CaseSensitive
 	}
 
 	It 'should support the "spellcheck" attribute' -ForEach false, true {
-		textarea -SpellCheck $_ | Should -BeExactly "<textarea spellcheck=""$_""></textarea>"
+		Should-BeString "<textarea spellcheck=""$_""></textarea>" (textarea -SpellCheck $_) -CaseSensitive
 	}
 }

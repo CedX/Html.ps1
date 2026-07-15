@@ -6,23 +6,23 @@ using module ../../Html.psd1
 #>
 Describe "New-TemplateElement" {
 	It 'should support the "shadowrootclonable" attribute' {
-		template -ShadowRootClonable | Should -BeExactly '<template shadowrootclonable></template>'
+		Should-BeString '<template shadowrootclonable></template>' (template -ShadowRootClonable) -CaseSensitive
 	}
 
 	It 'should support the "shadowrootdelegatesfocus" attribute' {
-		template -ShadowRootDelegatesFocus | Should -BeExactly '<template shadowrootdelegatesfocus></template>'
+		Should-BeString '<template shadowrootdelegatesfocus></template>' (template -ShadowRootDelegatesFocus) -CaseSensitive
 	}
 
 	It 'should support the "shadowrootmode" attribute' -ForEach closed, open {
-		template -ShadowRootMode $_ | Should -BeExactly "<template shadowrootmode=""$_""></template>"
+		Should-BeString "<template shadowrootmode=""$_""></template>" (template -ShadowRootMode $_) -CaseSensitive
 	}
 
 	It 'should support the "shadowrootserializable" attribute' {
-		template -ShadowRootSerializable | Should -BeExactly '<template shadowrootserializable></template>'
+		Should-BeString '<template shadowrootserializable></template>' (template -ShadowRootSerializable) -CaseSensitive
 	}
 
 	It "should allow inner content" {
-		template (b "Hello World!") | Should -BeExactly "<template><b>Hello World!</b></template>"
-		template (button OK -Type submit) | Should -BeExactly '<template><button type="submit">OK</button></template>'
+		Should-BeString "<template><b>Hello World!</b></template>" (template (b "Hello World!")) -CaseSensitive
+		Should-BeString '<template><button type="submit">OK</button></template>' (template (button OK -Type submit)) -CaseSensitive
 	}
 }
