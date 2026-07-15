@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-SlotElement" {
 	It 'should support the "name" attribute' {
-		slot -Name MyMap | Should -BeExactly '<slot name="MyMap"></slot>'
+		Should-BeString '<slot name="MyMap"></slot>' (slot -Name MyMap) -CaseSensitive
 	}
 }

@@ -9,20 +9,20 @@ Describe "New-ScriptElement" {
 		@{ Src = "Scripts.js"; Type = "module" }
 		@{ Src = "Scripts._hs"; Type = "text/hyperscript" }
 	) {
-		script -Src $src -Type $type | Should -BeExactly "<script src=""$src"" type=""$type""></script>"
+		Should-BeString "<script src=""$src"" type=""$type""></script>" (script -Src $src -Type $type) -CaseSensitive
 	}
 
 	It 'should support the "async" and "defer" attributes' -ForEach @(
 		@{ Async = $true; Defer = $false }
 		@{ Async = $false; Defer = $true }
 	) {
-		script -Src Scripts.js -Async:$async -Defer:$defer | Should -BeExactly ($async ? '<script src="Scripts.js" async></script>' : '<script src="Scripts.js" defer></script>')
+		Should-BeString ($async ? '<script src="Scripts.js" async></script>' : '<script src="Scripts.js" defer></script>') (script -Src Scripts.js -Async:$async -Defer:$defer) -CaseSensitive
 	}
 
 	It "should allow inner content" -ForEach @(
 		@{ Content = "alert('Hello World!');"; Type = "" }
 		@{ Content = "on click call alert('Hello World!')"; Type = "text/hyperscript" }
 	) {
-		script $content -Type $type | Should -BeExactly ($type ? "<script type=""$type"">$content</script>" : "<script>$content</script>")
+		Should-BeString ($type ? "<script type=""$type"">$content</script>" : "<script>$content</script>") (script $content -Type $type) -CaseSensitive
 	}
 }

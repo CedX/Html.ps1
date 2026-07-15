@@ -6,22 +6,22 @@ using module ../../Html.psd1
 #>
 Describe "New-SelectElement" {
 	It 'should support the "autocomplete" attribute' -ForEach "off", "on", @("shipping", "street-address") {
-		selectTag -AutoComplete $_ | Should -BeExactly "<select autocomplete=""$($_ -join " ")""></select>"
+		Should-BeString "<select autocomplete=""$($_ -join " ")""></select>" (selectTag -AutoComplete $_) -CaseSensitive
 	}
 
 	It 'should support the "disabled" attribute' {
-		selectTag -Disabled | Should -BeExactly '<select disabled></select>'
+		Should-BeString '<select disabled></select>' (selectTag -Disabled) -CaseSensitive
 	}
 
 	It 'should support the "multiple" attribute' {
-		selectTag -Multiple | Should -BeExactly '<select multiple></select>'
+		Should-BeString '<select multiple></select>' (selectTag -Multiple) -CaseSensitive
 	}
 
 	It 'should support the "required" attribute' {
-		selectTag -Required | Should -BeExactly '<select required></select>'
+		Should-BeString '<select required></select>' (selectTag -Required) -CaseSensitive
 	}
 
 	It 'should support the "size" attribute' -ForEach 0, 2, 5 {
-		selectTag -Size $_ | Should -BeExactly "<select size=""$_""></select>"
+		Should-BeString "<select size=""$_""></select>" (selectTag -Size $_) -CaseSensitive
 	}
 }
