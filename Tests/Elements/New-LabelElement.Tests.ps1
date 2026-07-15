@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-LabelElement" {
 	It 'should support the "for" attribute' {
-		label -For MyID | Should -BeExactly '<label for="MyID"></label>'
+		Should-BeString '<label for="MyID"></label>' (label -For MyID) -CaseSensitive
 	}
 }

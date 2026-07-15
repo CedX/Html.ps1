@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-MapElement" {
 	It 'should support the "name" attribute' {
-		map -Name MyMap | Should -BeExactly '<map name="MyMap"></map>'
+		Should-BeString '<map name="MyMap"></map>' (map -Name MyMap) -CaseSensitive
 	}
 }

@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-LiElement" {
 	It 'should support the "value" attribute' {
-		li -Value 123 | Should -BeExactly '<li value="123"></li>'
+		Should-BeString '<li value="123"></li>' (li -Value 123) -CaseSensitive
 	}
 }

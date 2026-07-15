@@ -6,10 +6,10 @@ using module ../../Html.psd1
 #>
 Describe "New-OptgroupElement" {
 	It 'should support the "disabled" attribute' {
-		optgroup -Disabled | Should -BeExactly "<optgroup disabled></optgroup>"
+		Should-BeString "<optgroup disabled></optgroup>" (optgroup -Disabled) -CaseSensitive
 	}
 
 	It 'should support the "label" attribute' {
-		optgroup -Label MyOptiongroup | Should -BeExactly '<optgroup label="MyOptiongroup"></optgroup>'
+		Should-BeString '<optgroup label="MyOptiongroup"></optgroup>' (optgroup -Label MyOptiongroup) -CaseSensitive
 	}
 }
