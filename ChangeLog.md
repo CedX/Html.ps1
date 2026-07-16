@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [4.0.0](https://github.com/CedX/Html.ps1/compare/v3.0.1...v4.0.0)
+- Breaking change: removed the `Format-HtmlString` cmdlet.
+- Removed the dependency on [AngleSharp](https://anglesharp.github.io).
+
 ## Version [3.0.1](https://github.com/CedX/Html.ps1/compare/v3.0.0...v3.0.1)
 - Fixed the `-Max`, `-Min` and `-Step` parameters of the `New-HtmlInputElement` cmdlet.
 
