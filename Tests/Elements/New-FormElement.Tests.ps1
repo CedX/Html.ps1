@@ -6,23 +6,23 @@ using module ../../Html.psd1
 #>
 Describe "New-FormElement" {
 	It 'should support the "action" attribute' {
-		form -Action "/Process.php" | Should -BeExactly '<form action="/Process.php"></form>'
+		Should-BeString '<form action="/Process.php"></form>' (form -Action "/Process.php") -CaseSensitive
 	}
 
 	It 'should support the "enctype" attribute' -ForEach "application/x-www-form-urlencoded", "multipart/form-data", "text/plain" {
-		form -EncType $_ | Should -BeExactly "<form enctype=""$_""></form>"
+		Should-BeString "<form enctype=""$_""></form>" (form -EncType $_) -CaseSensitive
 	}
 
 	It 'should support the "method" attribute' -ForEach dialog, get, post {
-		form -Method $_ | Should -BeExactly "<form method=""$_""></form>"
+		Should-BeString "<form method=""$_""></form>" (form -Method $_) -CaseSensitive
 	}
 
 	It 'should support the "novalidate" attribute' {
-		form -NoValidate | Should -BeExactly '<form novalidate></form>'
+		Should-BeString '<form novalidate></form>' (form -NoValidate) -CaseSensitive
 	}
 
 	It "should allow inner content" {
-		form (button OK -Type submit) | Should -BeExactly '<form><button type="submit">OK</button></form>'
-		form (input -Name UserName) | Should -BeExactly '<form><input name="UserName"></form>'
+		Should-BeString '<form><button type="submit">OK</button></form>' (form (button OK -Type submit)) -CaseSensitive
+		Should-BeString '<form><input name="UserName"></form>' (form (input -Name UserName)) -CaseSensitive
 	}
 }

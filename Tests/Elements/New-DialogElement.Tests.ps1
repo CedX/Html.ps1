@@ -6,10 +6,10 @@ using module ../../Html.psd1
 #>
 Describe "New-DialogElement" {
 	It 'should support the "closedby" attribute' -ForEach any, closerequest, none {
-		dialog -ClosedBy $_ | Should -BeExactly "<dialog closedby=""$_""></dialog>"
+		Should-BeString "<dialog closedby=""$_""></dialog>" (dialog -ClosedBy $_) -CaseSensitive
 	}
 
 	It 'should support the "open" attribute' {
-		dialog -Open | Should -BeExactly '<dialog open></dialog>'
+		Should-BeString '<dialog open></dialog>' (dialog -Open) -CaseSensitive
 	}
 }

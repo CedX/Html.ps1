@@ -6,10 +6,10 @@ using module ../../Html.psd1
 #>
 Describe "New-FieldsetElement" {
 	It 'should support the "disabled" attribute' {
-		fieldset -Disabled | Should -BeExactly "<fieldset disabled></fieldset>"
+		Should-BeString "<fieldset disabled></fieldset>" (fieldset -Disabled) -CaseSensitive
 	}
 
 	It 'should support the "form" attribute' {
-		fieldset -Form MyForm | Should -BeExactly '<fieldset form="MyForm"></fieldset>'
+		Should-BeString '<fieldset form="MyForm"></fieldset>' (fieldset -Form MyForm) -CaseSensitive
 	}
 }

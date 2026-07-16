@@ -6,7 +6,7 @@ using module ../../Html.psd1
 #>
 Describe "New-CanvasElement" {
 	It 'should support the "width" and "height" attributes' {
-		canvas -Height 200 | Should -BeExactly '<canvas height="200"></canvas>'
-		canvas -Width 460 | Should -BeExactly '<canvas width="460"></canvas>'
+		Should-BeString '<canvas height="200"></canvas>' (canvas -Height 200) -CaseSensitive
+		Should-BeString '<canvas width="460"></canvas>' (canvas -Width 460) -CaseSensitive
 	}
 }

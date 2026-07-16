@@ -11,14 +11,14 @@ Describe "New-ButtonElement" {
 	}
 
 	It 'should support the "disabled" attribute' {
-		button -Disabled | Should -BeExactly '<button disabled></button>'
+		Should-BeString '<button disabled></button>' (button -Disabled) -CaseSensitive
 	}
 
 	It 'should support the "formnovalidate" attribute' {
-		button -FormNoValidate | Should -BeExactly '<button formnovalidate></button>'
+		Should-BeString '<button formnovalidate></button>' (button -FormNoValidate) -CaseSensitive
 	}
 
 	It 'should support the "type" attribute' -ForEach button, reset, submit {
-		button -Type $_ | Should -BeExactly "<button type=""$_""></button>"
+		Should-BeString "<button type=""$_""></button>" (button -Type $_) -CaseSensitive
 	}
 }
