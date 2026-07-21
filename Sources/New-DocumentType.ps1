@@ -15,7 +15,7 @@ function New-HtmlDocumentType {
 	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
 		# The value of the document type.
-		[Parameter(Position = 0, ValueFromPipeline)]
+		[Parameter(Position = 1, ValueFromPipeline)]
 		[string] $Value = "html"
 	)
 

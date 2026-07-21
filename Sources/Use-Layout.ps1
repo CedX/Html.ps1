@@ -14,12 +14,12 @@ function Use-HtmlLayout {
 	[OutputType([string])]
 	param (
 		# The path to the layout file.
-		[Parameter(Mandatory, Position = 0)]
+		[Parameter(Mandatory, Position = 1)]
 		[ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified layout path does not exist.")]
 		[string] $Path,
 
 		# The child content of the layout.
-		[Parameter(Mandatory, Position = 1, ValueFromPipeline)]
+		[Parameter(Mandatory, Position = 2, ValueFromPipeline)]
 		[object] $Content,
 
 		# The layout data.

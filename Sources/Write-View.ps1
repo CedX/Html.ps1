@@ -11,7 +11,7 @@ function Write-HtmlView {
 	[OutputType([string])]
 	param (
 		# The path to the view file.
-		[Parameter(Mandatory, Position = 0, ValueFromPipeline)]
+		[Parameter(Mandatory, Position = 1, ValueFromPipeline)]
 		[ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified view path does not exist.")]
 		[string] $Path,
 

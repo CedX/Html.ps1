@@ -51,7 +51,7 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 	/// <summary>
 	/// The child content of the element.
 	/// </summary>
-	[Parameter(Position = 0, ValueFromPipeline = true)]
+	[Parameter(Position = 1, ValueFromPipeline = true)]
 	public virtual object? Content { get; set; }
 
 	/// <summary>

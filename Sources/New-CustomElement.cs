@@ -9,12 +9,12 @@ public class NewCustomElementCommand(): NewElementCommand("", isVoid: false) {
 	/// <summary>
 	/// The child content of the element.
 	/// </summary>
-	[Parameter(Position = 1, ValueFromPipeline = true)]
+	[Parameter(Position = 2, ValueFromPipeline = true)]
 	public override object? Content { get => base.Content; set => base.Content = value; }
 
 	/// <summary>
 	/// The tag name of the element to create.
 	/// </summary>
-	[Parameter(Mandatory = true, Position = 0)]
+	[Parameter(Mandatory = true, Position = 1)]
 	public required string Name { get => TagName; set => TagName = value; }
 }
