@@ -85,6 +85,12 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 	public SwitchParameter Hidden { get; set; }
 
 	/// <summary>
+	/// The <c>htmx</c> attributes to render.
+	/// </summary>
+	[Parameter]
+	public Hashtable Hx { get; set; } = [];
+
+	/// <summary>
 	/// The element identifier.
 	/// </summary>
 	[Parameter]
@@ -222,6 +228,7 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 		if (Dir is not null) attributes["dir"] = Dir;
 		if (Draggable is not null) attributes["draggable"] = Draggable;
 		if (Hidden) attributes["hidden"] = true;
+		foreach (DictionaryEntry entry in Hx) attributes[$"hx-{kebabCase(entry.Key.ToString() ?? "")}"] = entry.Value;
 		if (!string.IsNullOrWhiteSpace(Id)) attributes["id"] = Id;
 		if (Inert) attributes["inert"] = true;
 		if (InputMode is not null) attributes["inputmode"] = InputMode;

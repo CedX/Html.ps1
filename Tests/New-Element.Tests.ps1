@@ -68,6 +68,12 @@ Describe "New-Element" {
 		$expected | Should-ContainCollection (button -DataSet @{ BsToggle = "tooltip"; PushUrl = $true })
 	}
 
+	It "should htmx attributes" {
+		$expected = '<button hx-confirm="Wat?" hx-post="/new"></button>', '<button hx-post="/new" hx-confirm="Wat?"></button>'
+		$expected | Should-ContainCollection (button -Hx @{ Confirm = "Wat?"; Post = "/new" })
+		Should-BeString '<button hx-on:app:click="alert(''Hello!'')"></button>' (button -Hx @{ "On:app:click" = "alert('Hello!')" }) -CaseSensitive
+	}
+
 	It "should handle event handler attributes" {
 		$expected = '<button onclick="submit(event)" oncontextmenu="showMenu()"></button>', '<button oncontextmenu="showMenu()" onclick="submit(event)"></button>'
 		$expected | Should-ContainCollection (button -On @{ Click = "submit(event)"; ContextMenu = "showMenu()" })
