@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [4.1.0](https://github.com/CedX/Html.ps1/compare/v4.0.0...v4.1.0)
+- Added the `-Hx` parameter to all element cmdlets to facilitate rendering [htmx](https://htmx.org) attributes.
+
 ## Version [4.0.0](https://github.com/CedX/Html.ps1/compare/v3.0.1...v4.0.0)
 - Breaking change: removed the `Format-HtmlString` cmdlet.
 - Removed the dependency on [AngleSharp](https://anglesharp.github.io).
