@@ -193,7 +193,7 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 				if (booleanValue) builder.Append($" {key}");
 			}
 			else if (value is SwitchParameter switchParameter) {
-				if (switchParameter.IsPresent) builder.Append($" {key}");
+				if (switchParameter) builder.Append($" {key}");
 			}
 			else {
 				var stringValue = Convert.ToString(value, CultureInfo.InvariantCulture)?.Replace("\"", encodedDoubleQuote);
