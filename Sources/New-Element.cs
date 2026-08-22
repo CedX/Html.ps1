@@ -79,7 +79,7 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 	public string? Draggable { get; set; }
 
 	/// <summary>
-	/// Value indicating whether the browser should not render the contents of the element.
+	/// Value indicating whether the browser should not render the contents of this element.
 	/// </summary>
 	[Parameter]
 	public SwitchParameter Hidden { get; set; }
