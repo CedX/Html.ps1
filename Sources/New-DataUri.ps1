@@ -2,15 +2,14 @@
 
 <#
 .SYNOPSIS
-	Converts a file or a byte stream into a data URI.
+	Creates a data URI from the specified file or byte stream.
 .INPUTS
 	The path to a file to convert.
 .OUTPUTS
-	The data URI corresponding to the specified file or byte stream.
+	The newly created data URI.
 #>
-function ConvertTo-HtmlDataUri {
+function New-HtmlDataUri {
 	[CmdletBinding(DefaultParameterSetName = "Path")]
-	[OutputType([string])]
 	[OutputType([uri])]
 	param (
 		# The path to a file to convert.
@@ -22,7 +21,8 @@ function ConvertTo-HtmlDataUri {
 		[byte[]] $ByteStream,
 
 		# The media type to associate with the data URI.
-		[string] $MediaType = [MediaTypeNames.Application]::Octet
+		[ValidateNotNullOrWhiteSpace()]
+		[string] $MediaType = [MediaTypeNames]::Application::Octet
 	)
 
 	process {

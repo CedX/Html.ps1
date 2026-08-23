@@ -1,7 +1,7 @@
 # Changelog
 
 ## Version [4.2.0](https://github.com/CedX/Html.ps1/compare/v4.1.0...v4.2.0)
-- Added the `ConvertTo-HtmlDataUri` cmdlet.
+- Added the `New-HtmlDataUri` cmdlet.
 
 ## Version [4.1.0](https://github.com/CedX/Html.ps1/compare/v4.0.0...v4.1.0)
 - Added the `-Hx` parameter to all element cmdlets to facilitate rendering [htmx](https://htmx.org) attributes.

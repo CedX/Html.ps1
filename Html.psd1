@@ -131,7 +131,7 @@
 	)
 
 	FunctionsToExport = @(
-		"ConvertTo-HtmlDataUri"
+		"New-HtmlDataUri"
 		"New-HtmlDocumentType"
 		"Protect-HtmlString"
 		"Use-HtmlLayout"
