@@ -1,4 +1,5 @@
-﻿using namespace System.Net.Mime
+﻿using namespace System.Diagnostics.CodeAnalysis
+using namespace System.Net.Mime
 
 <#
 .SYNOPSIS
@@ -11,6 +12,7 @@
 function New-HtmlDataUri {
 	[CmdletBinding(DefaultParameterSetName = "Path")]
 	[OutputType([uri])]
+	[SuppressMessage("PSUseShouldProcessForStateChangingFunctions", "")]
 	param (
 		# The path to a file to convert.
 		[Parameter(Mandatory, ParameterSetName = "Path", Position = 1, ValueFromPipeline)]

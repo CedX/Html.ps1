@@ -8,12 +8,12 @@ Describe "New-DataUri" {
 	It "should create a data URI from the specified file" {
 		$file = "$PSScriptRoot/../Resources/DataUri.gif"
 		$dataUri = New-HtmlDataUri $file -MediaType image/gif
-		Should-Be ([uri]::new("data:image/gif;base64,R0lGODlhAQABAHAAACwAAAAAAQABAIH///8AAAAAAAAAAAACAkQBADs=")) $dataUri
+		Should-BeString "data:image/gif;base64,R0lGODlhAQABAHAAACwAAAAAAQABAIH///8AAAAAAAAAAAACAkQBADs=" $dataUri.ToString()
 	}
 
 	It "should create a data URI from the specified byte stream" {
 		$bytes = Get-Content "$PSScriptRoot/../Resources/DataUri.gif" -AsByteStream
 		$dataUri = New-HtmlDataUri $bytes -MediaType image/gif
-		Should-Be ([uri]::new("data:image/gif;base64,R0lGODlhAQABAHAAACwAAAAAAQABAIH///8AAAAAAAAAAAACAkQBADs=")) $dataUri
+		Should-BeString "data:image/gif;base64,R0lGODlhAQABAHAAACwAAAAAAQABAIH///8AAAAAAAAAAAACAkQBADs=" $dataUri.ToString()
 	}
 }
