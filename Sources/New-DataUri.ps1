@@ -1,5 +1,4 @@
 ﻿using namespace System.Diagnostics.CodeAnalysis
-using namespace System.Net.Mime
 
 <#
 .SYNOPSIS
