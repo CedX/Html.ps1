@@ -24,7 +24,7 @@ function New-HtmlDataUri {
 
 		# The media type to associate with the data URI.
 		[ValidateNotNullOrWhiteSpace()]
-		[string] $MediaType = [MediaTypeNames]::Application::Octet
+		[string] $MediaType = "application/octet-stream"
 	)
 
 	process {
