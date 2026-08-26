@@ -2,7 +2,7 @@
 
 <#
 .SYNOPSIS
-	Creates a data URI from the specified file or byte stream.
+	Creates a new data URI from the specified file or byte stream.
 .INPUTS
 	The path to a file to convert.
 .OUTPUTS

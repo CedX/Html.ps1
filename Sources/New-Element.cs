@@ -1,6 +1,7 @@
 namespace Belin.Html;
 
 using System.Collections;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
@@ -148,7 +149,7 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 	/// The CSS styling declarations applied to the element.
 	/// </summary>
 	[Parameter]
-	public OrderedHashtable Style { get; set; } = [];
+	public OrderedDictionary Style { get; set; } = [];
 
 	/// <summary>
 	/// Determines the relative ordering of the element for sequential focus navigation.
