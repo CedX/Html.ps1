@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [4.3.0](https://github.com/CedX/Html.ps1/compare/v4.2.0...v4.3.0)
+- Added the `New-HtmlQuery` cmdlet.
+
 ## Version [4.2.0](https://github.com/CedX/Html.ps1/compare/v4.1.0...v4.2.0)
 - Added the `New-HtmlDataUri` cmdlet.
 
