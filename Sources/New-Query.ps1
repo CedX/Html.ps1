@@ -23,8 +23,8 @@ function New-HtmlQueryString {
 		[ValidateNotNull()]
 		[OrderedDictionary] $InputObject = @{},
 
-		# The string providing the initial query parameters.
-		[string] $Value,
+		# The initial query string.
+		[string] $Value = "",
 
 		# Value indicating whether to include the question mark.
 		[Parameter(ParameterSetName = "AddQuestionMark")]
