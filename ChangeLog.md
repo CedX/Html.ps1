@@ -1,6 +1,6 @@
 # Changelog
 
-## Version [4.4.0](https://github.com/CedX/Html.ps1/compare/v4.4.0...v4.4.0)
+## Version [4.4.0](https://github.com/CedX/Html.ps1/compare/v4.3.0...v4.4.0)
 - Added the `-Value` parameter to the `New-HtmlQueryString` cmdlet.
 
 ## Version [4.3.0](https://github.com/CedX/Html.ps1/compare/v4.2.0...v4.3.0)
