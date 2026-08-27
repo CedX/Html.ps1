@@ -9,6 +9,7 @@ Describe "New-QueryString" {
 		@{ Value = $null; Parameters = @{}; Expected = "" }
 		@{ Value = ""; Parameters = [ordered]@{ Foo = "Bar"; Baz = ""; Qux = $null }; Expected = "Foo=Bar&Baz=" }
 		@{ Value = "?Foo=Bar"; Parameters = @{ Baz = ""; Qux = $null }; Expected = "Foo=Bar&Baz=" }
+		@{ Value = "?Foo=Bar"; Parameters = [ordered]@{ Baz = 123; Qux = $true }; Expected = "Foo=Bar&Baz=123&Qux=True" }
 	) {
 		Should-BeString $expected (New-HtmlQueryString $parameters -Value $value) -CaseSensitive
 	}
@@ -17,6 +18,7 @@ Describe "New-QueryString" {
 		@{ Value = $null; Parameters = @{}; Expected = "" }
 		@{ Value = ""; Parameters = [ordered]@{ Foo = "Bar"; Baz = ""; Qux = $null }; Expected = "Foo=Bar&Baz=" }
 		@{ Value = "?Foo=Bar"; Parameters = @{ Baz = ""; Qux = $null }; Expected = "Foo=Bar&Baz=" }
+		@{ Value = "?Foo=Bar"; Parameters = [ordered]@{ Baz = 123; Qux = $true }; Expected = "Foo=Bar&Baz=123&Qux=True" }
 	) {
 		$collection = New-HtmlQueryString $parameters -Value $value -AsCollection
 		Should-BeString $expected $collection.ToString() -CaseSensitive
@@ -26,6 +28,7 @@ Describe "New-QueryString" {
 		@{ Value = $null; Parameters = @{}; Expected = "" }
 		@{ Value = ""; Parameters = [ordered]@{ Foo = "Bar"; Baz = ""; Qux = $null }; Expected = "?Foo=Bar&Baz=" }
 		@{ Value = "?Foo=Bar"; Parameters = @{ Baz = ""; Qux = $null }; Expected = "?Foo=Bar&Baz=" }
+		@{ Value = "?Foo=Bar"; Parameters = [ordered]@{ Baz = 123; Qux = $true }; Expected = "?Foo=Bar&Baz=123&Qux=True" }
 	) {
 		Should-BeString $expected (New-HtmlQueryString $parameters -Value $value -AddQuestionMark) -CaseSensitive
 	}
