@@ -149,7 +149,7 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 	/// The CSS styling declarations applied to the element.
 	/// </summary>
 	[Parameter]
-	public OrderedDictionary Style { get; set; } = [];
+	public IDictionary Style { get; set; } = new OrderedDictionary();
 
 	/// <summary>
 	/// Determines the relative ordering of the element for sequential focus navigation.
