@@ -1,4 +1,4 @@
-﻿using namespace System.Collections.Specialized
+﻿using namespace System.Collections
 using namespace System.Diagnostics.CodeAnalysis
 using namespace System.Web
 
@@ -21,7 +21,7 @@ function New-HtmlQueryString {
 		# The name/value pairs providing the query parameters.
 		[Parameter(Position = 1, ValueFromPipeline)]
 		[ValidateNotNull()]
-		[OrderedDictionary] $InputObject = @{},
+		[IDictionary] $InputObject = @{},
 
 		# The initial query string.
 		[string] $Value = "",
