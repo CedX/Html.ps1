@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [4.5.0](https://github.com/CedX/Html.ps1/compare/v4.4.0...v4.5.0)
+- Changed the type of the `-Style` common parameter to `IDictionary`.
+- Changed the type of the `-InputObject` parameter of the `New-HtmlQueryString` cmdlet to `IDictionary`.
+
 ## Version [4.4.0](https://github.com/CedX/Html.ps1/compare/v4.3.0...v4.4.0)
 - Added the `-Value` parameter to the `New-HtmlQueryString` cmdlet.
 
