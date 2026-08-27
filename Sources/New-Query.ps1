@@ -23,6 +23,9 @@ function New-HtmlQueryString {
 		[ValidateNotNull()]
 		[OrderedDictionary] $InputObject = @{},
 
+		# The string providing the initial query parameters.
+		[string] $Value,
+
 		# Value indicating whether to include the question mark.
 		[Parameter(ParameterSetName = "AddQuestionMark")]
 		[switch] $AddQuestionMark,
@@ -33,7 +36,7 @@ function New-HtmlQueryString {
 	)
 
 	process {
-		$collection = [HttpUtility]::ParseQueryString("")
+		$collection = [HttpUtility]::ParseQueryString($Value ?? "")
 		foreach ($key in $InputObject.Keys) { $collection.Add($key, $InputObject[$key] ?? [NullString]::Value) }
 
 		if ($AsCollection) { Write-Output $collection -NoEnumerate }
