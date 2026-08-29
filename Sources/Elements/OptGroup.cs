@@ -3,8 +3,8 @@ namespace Belin.Html.Elements;
 /// <summary>
 /// Creates a new <c>optgroup</c> element.
 /// </summary>
-[Cmdlet(VerbsCommon.New, "HtmlOptgroupElement"), Alias("optgroup"), OutputType(typeof(string))]
-public class NewOptgroupElementCommand(): NewElementCommand("optgroup", isVoid: false) {
+[Cmdlet(VerbsCommon.New, "HtmlOptGroupElement"), Alias("optgroup"), OutputType(typeof(string))]
+public class NewOptGroupElementCommand(): NewElementCommand("optgroup", isVoid: false) {
 
 	/// <summary>
 	/// Value indicating whether none of the items in the option group is selectable.

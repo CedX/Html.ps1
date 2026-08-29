@@ -84,7 +84,7 @@
 		"New-HtmlNoscriptElement"
 		"New-HtmlObjectElement"
 		"New-HtmlOlElement"
-		"New-HtmlOptgroupElement"
+		"New-HtmlOptGroupElement"
 		"New-HtmlOptionElement"
 		"New-HtmlOutputElement"
 		"New-HtmlPElement"
