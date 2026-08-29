@@ -247,3 +247,22 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 			.Select(entry => $"{kebabCase(entry.Key.ToString() ?? "")}: {Convert.ToString(entry.Value, CultureInfo.InvariantCulture)?.Replace("\"", encodedDoubleQuote)}"));
 	}
 }
+
+/// <summary>
+/// Creates a new custom element.
+/// </summary>
+[Cmdlet(VerbsCommon.New, "HtmlCustomElement"), Alias("tag"), OutputType(typeof(string))]
+public class NewCustomElementCommand(): NewElementCommand("", isVoid: false) {
+
+	/// <summary>
+	/// The child content of the element.
+	/// </summary>
+	[Parameter(Position = 2, ValueFromPipeline = true)]
+	public override object? Content { get => base.Content; set => base.Content = value; }
+
+	/// <summary>
+	/// The tag name of the element to create.
+	/// </summary>
+	[Parameter(Mandatory = true, Position = 1)]
+	public required string Name { get => TagName; set => TagName = value; }
+}

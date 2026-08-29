@@ -64,7 +64,7 @@
 - The common parameter `-Style` is now an `OrderedHashtable`, allowing the declaration order to be preserved.
 
 ## Version [0.9.0](https://github.com/CedX/Html.ps1/compare/v0.8.0...v0.9.0)
-- Added the `New-HtmlOlElement`, `New-HtmlOptGroupElement`, `New-HtmlOptionElement`, `New-HtmlOutputElement` and `New-HtmlProgressElement` cmdlets.
+- Added the `New-HtmlOlElement`, `New-HtmlOptgroupElement`, `New-HtmlOptionElement`, `New-HtmlOutputElement` and `New-HtmlProgressElement` cmdlets.
 - Added the `ol`, `optgroup`, `option`, `output` and `progress` aliases.
 
 ## Version [0.8.0](https://github.com/CedX/Html.ps1/compare/v0.7.0...v0.8.0)
@@ -82,7 +82,7 @@
 - Added the `delTag`, `td`, `th`, `time` and `track` aliases.
 
 ## Version [0.5.0](https://github.com/CedX/Html.ps1/compare/v0.4.0...v0.5.0)
-- Added the `New-HtmlColGroupElement`, `New-HtmlDataElement`, `New-HtmlStyleElement` and `New-HtmlVideoElement` cmdlets.
+- Added the `New-HtmlColgroupElement`, `New-HtmlDataElement`, `New-HtmlStyleElement` and `New-HtmlVideoElement` cmdlets.
 - Added the `colgroup`, `dataTag`, `style` and `video` aliases.
 
 ## Version [0.4.0](https://github.com/CedX/Html.ps1/compare/v0.3.0...v0.4.0)
