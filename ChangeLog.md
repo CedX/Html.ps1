@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [4.5.1](https://github.com/CedX/Html.ps1/compare/v4.5.0...v4.5.1)
+- Optimized the packaging.
+
 ## Version [4.5.0](https://github.com/CedX/Html.ps1/compare/v4.4.0...v4.5.0)
 - Changed the type of the `-Style` common parameter to `IDictionary`.
 - Changed the type of the `-InputObject` parameter of the `New-HtmlQueryString` cmdlet to `IDictionary`.
