@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [4.5.2](https://github.com/CedX/Html.ps1/compare/v4.5.1...v4.5.2)
+- Fixed the `View` module, which was throwing a `CommandNotFoundException` exception.
+
 ## Version [4.5.1](https://github.com/CedX/Html.ps1/compare/v4.5.0...v4.5.1)
 - Optimized the packaging.
 
