@@ -1,5 +1,7 @@
 namespace Belin.Html.Elements;
 
+using System.Management.Automation;
+
 /// <summary>
 /// Creates a new <c>base</c> element.
 /// </summary>

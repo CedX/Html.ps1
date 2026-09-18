@@ -3,6 +3,7 @@ namespace Belin.Html;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Globalization;
+using System.Management.Automation;
 using System.Text;
 using System.Text.Json;
 using System.Text.Encodings.Web;

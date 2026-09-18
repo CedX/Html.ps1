@@ -1,5 +1,7 @@
 namespace Belin.Html.Elements;
 
+using System.Management.Automation;
+
 using System.Net.Mime;
 using System.Text.RegularExpressions;
 
