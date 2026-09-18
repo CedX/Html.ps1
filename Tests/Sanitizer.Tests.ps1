@@ -11,7 +11,7 @@ Describe "Protect-String" {
 		@{ Value = '<script type="module"></script>'; Encoding = "Html"; Expected = "&lt;script type=&quot;module&quot;&gt;&lt;/script&gt;" }
 		@{ Value = " foo "; Encoding = "Url"; Expected = "%20foo%20" }
 	) {
-		$actual = esc $value -Encoding $encoding
+		$actual = Protect-HtmlString $value -Encoding $encoding
 		if ($expected) { Should-BeLikeString $expected $actual -CaseSensitive }
 		else { Should-BeEmptyString $actual }
 	}
