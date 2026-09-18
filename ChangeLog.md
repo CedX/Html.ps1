@@ -1,5 +1,8 @@
 # Changelog
 
+## Version [5.0.0](https://github.com/CedX/Html.ps1/compare/v4.5.2...v5.0.0)
+- Breaking change: removed the `esc`, `layout` and `tag` aliases.
+
 ## Version [4.5.2](https://github.com/CedX/Html.ps1/compare/v4.5.1...v4.5.2)
 - Fixed a regression in the `View` module, which was throwing a `CommandNotFoundException` exception.
 
