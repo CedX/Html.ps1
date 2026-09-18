@@ -252,7 +252,7 @@ public abstract class NewElementCommand(string tagName, bool isVoid = false): PS
 /// <summary>
 /// Creates a new custom element.
 /// </summary>
-[Cmdlet(VerbsCommon.New, "HtmlCustomElement"), Alias("tag"), OutputType(typeof(string))]
+[Cmdlet(VerbsCommon.New, "HtmlCustomElement"), OutputType(typeof(string))]
 public class NewCustomElementCommand(): NewElementCommand("", isVoid: false) {
 
 	/// <summary>

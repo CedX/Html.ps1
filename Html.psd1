@@ -9,7 +9,7 @@
 	Description = "PowerShell cmdlets for rendering HTML documents."
 	GUID = "3c16800c-921e-4c31-9fc3-00052d2f30ba"
 
-	AliasesToExport = "doctype", "esc", "layout"
+	AliasesToExport = , "doctype"
 	NestedModules = , "Sources/Main.psm1"
 	VariablesToExport = @()
 

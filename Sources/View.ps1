@@ -9,7 +9,6 @@ using namespace System.Text
 	The rendered HTML view.
 #>
 function Use-HtmlLayout {
-	[Alias("layout")]
 	[CmdletBinding()]
 	[OutputType([string])]
 	param (

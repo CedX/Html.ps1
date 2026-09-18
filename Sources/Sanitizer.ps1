@@ -9,7 +9,6 @@ using namespace System.Text.Encodings.Web
 	The encoded string.
 #>
 function Protect-HtmlString {
-	[Alias("esc")]
 	[CmdletBinding()]
 	[OutputType([string])]
 	param (
