@@ -14,7 +14,7 @@ New-Item Sources/Generated -Force -ItemType Directory | Out-Null
 	}
 
 	$cmdletsToExport.Add("New-Html$($parameters.CapitalizedTag)Element")
-	if (Test-Path "Sources/Elements/$($parameters.CapitalizedTag).cs") { continue }
+	if (Test-Path "Sources/Elements/$($parameters.CapitalizedTag).cs") { return }
 
 	$content = $cmdletTemplate
 	$parameters.Keys | ForEach-Object { $content = $content -replace "{$_}", $parameters.$_ }
