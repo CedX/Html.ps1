@@ -195,18 +195,18 @@ type NewElementCommand (tagName: string, isVoid: bool) =
     match this.Draggable with null -> () | value -> attributes["draggable"] <- value
     if this.Hidden.IsPresent then attributes["hidden"] <- true
     for entry in Seq.cast<DictionaryEntry> this.Hx do attributes[$"hx-{Element.kebabCase (string entry.Key)}"] <- entry.Value
-    if not (String.IsNullOrWhiteSpace "Id") then attributes["id"] <- this.Id
+    if not (String.IsNullOrWhiteSpace this.Id) then attributes["id"] <- this.Id
     if this.Inert.IsPresent then attributes["inert"] <- true
     match this.InputMode with null -> () | value -> attributes["inputmode"] <- value
     match this.Lang with null -> () | value -> attributes["lang"] <- value.Name
     for entry in Seq.cast<DictionaryEntry> this.On do attributes[$"on{(string entry.Key).ToLowerInvariant()}"] <- entry.Value
     match this.Popover with null -> () | value -> attributes["popover"] <- value
-    if not (String.IsNullOrWhiteSpace "Role") then attributes["role"] <- this.Role
-    if not (String.IsNullOrWhiteSpace "Slot") then attributes["slot"] <- this.Slot
+    if not (String.IsNullOrWhiteSpace this.Role) then attributes["role"] <- this.Role
+    if not (String.IsNullOrWhiteSpace this.Slot) then attributes["slot"] <- this.Slot
     match this.SpellCheck with null -> () | value -> attributes["spellcheck"] <- value
     if this.Style.Count > 0 then attributes["style"] <- this.Style |> Seq.cast<DictionaryEntry> |> Seq.map Element.toCssProperty |> String.concat "; "
     if this.TabIndex.HasValue then attributes["tabindex"] <- this.TabIndex.Value
-    if not (String.IsNullOrWhiteSpace "Title") then attributes["title"] <- this.Title
+    if not (String.IsNullOrWhiteSpace this.Title) then attributes["title"] <- this.Title
     match this.Translate with null -> () | value -> attributes["translate"] <- value
 
 /// Creates a new custom element.

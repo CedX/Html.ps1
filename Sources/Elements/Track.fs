@@ -37,5 +37,5 @@ type NewTrackElementCommand () =
     attributes["src"] <- this.Src
     if this.Default.IsPresent then attributes["default"] <- true
     match this.Kind with null -> () | value -> attributes["kind"] <- value
-    if not (String.IsNullOrWhiteSpace "Label") then attributes["label"] <- this.Label
+    if not (String.IsNullOrWhiteSpace this.Label) then attributes["label"] <- this.Label
     match this.SrcLang with null -> () | value -> attributes["srclang"] <- value.Name
