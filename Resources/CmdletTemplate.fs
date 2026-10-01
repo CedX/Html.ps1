@@ -1,5 +1,6 @@
 namespace Belin.Html.Elements
 
+open Belin.Html
 open System.Management.Automation
 
 /// Creates a new `{Tag}` element.

@@ -1,0 +1,36 @@
+namespace Belin.Html.Elements
+
+open Belin.Html
+open System
+open System.Collections.Generic
+open System.Management.Automation
+open System.Xml
+
+/// Creates a new `time` element.
+[<Cmdlet(VerbsCommon.New, "HtmlTimeElement"); Alias("time"); OutputType(typeof<string>)>]
+type NewTimeElementCommand () =
+  inherit NewElementCommand ("time", isVoid = false)
+
+  /// The time and/or date of the element.
+  [<Parameter>]
+  member val DateTime: objnull = null with get, set
+
+  /// Populates the specified attribute collection with the element attributes.
+  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+    base.RenderAttributes attributes
+
+    match this.DateTime with
+    | null -> ()
+    | dateTime ->
+      let result =
+        match (match dateTime with :? PSObject as psObject -> psObject.BaseObject | value -> value) with
+        | :? DateOnly as value  -> Ok (value.ToString "o")
+        | :? DateTime as value -> Ok (value.ToString "o")
+        | :? DateTimeOffset as value -> Ok (value.ToString "o")
+        | :? TimeOnly as value -> Ok (value.ToString "o")
+        | :? TimeSpan as value -> Ok (XmlConvert.ToString value)
+        | _ -> Error (NotSupportedException "The specified date/time value is not supported.")
+
+      match result with
+      | Error ex -> this.WriteError (ErrorRecord(ex, "DateTime.ToString", ErrorCategory.InvalidArgument, dateTime))
+      | Ok value -> attributes["datetime"] <- value
