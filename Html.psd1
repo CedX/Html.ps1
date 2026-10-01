@@ -139,6 +139,10 @@
 		"Write-HtmlView"
 	)
 
+	RequiredModules = @(
+		@{ ModuleName = "Belin.FSharp"; ModuleVersion = "10.1.401" }
+	)
+
 	PrivateData = @{
 		PSData = @{
 			LicenseUri = "https://github.com/CedX/Html.ps1/blob/main/License.md"
