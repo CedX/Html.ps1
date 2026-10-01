@@ -8,7 +8,7 @@ open System.Web
 /// Creates a new document type declaration.
 [<Cmdlet(VerbsCommon.New, "HtmlQueryString", DefaultParameterSetName = "Default")>]
 [<OutputType(typeof<NameValueCollection>)>]
-type NewDocumentTypeCommand () =
+type NewQueryStringCommand () =
   inherit Cmdlet ()
 
   /// The name/value pairs providing the query parameters.
@@ -16,8 +16,8 @@ type NewDocumentTypeCommand () =
   member val InputObject: IDictionary = Hashtable() with get, set
 
   /// The initial query string.
-  [<Parameter; ValidateNotNull>]
-  member val Value = "" with get, set
+  [<Parameter>]
+  member val Value: string | null = null with get, set
 
   /// Value indicating whether to include the question mark.
   [<Parameter(ParameterSetName = "AddQuestionMark")>]
@@ -29,7 +29,7 @@ type NewDocumentTypeCommand () =
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
-    let collection = HttpUtility.ParseQueryString this.Value
+    let collection = HttpUtility.ParseQueryString (defaultIfNull "" this.Value)
     for entry in this.InputObject |> Seq.cast<DictionaryEntry> do
       collection.Add (string entry.Key, match entry.Value with null -> null | value -> string value)
 
