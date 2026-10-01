@@ -17,6 +17,26 @@ function Build-DotNetSolution {
 
 <#
 .SYNOPSIS
+	Invokes the FSharpLint static analyzer.
+#>
+function Invoke-FSharpLint {
+	param (
+		# The path to the file or directory to be analyzed.
+		[Parameter(Mandatory, Position = 1)]
+		[string[]] $Path,
+
+		# The path to the configuration file.
+		[ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified configuration file does not exist.")]
+		[string] $Configuration
+	)
+
+	$argumentList = $Configuration ? "--lint-config", $Configuration : @()
+	$argumentList += $Path
+	dotnet fsharplint lint @argumentList
+}
+
+<#
+.SYNOPSIS
 	Creates a new Git tag.
 #>
 function New-GitTag {
@@ -40,11 +60,10 @@ function Publish-PSGalleryModule {
 	$module = Import-PowerShellDataFile $root/Html.psd1
 
 	$output = "$root/Temp/PSModule"
-	New-Item $output/Binaries, $output/Sources -ItemType Directory | Out-Null
+	New-Item $output/Binaries -ItemType Directory | Out-Null
 	Copy-Item $root/Html.psd1 $output/Belin.Html.psd1
 	Copy-Item $root/*.md $output
-	Copy-Item $root/Sources/*.ps*1 $output/Sources
-	Copy-Item $module.RootModule $output/Binaries
+	$module.RootModule | Copy-Item -Destination $output/Binaries
 
 	$output = "$root/Temp/PSGallery"
 	New-Item $output -ItemType Directory | Out-Null

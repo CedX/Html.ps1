@@ -16,8 +16,8 @@
 	CmdletsToExport = @(
 		"New-HtmlDataUri"
 		"New-HtmlDocumentType"
-		# "New-HtmlQueryString"
-		# "Protect-HtmlString"
+		"New-HtmlQueryString"
+		"Protect-HtmlString"
 		# "Use-HtmlLayout"
 		# "Write-HtmlView"
 	)
