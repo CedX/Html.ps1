@@ -27,7 +27,9 @@
 
 	<ItemGroup>
 		<Compile Include="DataUri.fs" />
+		<Compile Include="DocumentType.fs" />
 		<!-- <Compile Include="Element.fs" /> -->
+		<Compile Include="Sanitizer.fs" />
 		<!-- <Compile Include="Elements/A.fs" /> -->
 	</ItemGroup>
 </Project>
