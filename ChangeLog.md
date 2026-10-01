@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [6.0.0](https://github.com/CedX/Html.ps1/compare/v5.0.0...v6.0.0)
+- Ported the cmdlets to [F#](https://learn.microsoft.com/en-us/dotnet/fsharp).
+- Restored the `esc`, `layout` and `tag` aliases.
+
 ## Version [5.0.0](https://github.com/CedX/Html.ps1/compare/v4.5.2...v5.0.0)
 - Breaking change: removed the `esc`, `layout` and `tag` aliases.
 
