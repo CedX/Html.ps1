@@ -28,9 +28,10 @@
 	<ItemGroup>
 		<Compile Include="DataUri.fs" />
 		<Compile Include="DocumentType.fs" />
-		<!-- <Compile Include="Element.fs" /> -->
+		<Compile Include="Element.fs" />
 		<Compile Include="QueryString.fs" />
 		<Compile Include="Sanitizer.fs" />
+		<!-- <Compile Include="View.fs" /> -->
 		<!-- <Compile Include="Elements/*.fs" /> -->
 		<!-- <Compile Include="Generated/*.fs" /> -->
 	</ItemGroup>
