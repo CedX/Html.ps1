@@ -1,8 +1,16 @@
 using namespace System.Collections.Generic
 
 "Deploying the assets..."
-$cmdletTemplate = Get-Content Resources/CmdletTemplate.cs -Raw
-$cmdletsToExport = [List[string]]::new([string[]] @("New-HtmlCustomElement"))
+$cmdletTemplate = Get-Content Resources/CmdletTemplate.fs -Raw
+$cmdletsToExport = [List[string]]::new([string[]] @(
+	"New-HtmlCustomElement"
+	"New-HtmlDataUri"
+	"New-HtmlDocumentType"
+	"New-HtmlQueryString"
+	"Protect-HtmlString"
+	"Use-HtmlLayout"
+	"Write-HtmlView"
+))
 
 New-Item Sources/Generated -Force -ItemType Directory | Out-Null
 (Import-PowerShellDataFile Resources/HtmlElements.psd1).Elements | ForEach-Object {
@@ -14,11 +22,11 @@ New-Item Sources/Generated -Force -ItemType Directory | Out-Null
 	}
 
 	$cmdletsToExport.Add("New-Html$($parameters.CapitalizedTag)Element")
-	if (Test-Path "Sources/Elements/$($parameters.CapitalizedTag).cs") { return }
+	if (Test-Path "Sources/Elements/$($parameters.CapitalizedTag).fs") { return }
 
 	$content = $cmdletTemplate
 	$parameters.Keys | ForEach-Object { $content = $content -replace "{$_}", $parameters.$_ }
-	Set-Content "Sources/Generated/$($parameters.CapitalizedTag).g.cs" $content -NoNewline
+	Set-Content "Sources/Generated/$($parameters.CapitalizedTag).g.fs" $content -NoNewline
 }
 
 $cmdletsToExport.Sort()
