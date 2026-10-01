@@ -30,7 +30,7 @@ type NewQueryStringCommand () =
   /// Performs execution of this command.
   override this.ProcessRecord () =
     let collection = HttpUtility.ParseQueryString (defaultIfNull "" this.Value)
-    for entry in this.InputObject |> Seq.cast<DictionaryEntry> do
+    for entry in Seq.cast<DictionaryEntry> this.InputObject do
       collection.Add (string entry.Key, match entry.Value with null -> null | value -> string value)
 
     if this.AsCollection.IsPresent then this.WriteObject (collection, enumerateCollection = false)

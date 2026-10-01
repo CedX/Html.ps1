@@ -188,7 +188,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
     for entry in Seq.cast<DictionaryEntry> this.Aria do attributes[$"aria-{(string entry.Key).ToLowerInvariant()}"] <- entry.Value
     match this.AutoCapitalize with null -> () | value -> attributes["autocapitalize"] <- value
     if this.AutoFocus.IsPresent then attributes["autofocus"] <- true
-    if this.Class.Length > 0 then attributes["class"] <- (this.Class |> String.concat " ").Trim()
+    if this.Class.Length > 0 then attributes["class"] <- (String.concat " " this.Class).Trim()
     match this.ContentEditable with null -> () | value -> attributes["contenteditable"] <- value
     for entry in Seq.cast<DictionaryEntry> this.DataSet do attributes[$"data-{Element.kebabCase (string entry.Key)}"] <- entry.Value
     match this.Dir with null -> () | value -> attributes["dir"] <- value
