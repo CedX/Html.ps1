@@ -71,9 +71,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
   /// The child content of the element.
   [<Parameter(Position = 1, ValueFromPipeline = true)>]
   abstract member Content: objnull with get, set
-    default _.Content
-      with get() = content
-      and set(value: objnull) = content <- value
+  default _.Content with get() = content and set(value: objnull) = content <- value
 
   /// Value indicating whether the element is editable by the user.
   [<Parameter; ValidateSet("false", "plaintext-only", "true")>]
@@ -185,7 +183,8 @@ type NewElementCommand (tagName: string, isVoid: bool) =
     this.WriteObject (string builder)
 
   /// Populates the specified attribute collection with the element attributes.
-  member this.RenderAttributes (attributes: IDictionary<string, objnull>) = // TODO protected virtual void
+  abstract member RenderAttributes: IDictionary<string, objnull> -> unit
+  default this.RenderAttributes (attributes: IDictionary<string, objnull>) =
     for entry in Seq.cast<DictionaryEntry> this.Aria do attributes[$"aria-{(string entry.Key).ToLowerInvariant()}"] <- entry.Value
     match this.AutoCapitalize with null -> () | value -> attributes["autocapitalize"] <- value
     if this.AutoFocus.IsPresent then attributes["autofocus"] <- true
