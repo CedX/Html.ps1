@@ -4,8 +4,7 @@ open System.Management.Automation
 open System.Text.Encodings.Web
 
 /// Encodes a string using the specified character encoding.
-[<Cmdlet(VerbsSecurity.Protect, "HtmlString"); Alias("esc")>]
-[<OutputType(typeof<string>)>]
+[<Cmdlet(VerbsSecurity.Protect, "HtmlString"); Alias("esc"); OutputType(typeof<string>)>]
 type ProtectHtmlStringCommand () =
   inherit Cmdlet ()
 

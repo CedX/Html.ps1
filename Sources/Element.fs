@@ -2,24 +2,45 @@ namespace Belin.Html
 
 open System
 open System.Collections
+open System.Collections.Generic
 open System.Collections.Specialized
 open System.Globalization
-open System.Collections.Generic
+open System.Linq
 open System.Management.Automation
 open System.Text
-open System.Text.Json
 open System.Text.Encodings.Web
+open System.Text.Json
+
+/// Contains operations for working with validation rules.
+module private Element =
+
+  /// The HTML-encoded string corresponding to a double quote.
+  let encodedDoubleQuote = HtmlEncoder.Default.Encode "\""
+
+  /// Converts the specified according to the lowercase kebab-casing.
+  let kebabCase = JsonNamingPolicy.KebabCaseLower.ConvertName
+
+  /// Converts the specified key/value pair to a CSS property.
+  let toCssProperty (entry: DictionaryEntry): string =
+    let value = (string entry.Value).Replace("\"", encodedDoubleQuote)
+    $"{kebabCase (string entry.Key)}: {value}"
+
+  /// Converts the specified key/value pair to an HTML attribute.
+  let toHtmlAttribute (entry: KeyValuePair<string, objnull>): string =
+    match entry.Value with
+    | :? bool as value -> if value then $" {entry.Key}" else ""
+    | :? SwitchParameter as value -> if value.IsPresent then $" {entry.Key}" else ""
+    | value ->
+      let encodedValue = (string value).Replace("\"", encodedDoubleQuote)
+      $@" {entry.Key}=""{encodedValue}"""
 
 /// Provides the abstract base class for a cmdlet rendering an HTML element.
 [<AbstractClass>]
 type NewElementCommand (tagName: string, isVoid: bool) =
   inherit PSCmdlet ()
 
-  /// The HTML-encoded string corresponding to a double quote.
-  static let encodedDoubleQuote = HtmlEncoder.Default.Encode "\""
-
   /// The child content of the element.
-  let mutable content: obj | null = null
+  let mutable content: objnull = null
 
   /// Value indicating whether the element to create is a void element.
   member val internal IsVoid: bool = isVoid with get, set
@@ -49,10 +70,10 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
   /// The child content of the element.
   [<Parameter(Position = 1, ValueFromPipeline = true)>]
-  abstract member Content: obj | null with get, set
+  abstract member Content: objnull with get, set
     default _.Content
       with get() = content
-      and set(value: obj | null) = content <- value
+      and set(value: objnull) = content <- value
 
   /// Value indicating whether the element is editable by the user.
   [<Parameter; ValidateSet("false", "plaintext-only", "true")>]
@@ -132,69 +153,65 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
-    // var attributes = Attributes.Cast<DictionaryEntry>().ToDictionary(entry => entry.Key.ToString() ?? "", entry => entry.Value, StringComparer.OrdinalIgnoreCase)
-    // RenderAttributes(attributes)
+    let builder = StringBuilder()
+    let tag = this.TagName.ToLowerInvariant()
 
-    // var tag = TagName.ToLowerInvariant()
-    // var builder = new StringBuilder($"<{tag}")
+    // Build the map of attributes to render.
+    let attributes =
+      this.Attributes
+        .Cast<DictionaryEntry>()
+        .ToDictionary((fun entry -> string entry.Key), (fun entry -> entry.Value), StringComparer.OrdinalIgnoreCase)
 
-    // foreach (var (key, value) in attributes.Where(attribute => attribute.Value is not null)) {
-    //   if (value is bool booleanValue) {
-    //     if (booleanValue) builder.Append($" {key}")
-    //   }
-    //   else if (value is SwitchParameter switchParameter) {
-    //     if (switchParameter) builder.Append($" {key}")
-    //   }
-    //   else {
-    //     var stringValue = Convert.ToString(value, CultureInfo.InvariantCulture)?.Replace("\"", encodedDoubleQuote)
-    //     builder.Append($" {key}=\"{stringValue}\"")
-    //   }
-    // }
+    this.RenderAttributes attributes
 
-    // if (IsVoid) builder.Append('>')
-    // else {
-    //   var output = Content is ScriptBlock scriptBlock ? scriptBlock.Invoke().Select(psObject => psObject.BaseObject) : (Content is not null ? [Content] : [])
-    //   builder.Append('>')
-    //   foreach (var value in output) builder.Append(value)
-    //   builder.Append($"</{tag}>")
-    // }
+    // Render the opening tag.
+    let htmlAttributes =
+      attributes
+      |> Seq.filter (fun entry -> not (isNull entry.Value))
+      |> Seq.map Element.toHtmlAttribute
 
-    // WriteObject(builder.ToString())
-    ()
+    builder.Append($"<{tag}").AppendJoin("", htmlAttributes).Append '>' |> ignore<StringBuilder>
+
+    // Render the child content and the closing tag.
+    if not this.IsVoid then
+      let output =
+        match this.Content with
+        | null -> Seq.empty
+        | :? ScriptBlock as scriptBlock -> scriptBlock.Invoke() |> Seq.map (fun psObject -> psObject.BaseObject)
+        | content -> seq { content }
+
+      builder.AppendJoin("", output).Append $"</{tag}>" |> ignore<StringBuilder>
+
+    this.WriteObject (string builder)
 
   /// Populates the specified attribute collection with the element attributes.
-  member this.RenderAttributes (attributes: IDictionary<string, obj | null>) = // TODO protected virtual void
-    let kebabCase = JsonNamingPolicy.KebabCaseLower.ConvertName
-
-  //   foreach (DictionaryEntry entry in Aria) attributes[$"aria-{entry.Key.ToString()?.ToLowerInvariant()}"] = entry.Value
-  //   if (AutoCapitalize is not null) attributes["autocapitalize"] = AutoCapitalize
-  //   if (AutoFocus) attributes["autofocus"] = true
-  //   if (Class.Length > 0) attributes["class"] = string.Join(' ', Class).Trim()
-  //   if (ContentEditable is not null) attributes["contenteditable"] = ContentEditable
-  //   foreach (DictionaryEntry entry in DataSet) attributes[$"data-{kebabCase(entry.Key.ToString() ?? "")}"] = entry.Value
-  //   if (Dir is not null) attributes["dir"] = Dir
-  //   if (Draggable is not null) attributes["draggable"] = Draggable
-  //   if (Hidden) attributes["hidden"] = true
-  //   foreach (DictionaryEntry entry in Hx) attributes[$"hx-{kebabCase(entry.Key.ToString() ?? "")}"] = entry.Value
-  //   if (!string.IsNullOrWhiteSpace(Id)) attributes["id"] = Id
-  //   if (Inert) attributes["inert"] = true
-  //   if (InputMode is not null) attributes["inputmode"] = InputMode
-  //   if (Lang is not null) attributes["lang"] = Lang.Name
-  //   foreach (DictionaryEntry entry in On) attributes[$"on{entry.Key.ToString()?.ToLowerInvariant()}"] = entry.Value
-  //   if (Popover is not null) attributes["popover"] = Popover
-  //   if (!string.IsNullOrWhiteSpace(Role)) attributes["role"] = Role
-  //   if (!string.IsNullOrWhiteSpace(Slot)) attributes["slot"] = Slot
-  //   if (SpellCheck is not null) attributes["spellcheck"] = SpellCheck
-  //   if (TabIndex is not null) attributes["tabindex"] = TabIndex.Value
-  //   if (!string.IsNullOrWhiteSpace(Title)) attributes["title"] = Title
-  //   if (Translate is not null) attributes["translate"] = Translate
-
-  //   if (Style.Count > 0) attributes["style"] = string.Join("; ", Style.Cast<DictionaryEntry>()
-  //     .Select(entry => $"{kebabCase(entry.Key.ToString() ?? "")}: {Convert.ToString(entry.Value, CultureInfo.InvariantCulture)?.Replace("\"", encodedDoubleQuote)}"))
-    ()
+  member this.RenderAttributes (attributes: IDictionary<string, objnull>) = // TODO protected virtual void
+    for entry in Seq.cast<DictionaryEntry> this.Aria do attributes[$"aria-{(string entry.Key).ToLowerInvariant()}"] <- entry.Value
+    match this.AutoCapitalize with null -> () | value -> attributes["autocapitalize"] <- value
+    if this.AutoFocus.IsPresent then attributes["autofocus"] <- true
+    if this.Class.Length > 0 then attributes["class"] <- (this.Class |> String.concat " ").Trim()
+    match this.ContentEditable with null -> () | value -> attributes["contenteditable"] <- value
+    for entry in Seq.cast<DictionaryEntry> this.DataSet do attributes[$"data-{Element.kebabCase (string entry.Key)}"] <- entry.Value
+    match this.Dir with null -> () | value -> attributes["dir"] <- value
+    match this.Draggable with null -> () | value -> attributes["draggable"] <- value
+    if this.Hidden.IsPresent then attributes["hidden"] <- true
+    for entry in Seq.cast<DictionaryEntry> this.Hx do attributes[$"hx-{Element.kebabCase (string entry.Key)}"] <- entry.Value
+    if not (String.IsNullOrWhiteSpace "Id") then attributes["id"] <- this.Id
+    if this.Inert.IsPresent then attributes["inert"] <- true
+    match this.InputMode with null -> () | value -> attributes["inputmode"] <- value
+    match this.Lang with null -> () | value -> attributes["lang"] <- value.Name
+    for entry in Seq.cast<DictionaryEntry> this.On do attributes[$"on{(string entry.Key).ToLowerInvariant()}"] <- entry.Value
+    match this.Popover with null -> () | value -> attributes["popover"] <- value
+    if not (String.IsNullOrWhiteSpace "Role") then attributes["role"] <- this.Role
+    if not (String.IsNullOrWhiteSpace "Slot") then attributes["slot"] <- this.Slot
+    match this.SpellCheck with null -> () | value -> attributes["spellcheck"] <- value
+    if this.Style.Count > 0 then attributes["style"] <- this.Style |> Seq.cast<DictionaryEntry> |> Seq.map Element.toCssProperty |> String.concat "; "
+    if this.TabIndex.HasValue then attributes["tabindex"] <- this.TabIndex.Value
+    if not (String.IsNullOrWhiteSpace "Title") then attributes["title"] <- this.Title
+    match this.Translate with null -> () | value -> attributes["translate"] <- value
 
 /// Creates a new custom element.
-[<Cmdlet(VerbsCommon.New, "HtmlCustomElement"); OutputType(typeof<string>)>]
+[<Cmdlet(VerbsCommon.New, "HtmlCustomElement"); Alias("tag"); OutputType(typeof<string>)>]
 type NewCustomElementCommand () =
   inherit NewElementCommand ("", isVoid = false)
 
@@ -208,4 +225,4 @@ type NewCustomElementCommand () =
   [<Parameter(Position = 2, ValueFromPipeline = true)>]
   override _.Content
     with get() = base.Content
-    and set(value: obj | null) = base.Content <- value
+    and set(value: objnull) = base.Content <- value
