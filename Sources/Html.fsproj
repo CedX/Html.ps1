@@ -16,10 +16,18 @@
 		<Nullable>enable</Nullable>
 		<OutDir>../Binaries</OutDir>
 		<RootNamespace>Belin.Html</RootNamespace>
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
 		<TargetFramework>net10.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
 		<PackageReference Include="System.Management.Automation" Version="7.6.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="DataUri.fs" />
+		<!-- <Compile Include="Element.fs" /> -->
+		<!-- <Compile Include="Elements/A.fs" /> -->
 	</ItemGroup>
 </Project>
