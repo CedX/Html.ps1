@@ -7,8 +7,8 @@ open System.Management.Automation
 
 /// Creates a new `meter` element.
 [<Cmdlet(VerbsCommon.New, "HtmlMeterElement"); Alias("meter"); OutputType(typeof<string>)>]
-type NewMeterElementCommand () =
-  inherit NewElementCommand ("meter", isVoid = false)
+type NewMeterElementCommand() =
+  inherit NewElementCommand("meter", isVoid = false)
 
   /// The lower numeric bound of the high end of the measured range.
   [<Parameter>]

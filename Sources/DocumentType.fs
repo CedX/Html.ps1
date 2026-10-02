@@ -6,8 +6,8 @@ open System.Management.Automation
 /// Creates a new document type declaration.
 [<Cmdlet(VerbsCommon.New, "HtmlDocumentType"); Alias("doctype")>]
 [<OutputType(typeof<string>)>]
-type NewDocumentTypeCommand () =
-  inherit Cmdlet ()
+type NewDocumentTypeCommand() =
+  inherit Cmdlet()
 
   /// The value of the document type.
   [<Parameter(Position = 1, ValueFromPipeline = true)>]

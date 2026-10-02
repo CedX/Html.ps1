@@ -7,8 +7,8 @@ open System.Management.Automation
 
 /// Creates a new `q` element.
 [<Cmdlet(VerbsCommon.New, "HtmlQElement"); Alias("q"); OutputType(typeof<string>)>]
-type NewQElementCommand () =
-  inherit NewElementCommand ("q", isVoid = false)
+type NewQElementCommand() =
+  inherit NewElementCommand("q", isVoid = false)
 
   /// A URL that designates a source document or message for the information quoted.
   [<Parameter>]

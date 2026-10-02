@@ -6,8 +6,8 @@ open System.Management.Automation
 
 /// Creates a new `meta` element.
 [<Cmdlet(VerbsCommon.New, "HtmlMetaElement", DefaultParameterSetName = "Name"); Alias("meta"); OutputType(typeof<string>)>]
-type NewMetaElementCommand () =
-  inherit NewElementCommand ("meta", isVoid = true)
+type NewMetaElementCommand() =
+  inherit NewElementCommand("meta", isVoid = true)
 
   /// A charset declaration, giving the character encoding in which the document is encoded.
   [<Parameter(Mandatory = true, ParameterSetName = "Charset")>]

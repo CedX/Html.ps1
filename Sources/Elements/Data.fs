@@ -6,8 +6,8 @@ open System.Management.Automation
 
 /// Creates a new `data` element.
 [<Cmdlet(VerbsCommon.New, "HtmlDataElement"); Alias("dataTag"); OutputType(typeof<string>)>]
-type NewDataElementCommand () =
-  inherit NewElementCommand ("data", isVoid = false)
+type NewDataElementCommand() =
+  inherit NewElementCommand("data", isVoid = false)
 
   /// The machine-readable translation of the content of the element.
   [<Parameter(Mandatory = true)>]

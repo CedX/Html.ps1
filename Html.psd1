@@ -132,6 +132,8 @@
 		"New-HtmlVideoElement"
 		"New-HtmlWbrElement"
 		"Protect-HtmlString"
+		"Use-HtmlLayout"
+		"Write-HtmlView"
 	)
 
 	RequiredModules = @(

@@ -7,8 +7,8 @@ open System.Management.Automation
 
 /// Creates a new `svg` element.
 [<Cmdlet(VerbsCommon.New, "HtmlSvgElement"); Alias("svg"); OutputType(typeof<string>)>]
-type NewSvgElementCommand () =
-  inherit NewElementCommand ("svg", isVoid = false)
+type NewSvgElementCommand() =
+  inherit NewElementCommand("svg", isVoid = false)
 
   /// The intrinsic height of the image, in CSS pixels.
   [<Parameter>]

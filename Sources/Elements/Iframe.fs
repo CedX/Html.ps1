@@ -7,8 +7,8 @@ open System.Management.Automation
 
 /// Creates a new `iframe` element.
 [<Cmdlet(VerbsCommon.New, "HtmlIframeElement"); Alias("iframe"); OutputType(typeof<string>)>]
-type NewIframeElementCommand () =
-  inherit NewElementCommand ("iframe", isVoid = false)
+type NewIframeElementCommand() =
+  inherit NewElementCommand("iframe", isVoid = false)
 
   /// Specifies a permissions policy thaht defines what features are available to the frame based on the origin of the request.
   [<Parameter>]

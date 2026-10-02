@@ -7,8 +7,8 @@ open System.Management.Automation
 
 /// Creates a new `label` element.
 [<Cmdlet(VerbsCommon.New, "HtmlLabelElement"); Alias("label"); OutputType(typeof<string>)>]
-type NewLabelElementCommand () =
-  inherit NewElementCommand ("label", isVoid = false)
+type NewLabelElementCommand() =
+  inherit NewElementCommand("label", isVoid = false)
 
   /// The identifier of the labelable form control in the same document.
   [<Parameter>]

@@ -8,8 +8,8 @@ open System.Net.Mime
 
 /// Creates a new `button` element.
 [<Cmdlet(VerbsCommon.New, "HtmlButtonElement"); Alias("button"); OutputType(typeof<string>)>]
-type NewButtonElementCommand () =
-  inherit NewElementCommand ("button", isVoid = false)
+type NewButtonElementCommand() =
+  inherit NewElementCommand("button", isVoid = false)
 
   /// The action to be performed on an element being controlled via the `CommandFor` attribute.
   [<Parameter>]

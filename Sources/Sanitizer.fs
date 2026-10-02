@@ -5,8 +5,8 @@ open System.Text.Encodings.Web
 
 /// Encodes a string using the specified character encoding.
 [<Cmdlet(VerbsSecurity.Protect, "HtmlString"); Alias("esc"); OutputType(typeof<string>)>]
-type ProtectHtmlStringCommand () =
-  inherit Cmdlet ()
+type ProtectStringCommand() =
+  inherit Cmdlet()
 
   /// The encoder used to process the string.
   let mutable encoder: TextEncoder = HtmlEncoder.Default

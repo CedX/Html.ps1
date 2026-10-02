@@ -6,8 +6,8 @@ open System.Management.Automation
 
 /// Creates a new `col` element.
 [<Cmdlet(VerbsCommon.New, "HtmlColElement"); Alias("col"); OutputType(typeof<string>)>]
-type NewColElementCommand () =
-  inherit NewElementCommand ("col", isVoid = true)
+type NewColElementCommand() =
+  inherit NewElementCommand("col", isVoid = true)
 
   /// The number of consecutive columns the element spans.
   [<Parameter; ValidateRange(ValidateRangeKind.Positive)>]

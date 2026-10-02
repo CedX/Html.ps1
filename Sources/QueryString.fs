@@ -8,8 +8,8 @@ open System.Web
 /// Creates a new document type declaration.
 [<Cmdlet(VerbsCommon.New, "HtmlQueryString", DefaultParameterSetName = "Default")>]
 [<OutputType(typeof<NameValueCollection>)>]
-type NewQueryStringCommand () =
-  inherit Cmdlet ()
+type NewQueryStringCommand() =
+  inherit Cmdlet()
 
   /// The name/value pairs providing the query parameters.
   [<Parameter(Position = 1, ValueFromPipeline = true); ValidateNotNull>]

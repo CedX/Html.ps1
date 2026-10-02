@@ -6,8 +6,8 @@ open System.Management.Automation
 
 /// Creates a new `colgroup` element.
 [<Cmdlet(VerbsCommon.New, "HtmlColgroupElement"); Alias("colgroup"); OutputType(typeof<string>)>]
-type NewColgroupElementCommand () =
-  inherit NewElementCommand ("colgroup", isVoid = false)
+type NewColgroupElementCommand() =
+  inherit NewElementCommand("colgroup", isVoid = false)
 
   /// The number of consecutive columns the element spans.
   [<Parameter; ValidateRange(ValidateRangeKind.Positive)>]

@@ -6,8 +6,8 @@ open System.Management.Automation
 
 /// Creates a new `optgroup` element.
 [<Cmdlet(VerbsCommon.New, "HtmlOptgroupElement"); Alias("optgroup"); OutputType(typeof<string>)>]
-type NewOptgroupElementCommand () =
-  inherit NewElementCommand ("optgroup", isVoid = false)
+type NewOptgroupElementCommand() =
+  inherit NewElementCommand("optgroup", isVoid = false)
 
   /// Value indicating whether none of the items in the option group is selectable.
   [<Parameter>]

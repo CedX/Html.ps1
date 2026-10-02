@@ -6,8 +6,8 @@ open System.Management.Automation
 
 /// Creates a new `template` element.
 [<Cmdlet(VerbsCommon.New, "HtmlTemplateElement"); Alias("template"); OutputType(typeof<string>)>]
-type NewTemplateElementCommand () =
-  inherit NewElementCommand ("template", isVoid = false)
+type NewTemplateElementCommand() =
+  inherit NewElementCommand("template", isVoid = false)
 
   /// Value indicating whether the shadow root is clonable.
   [<Parameter>]

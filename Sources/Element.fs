@@ -37,7 +37,7 @@ module private Element =
 /// Provides the abstract base class for a cmdlet rendering an HTML element.
 [<AbstractClass>]
 type NewElementCommand (tagName: string, isVoid: bool) =
-  inherit PSCmdlet ()
+  inherit PSCmdlet()
 
   /// The child content of the element.
   let mutable content: objnull = null

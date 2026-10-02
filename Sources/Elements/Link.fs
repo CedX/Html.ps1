@@ -7,8 +7,8 @@ open System.Management.Automation
 
 /// Creates a new `link` element.
 [<Cmdlet(VerbsCommon.New, "HtmlLinkElement"); Alias("link"); OutputType(typeof<string>)>]
-type NewLinkElementCommand () =
-  inherit NewElementCommand ("link", isVoid = true)
+type NewLinkElementCommand() =
+  inherit NewElementCommand("link", isVoid = true)
 
   /// Specifies the type of content being loaded by the `link`.
   [<Parameter>]
