@@ -12,13 +12,21 @@ open System.Text.Encodings.Web
 open System.Text.Json
 
 /// Contains operations for working with validation rules.
-module private Element =
+module internal Element =
 
   /// The HTML-encoded string corresponding to a double quote.
   let encodedDoubleQuote = HtmlEncoder.Default.Encode "\""
 
   /// Converts the specified according to the lowercase kebab-casing.
   let kebabCase = JsonNamingPolicy.KebabCaseLower.ConvertName
+
+  /// TODO
+  let rec renderContent (content: objnull) =
+    match content with
+    | null -> Seq.empty
+    | :? PSObject as object when not (object.BaseObject :? PSObject) -> renderContent object.BaseObject
+    | :? ScriptBlock as scriptBlock -> scriptBlock.Invoke() |> Seq.map (fun psObject -> psObject.BaseObject)
+    | value -> seq { value }
 
   /// Converts the specified key/value pair to a CSS property.
   let toCssProperty (entry: DictionaryEntry): string =
@@ -173,15 +181,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
     builder.Append($"<{tag}").AppendJoin("", htmlAttributes).Append '>' |> ignore<StringBuilder>
 
     // Render the child content and the closing tag.
-    if not this.IsVoid then
-      let content =
-        match this.Content with
-        | null -> Seq.empty
-        | :? ScriptBlock as scriptBlock -> scriptBlock.Invoke() |> Seq.map (fun psObject -> psObject.BaseObject)
-        | value -> seq { value }
-
-      builder.AppendJoin("", content).Append $"</{tag}>" |> ignore<StringBuilder>
-
+    if not this.IsVoid then builder.AppendJoin("", Element.renderContent this.Content).Append $"</{tag}>" |> ignore<StringBuilder>
     this.WriteObject (string builder)
 
   /// Populates the specified attribute collection with the element attributes.

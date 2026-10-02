@@ -31,7 +31,7 @@
 		<Compile Include="Element.fs" />
 		<Compile Include="QueryString.fs" />
 		<Compile Include="Sanitizer.fs" />
-		<!-- <Compile Include="View.fs" /> -->
+		<Compile Include="View.fs" />
 		<Compile Include="Elements/*.fs" />
 		<Compile Include="Generated/*.fs" />
 	</ItemGroup>
