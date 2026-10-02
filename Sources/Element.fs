@@ -49,12 +49,12 @@ type NewElementCommand (tagName: string, isVoid: bool) =
   member val internal TagName: string = tagName with get, set
 
   /// The ARIA attributes to render.
-  [<Parameter>]
-  member val Aria = Hashtable() with get, set
+  [<Parameter; ValidateNotNull>]
+  member val Aria: IDictionary = Hashtable() with get, set
 
   /// The custom attributes to render.
-  [<Parameter>]
-  member val Attributes = Hashtable() with get, set
+  [<Parameter; ValidateNotNull>]
+  member val Attributes: IDictionary = Hashtable() with get, set
 
   /// Value indicating whether inputted text is automatically capitalized.
   [<Parameter; ValidateSet("characters", "none", "off", "on", "sentences", "words")>]
@@ -80,8 +80,8 @@ type NewElementCommand (tagName: string, isVoid: bool) =
   member val ContentEditable: string | null = null with get, set
 
   /// The data attributes to render.
-  [<Parameter>]
-  member val DataSet = Hashtable() with get, set
+  [<Parameter; ValidateNotNull>]
+  member val DataSet: IDictionary = Hashtable() with get, set
 
   /// The directionality of the element's text.
   [<Parameter; ValidateSet("auto", "ltr", "rtl")>]
@@ -96,8 +96,8 @@ type NewElementCommand (tagName: string, isVoid: bool) =
   member val Hidden = SwitchParameter false with get, set
 
   /// The `htmx` attributes to render.
-  [<Parameter>]
-  member val Hx = Hashtable() with get, set
+  [<Parameter; ValidateNotNull>]
+  member val Hx: IDictionary = Hashtable() with get, set
 
   /// The element identifier.
   [<Parameter>]
@@ -121,7 +121,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
   /// The event handler attributes to render.
   [<Parameter>]
-  member val On = Hashtable() with get, set
+  member val On: IDictionary = Hashtable() with get, set
 
   /// Defines the semantic meaning of content.
   [<Parameter>]
@@ -174,13 +174,13 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
     // Render the child content and the closing tag.
     if not this.IsVoid then
-      let output =
+      let content =
         match this.Content with
         | null -> Seq.empty
         | :? ScriptBlock as scriptBlock -> scriptBlock.Invoke() |> Seq.map (fun psObject -> psObject.BaseObject)
-        | content -> seq { content }
+        | value -> seq { value }
 
-      builder.AppendJoin("", output).Append $"</{tag}>" |> ignore<StringBuilder>
+      builder.AppendJoin("", content).Append $"</{tag}>" |> ignore<StringBuilder>
 
     this.WriteObject (string builder)
 
@@ -215,8 +215,8 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
 /// Creates a new custom element.
 [<Cmdlet(VerbsCommon.New, "HtmlCustomElement"); Alias("tag"); OutputType(typeof<string>)>]
-type NewCustomElementCommand () =
-  inherit NewElementCommand ("", isVoid = false)
+type NewCustomElementCommand() =
+  inherit NewElementCommand("", isVoid = false)
 
   /// The tag name of the element to create.
   [<Parameter(Mandatory = true, Position = 1)>]
