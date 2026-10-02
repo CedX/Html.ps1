@@ -1,6 +1,6 @@
 {
 	"global": {"numIndentationSpaces": 2},
-	"ignoreFiles": ["obj/"],
+	"ignoreFiles": ["Generated/", "obj/"],
 	"activePatternNames": {"enabled": true, "config": {"naming": "PascalCase", "underscores": "None"}},
 	"asyncExceptionWithoutReturn": {"enabled": true},
 	"asynchronousFunctionNames": {"enabled": true, "config": {"mode": "OnlyPublicAPIsInLibraries"}},
