@@ -8,7 +8,6 @@ $cmdletsToExport = [List[string]]::new([string[]] @(
 	"New-HtmlDocumentType"
 	"New-HtmlQueryString"
 	"Protect-HtmlString"
-	"Use-HtmlLayout"
 	"Write-HtmlView"
 ))
 

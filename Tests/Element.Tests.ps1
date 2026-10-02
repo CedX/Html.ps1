@@ -49,6 +49,7 @@ Describe "New-CustomElement" {
 	It "should handle the inner content" {
 		$expected = "<outer-element><inner-element>Foo &gt; Bar <span>Baz &lt; Qux</span></inner-element></outer-element>"
 		Should-BeString $expected (tag outer-element { tag inner-element { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } }) -CaseSensitive
+		Should-BeString $expected ({ "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } | tag inner-element | tag outer-element) -CaseSensitive
 	}
 }
 
