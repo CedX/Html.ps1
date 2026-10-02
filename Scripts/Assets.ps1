@@ -24,7 +24,7 @@ New-Item Sources/Generated -Force -ItemType Directory | Out-Null
 	if (Test-Path "Sources/Elements/$($parameters.CapitalizedTag).fs") { return }
 
 	$content = $cmdletTemplate
-	$parameters.Keys | ForEach-Object { $content = $content -replace "{$_}", $parameters.$_ }
+	$parameters.Keys | ForEach-Object { $content = $content -replace "{$_}", $parameters[$_] }
 	Set-Content "Sources/Generated/$($parameters.CapitalizedTag).g.fs" $content -NoNewline
 }
 
