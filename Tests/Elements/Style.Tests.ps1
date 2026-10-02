@@ -11,6 +11,6 @@ Describe "New-StyleElement" {
 
 	It "should allow inner content" {
 		$content = "p { color: blue; background-color: yellow; }"
-		Should-BeString "<style>$content</style>" (style $content) -CaseSensitive
+		Should-BeString "<style>$content</style>" ($content | style) -CaseSensitive
 	}
 }

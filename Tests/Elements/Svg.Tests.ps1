@@ -24,6 +24,6 @@ Describe "New-SvgElement" {
 
 	It "should allow inner content" {
 		$content = '<circle cx="25" cy="25" r="20" />'
-		Should-BeString "<svg>$content</svg>" (svg $content) -CaseSensitive
+		Should-BeString "<svg>$content</svg>" ($content | svg) -CaseSensitive
 	}
 }

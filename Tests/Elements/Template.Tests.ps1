@@ -23,6 +23,6 @@ Describe "New-TemplateElement" {
 
 	It "should allow inner content" {
 		Should-BeString "<template><b>Hello World!</b></template>" (template (b "Hello World!")) -CaseSensitive
-		Should-BeString '<template><button type="submit">OK</button></template>' (template (button OK -Type submit)) -CaseSensitive
+		Should-BeString '<template><button type="submit">OK</button></template>' (button OK -Type submit | template) -CaseSensitive
 	}
 }

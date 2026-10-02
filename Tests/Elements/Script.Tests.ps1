@@ -23,6 +23,6 @@ Describe "New-ScriptElement" {
 		@{ Content = "alert('Hello World!');"; Type = "" }
 		@{ Content = "on click call alert('Hello World!')"; Type = "text/hyperscript" }
 	) {
-		Should-BeString ($type ? "<script type=""$type"">$content</script>" : "<script>$content</script>") (script $content -Type $type) -CaseSensitive
+		Should-BeString ($type ? "<script type=""$type"">$content</script>" : "<script>$content</script>") ($content | script -Type $type) -CaseSensitive
 	}
 }

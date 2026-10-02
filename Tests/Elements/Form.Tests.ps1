@@ -22,7 +22,7 @@ Describe "New-FormElement" {
 	}
 
 	It "should allow inner content" {
-		Should-BeString '<form><button type="submit">OK</button></form>' (form (button OK -Type submit)) -CaseSensitive
-		Should-BeString '<form><input name="UserName"></form>' (form (input -Name UserName)) -CaseSensitive
+		Should-BeString '<form><button type="submit">OK</button></form>' (form { button OK -Type submit }) -CaseSensitive
+		Should-BeString '<form><input name="UserName"></form>' (input -Name UserName | form) -CaseSensitive
 	}
 }
