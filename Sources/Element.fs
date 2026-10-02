@@ -129,7 +129,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
   member val Popover: string | null = null with get, set
 
   /// The event handler attributes to render.
-  [<Parameter>]
+  [<Parameter; ValidateNotNull>]
   member val On: IDictionary = Hashtable() with get, set
 
   /// Defines the semantic meaning of content.
@@ -145,7 +145,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
   member val SpellCheck: string | null = null with get, set
 
   /// The CSS styling declarations applied to the element.
-  [<Parameter>]
+  [<Parameter; ValidateNotNull>]
   member val Style: IDictionary = OrderedDictionary() with get, set
 
   /// Determines the relative ordering of the element for sequential focus navigation.

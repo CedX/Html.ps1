@@ -5,9 +5,9 @@ open System.Collections.Specialized
 open System.Management.Automation
 open System.Web
 
-/// Creates a new document type declaration.
+/// Creates a new query string.
 [<Cmdlet(VerbsCommon.New, "HtmlQueryString", DefaultParameterSetName = "Default")>]
-[<OutputType(typeof<NameValueCollection>)>]
+[<OutputType(typeof<string>); OutputType(typeof<NameValueCollection>)>]
 type NewQueryStringCommand() =
   inherit Cmdlet()
 
