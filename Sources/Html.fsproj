@@ -33,6 +33,6 @@
 		<Compile Include="Sanitizer.fs" />
 		<!-- <Compile Include="View.fs" /> -->
 		<Compile Include="Elements/*.fs" />
-		<!-- <Compile Include="Generated/*.fs" /> -->
+		<Compile Include="Generated/*.fs" />
 	</ItemGroup>
 </Project>

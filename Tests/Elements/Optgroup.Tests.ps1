@@ -6,7 +6,8 @@ using module ../../Html.psd1
 #>
 Describe "New-OptgroupElement" {
 	It 'should support the "disabled" attribute' {
-		Should-BeString "<optgroup disabled></optgroup>" (optgroup -Disabled) -CaseSensitive
+		$expected = '<optgroup disabled label="MyOptiongroup"></optgroup>', '<optgroup label="MyOptiongroup" disabled></optgroup>'
+		$expected | Should-ContainCollection (optgroup -Disabled -Label MyOptiongroup)
 	}
 
 	It 'should support the "label" attribute' {

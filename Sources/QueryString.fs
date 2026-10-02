@@ -16,8 +16,8 @@ type NewQueryStringCommand () =
   member val InputObject: IDictionary = Hashtable() with get, set
 
   /// The initial query string.
-  [<Parameter; ValidateNotNull>]
-  member val Value = "" with get, set
+  [<Parameter>]
+  member val Value: string | null = null with get, set
 
   /// Value indicating whether to include the question mark.
   [<Parameter(ParameterSetName = "AddQuestionMark")>]
