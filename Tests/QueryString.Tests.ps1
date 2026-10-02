@@ -11,7 +11,7 @@ Describe "New-QueryString" {
 		@{ Value = "?Foo=Bar"; Parameters = @{ Baz = ""; Qux = $null }; Expected = "Foo=Bar&Baz=" }
 		@{ Value = "?Foo=Bar"; Parameters = [ordered]@{ Baz = 123; Qux = $true }; Expected = "Foo=Bar&Baz=123&Qux=True" }
 	) {
-		Should-BeString $expected (New-HtmlQueryString $parameters -Value $value) -CaseSensitive
+		Should-BeString $expected ($parameters | New-HtmlQueryString -Value $value) -CaseSensitive
 	}
 
 	It "should create a name/value collection from the specified hash table" -ForEach @(
@@ -20,7 +20,7 @@ Describe "New-QueryString" {
 		@{ Value = "?Foo=Bar"; Parameters = @{ Baz = ""; Qux = $null }; Expected = "Foo=Bar&Baz=" }
 		@{ Value = "?Foo=Bar"; Parameters = [ordered]@{ Baz = 123; Qux = $true }; Expected = "Foo=Bar&Baz=123&Qux=True" }
 	) {
-		$collection = New-HtmlQueryString $parameters -Value $value -AsCollection
+		$collection = $parameters | New-HtmlQueryString -Value $value -AsCollection
 		Should-BeString $expected $collection.ToString() -CaseSensitive
 	}
 
@@ -30,6 +30,6 @@ Describe "New-QueryString" {
 		@{ Value = "?Foo=Bar"; Parameters = @{ Baz = ""; Qux = $null }; Expected = "?Foo=Bar&Baz=" }
 		@{ Value = "?Foo=Bar"; Parameters = [ordered]@{ Baz = 123; Qux = $true }; Expected = "?Foo=Bar&Baz=123&Qux=True" }
 	) {
-		Should-BeString $expected (New-HtmlQueryString $parameters -Value $value -AddQuestionMark) -CaseSensitive
+		Should-BeString $expected ($parameters | New-HtmlQueryString -Value $value -AddQuestionMark) -CaseSensitive
 	}
 }

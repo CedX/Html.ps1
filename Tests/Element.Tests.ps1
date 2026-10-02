@@ -138,8 +138,10 @@ Describe "New-Element" {
 	It "should handle the inner content" {
 		$expected = "<main><div>Foo &gt; Bar <span>Baz &lt; Qux</span></div></main>"
 		Should-BeString $expected (main { div { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } }) -CaseSensitive
+		Should-BeString $expected ({ "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } | div | main) -CaseSensitive
 
 		$expected = '<head><meta charset="utf-8"></head>'
 		Should-BeString $expected (head { meta -Charset utf-8 }) -CaseSensitive
+		Should-BeString $expected (meta -Charset utf-8 | head) -CaseSensitive
 	}
 }

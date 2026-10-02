@@ -26,5 +26,6 @@ Describe "Write-View" {
 		@{ View = "Footer"; Data = @{ Year = 2025 }; Expected = '<footer class="text-center">Copyright &copy; 2025 - All rights reserved.</footer>' }
 	) {
 		Should-BeLikeString $expected (Write-HtmlView "$PSScriptRoot/../Resources/Views/$view.ps1" -Data $data) -CaseSensitive
+		Should-BeLikeString $expected ("$PSScriptRoot/../Resources/Views/$view.ps1" | Write-HtmlView -Data $data) -CaseSensitive
 	}
 }

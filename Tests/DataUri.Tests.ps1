@@ -6,8 +6,7 @@
 #>
 Describe "New-DataUri" {
 	It "should create a data URI from the specified file" {
-		$file = "$PSScriptRoot/../Resources/DataUri.gif"
-		$dataUri = New-HtmlDataUri $file -MediaType image/gif
+		$dataUri = "$PSScriptRoot/../Resources/DataUri.gif" | New-HtmlDataUri image/gif
 		Should-BeString "data:image/gif;base64,R0lGODlhAQABAHAAACwAAAAAAQABAIH///8AAAAAAAAAAAACAkQBADs=" $dataUri.ToString() -CaseSensitive
 	}
 
