@@ -6,18 +6,23 @@ open System.Collections.Generic
 open System.Management.Automation
 open System.Xml
 
-/// Creates a new `time` element.
-[<Cmdlet(VerbsCommon.New, "HtmlTimeElement"); Alias("time"); OutputType(typeof<string>)>]
-type NewTimeElementCommand () =
-  inherit NewElementCommand ("time", isVoid = false)
+/// Creates a new `ins` element.
+[<Cmdlet(VerbsCommon.New, "HtmlInsElement"); Alias("ins"); OutputType(typeof<string>)>]
+type NewInsElementCommand () =
+  inherit NewElementCommand ("ins", isVoid = false)
 
-  /// The time and/or date of the element.
+  /// A URI for a resource that explains the change.
+  [<Parameter>]
+  member val Cite: Uri | null = null with get, set
+
+  /// The date and time of the change.
   [<Parameter>]
   member val DateTime: objnull = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
     base.RenderAttributes attributes
+    match this.Cite with null -> () | value -> attributes["cite"] <- value
 
     let result: Result<string | null, NotSupportedException> =
       match this.DateTime with
@@ -27,8 +32,6 @@ type NewTimeElementCommand () =
         | :? DateOnly as value -> Ok (value.ToString "o")
         | :? DateTime as value -> Ok (value.ToString "o")
         | :? DateTimeOffset as value -> Ok (value.ToString "o")
-        | :? TimeOnly as value -> Ok (value.ToString "o")
-        | :? TimeSpan as value -> Ok (XmlConvert.ToString value)
         | _ -> Error (NotSupportedException "The specified date/time value is not supported.")
 
     match result with
