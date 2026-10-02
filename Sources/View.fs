@@ -10,7 +10,6 @@ type UseLayoutCommand() =
 
   /// The path to the layout file.
   [<Parameter(Mandatory = true, Position = 1)>]
-  // TODO [<ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified layout path does not exist.")]
   member val Path = "" with get, set
 
   /// The child content of the layout.
@@ -45,7 +44,6 @@ type WriteViewCommand() =
 
   /// The path to the view file.
   [<Parameter(Mandatory = true, Position = 1, ValueFromPipeline = true)>]
-  // TODO [<ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified view path does not exist.")]
   member val Path = "" with get, set
 
   /// The view data.

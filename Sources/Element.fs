@@ -20,18 +20,10 @@ module internal Element =
   /// Converts the specified according to the lowercase kebab-casing.
   let kebabCase = JsonNamingPolicy.KebabCaseLower.ConvertName
 
-  /// TODO
-  let rec renderContent (content: objnull) =
-    match content with
-    | null -> Seq.empty
-    | :? PSObject as object when not (object.BaseObject :? PSObject) -> renderContent object.BaseObject
-    | :? ScriptBlock as scriptBlock -> scriptBlock.Invoke() |> Seq.map (fun psObject -> psObject.BaseObject)
-    | value -> seq { value }
-
   /// Converts the specified key/value pair to a CSS property.
   let toCssProperty (entry: DictionaryEntry): string =
-    let value = (string entry.Value).Replace("\"", encodedDoubleQuote)
-    $"{kebabCase (string entry.Key)}: {value}"
+    let encodedValue = (string entry.Value).Replace("\"", encodedDoubleQuote)
+    $"{kebabCase (string entry.Key)}: {encodedValue}"
 
   /// Converts the specified key/value pair to an HTML attribute.
   let toHtmlAttribute (entry: KeyValuePair<string, objnull>): string =
@@ -41,6 +33,15 @@ module internal Element =
     | value ->
       let encodedValue = (string value).Replace("\"", encodedDoubleQuote)
       $@" {entry.Key}=""{encodedValue}"""
+
+  /// Converts the specified HTML content into a sequence of unwrapped objects.
+  [<TailCall>]
+  let rec unwrapContent (content: objnull): obj seq =
+    match content with
+    | null -> Seq.empty
+    | :? PSObject as object when not (object.BaseObject :? PSObject) -> unwrapContent object.BaseObject
+    | :? ScriptBlock as scriptBlock -> scriptBlock.Invoke() |> Seq.map (fun psObject -> psObject.BaseObject)
+    | value -> seq { value }
 
 /// Provides the abstract base class for a cmdlet rendering an HTML element.
 [<AbstractClass>]
@@ -181,7 +182,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
     builder.Append($"<{tag}").AppendJoin("", htmlAttributes).Append '>' |> ignore<StringBuilder>
 
     // Render the child content and the closing tag.
-    if not this.IsVoid then builder.AppendJoin("", Element.renderContent this.Content).Append $"</{tag}>" |> ignore<StringBuilder>
+    if not this.IsVoid then builder.AppendJoin("", Element.unwrapContent this.Content).Append $"</{tag}>" |> ignore<StringBuilder>
     this.WriteObject (string builder)
 
   /// Populates the specified attribute collection with the element attributes.
