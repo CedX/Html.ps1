@@ -69,8 +69,10 @@ type NewElementCommand (tagName: string, isVoid: bool) =
   member val Class: string array = [||] with get, set
 
   /// The child content of the element.
-  [<Parameter(Position = 1, ValueFromPipeline = true)>]
   abstract member Content: objnull with get, set
+
+  /// The child content of the element.
+  [<Parameter(Position = 1, ValueFromPipeline = true)>]
   default _.Content with get() = content and set(value: objnull) = content <- value
 
   /// Value indicating whether the element is editable by the user.
@@ -184,6 +186,8 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
   /// Populates the specified attribute collection with the element attributes.
   abstract member RenderAttributes: IDictionary<string, objnull> -> unit
+
+  /// Populates the specified attribute collection with the element attributes.
   default this.RenderAttributes (attributes: IDictionary<string, objnull>) =
     for entry in Seq.cast<DictionaryEntry> this.Aria do attributes[$"aria-{(string entry.Key).ToLowerInvariant()}"] <- entry.Value
     match this.AutoCapitalize with null -> () | value -> attributes["autocapitalize"] <- value
