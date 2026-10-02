@@ -4,8 +4,8 @@
 #>
 using module Belin.Html
 
-$title = "My Application"
+$data = @{ AppName = "My Application"; Title = "Hello World!"; Year = (Get-Date).Year }
 $viewPath = Join-Path $PSScriptRoot ../Resources/Views -Resolve
 
-$content = & "$viewPath/Content.ps1" @{ Heading = $title } | Out-String -NoNewline
-& "$viewPath/Layout.ps1" $content @{ Title = $title } | Out-File index.html
+$content = & "$viewPath/Content.ps1" $data | Out-String -NoNewline
+& "$viewPath/Layout.ps1" $content $data | Out-File index.html

@@ -1,5 +1,5 @@
 @{
-	ModuleVersion = "5.0.0"
+	ModuleVersion = "6.0.0"
 	PowerShellVersion = "7.6"
 	RootModule = "Binaries/Belin.Html.dll"
 
