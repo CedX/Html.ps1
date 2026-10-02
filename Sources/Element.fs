@@ -101,7 +101,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
   /// The element identifier.
   [<Parameter>]
-  member val Id: string | null = null with get, set
+  member val Id = "" with get, set
 
   /// Value indicating whether the browser should disregard user input events for the element.
   [<Parameter>]
@@ -125,11 +125,11 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
   /// Defines the semantic meaning of content.
   [<Parameter>]
-  member val Role: string | null = null with get, set
+  member val Role = "" with get, set
 
   /// Assigns a slot in a shadow DOM shadow tree to the element.
   [<Parameter>]
-  member val Slot: string | null = null with get, set
+  member val Slot = "" with get, set
 
   /// Value indicating whether the element is subject to spell-checking by the underlying browser/OS.
   [<Parameter; ValidateSet("false", "true")>]
@@ -145,7 +145,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
   /// A text representing advisory information related to the element.
   [<Parameter>]
-  member val Title: string | null = null with get, set
+  member val Title = "" with get, set
 
   /// Value indicating whether the element's text should be translated when the page is localized.
   [<Parameter; ValidateSet("no", "yes")>]

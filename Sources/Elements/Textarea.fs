@@ -24,7 +24,7 @@ type NewTextareaElementCommand () =
 
   /// The field name to use for sending the element's directionality in form submission.
   [<Parameter>]
-  member val DirName: string | null = null with get, set
+  member val DirName = "" with get, set
 
   /// Value indicating whether to prevent the user from interacting with the element.
   [<Parameter>]
@@ -32,7 +32,7 @@ type NewTextareaElementCommand () =
 
   /// The identifier of a `form` element to associate with the element.
   [<Parameter>]
-  member val Form: string | null = null with get, set
+  member val Form = "" with get, set
 
   /// The maximum string length that the user can enter.
   [<Parameter; ValidateRange(ValidateRangeKind.NonNegative)>]
@@ -44,11 +44,11 @@ type NewTextareaElementCommand () =
 
   /// The name of the control.
   [<Parameter>]
-  member val Name: string | null = null with get, set
+  member val Name = "" with get, set
 
   /// A hint to the user of what can be entered in the control.
   [<Parameter>]
-  member val Placeholder: string | null = null with get, set
+  member val Placeholder = "" with get, set
 
   /// Value indicating whether the user cannot modify the value of the control.
   [<Parameter>]

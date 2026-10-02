@@ -21,7 +21,7 @@ type NewTrackElementCommand () =
 
   /// A user-readable title of the text track which is used by the browser when listing available text tracks.
   [<Parameter>]
-  member val Label: string | null = null with get, set
+  member val Label = "" with get, set
 
   /// The address of the track (`.vtt` file).
   [<Parameter(Mandatory = true)>]

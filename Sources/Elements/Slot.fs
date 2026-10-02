@@ -12,7 +12,7 @@ type NewSlotElementCommand () =
 
   /// The slot's name.
   [<Parameter>]
-  member val Name: string | null = null with get, set
+  member val Name = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =

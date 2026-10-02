@@ -13,7 +13,7 @@ type NewThElementCommand () =
   /// A short, abbreviated description of the header cell's content provided as an alternative label
   /// to use for the header cell when referencing the cell in other contexts.
   [<Parameter>]
-  member val Abbr: string | null = null with get, set
+  member val Abbr = "" with get, set
 
   /// An integer indicating how many columns the header cell spans or extends.
   [<Parameter; ValidateRange(ValidateRangeKind.NonNegative)>]

@@ -24,7 +24,7 @@ type NewScriptElementCommand () =
 
   /// A base64-encoded cryptographic hash of the resource (file) to fetch.
   [<Parameter>]
-  member val Integrity: string | null = null with get, set
+  member val Integrity = "" with get, set
 
   /// The URI of an external script.
   [<Parameter>]
@@ -32,7 +32,7 @@ type NewScriptElementCommand () =
 
   /// The type of script represented.
   [<Parameter>]
-  member val Type: string | null = null with get, set
+  member val Type = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =

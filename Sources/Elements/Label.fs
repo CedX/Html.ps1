@@ -12,7 +12,7 @@ type NewLabelElementCommand () =
 
   /// The identifier of the labelable form control in the same document.
   [<Parameter>]
-  member val For: string | null = null with get, set
+  member val For = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =

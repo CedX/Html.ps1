@@ -20,7 +20,7 @@ type NewSelectElementCommand () =
 
   /// The identifier of a `form` element to associate with the element.
   [<Parameter>]
-  member val Form: string | null = null with get, set
+  member val Form = "" with get, set
 
   /// Value indicating whether multiple options can be selected in the list.
   [<Parameter>]
@@ -28,7 +28,7 @@ type NewSelectElementCommand () =
 
   /// The name of the control.
   [<Parameter>]
-  member val Name: string | null = null with get, set
+  member val Name = "" with get, set
 
   /// Value indicating whether an option with a non-empty string value must be selected.
   [<Parameter>]

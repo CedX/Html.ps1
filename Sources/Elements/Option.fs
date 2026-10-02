@@ -16,7 +16,7 @@ type NewOptionElementCommand () =
 
   /// The label indicating the meaning of the option.
   [<Parameter>]
-  member val Label: string | null = null with get, set
+  member val Label = "" with get, set
 
   /// Value indicating whether the option is initially selected.
   [<Parameter>]

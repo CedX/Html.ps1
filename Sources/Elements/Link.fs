@@ -12,7 +12,7 @@ type NewLinkElementCommand () =
 
   /// Specifies the type of content being loaded by the `link`.
   [<Parameter>]
-  member val As: string | null = null with get, set
+  member val As = "" with get, set
 
   /// Value indicating whether CORS must be used when fetching the resource.
   [<Parameter; ValidateSet("anonymous", "use-credentials")>]
@@ -24,11 +24,11 @@ type NewLinkElementCommand () =
 
   /// A base64-encoded cryptographic hash of the resource (file) to fetch.
   [<Parameter>]
-  member val Integrity: string | null = null with get, set
+  member val Integrity = "" with get, set
 
   /// The media that the linked resource applies to.
   [<Parameter>]
-  member val Media: string | null = null with get, set
+  member val Media = "" with get, set
 
   /// The relationship of the linked resource to the current document.
   [<Parameter(Mandatory = true)>]
@@ -40,7 +40,7 @@ type NewLinkElementCommand () =
 
   /// The media type of the content linked to.
   [<Parameter>]
-  member val Type: string | null = null with get, set
+  member val Type = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =

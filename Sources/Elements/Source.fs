@@ -16,7 +16,7 @@ type NewSourceElementCommand () =
 
   /// The media query for the resource's intended media.
   [<Parameter(ParameterSetName = "SrcSet")>]
-  member val Media: string | null = null with get, set
+  member val Media = "" with get, set
 
   /// A list of source sizes that describe the final rendered width of the image.
   [<Parameter(ParameterSetName = "SrcSet")>]
@@ -32,7 +32,7 @@ type NewSourceElementCommand () =
 
   /// The media type to use, optionally including a `codecs` parameter.
   [<Parameter>]
-  member val Type: string | null = null with get, set
+  member val Type = "" with get, set
 
   /// The intrinsic width of the image, in CSS pixels.
   [<Parameter(ParameterSetName = "SrcSet"); ValidateRange(ValidateRangeKind.NonNegative)>]

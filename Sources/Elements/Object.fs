@@ -16,7 +16,7 @@ type NewObjectElementCommand () =
 
   /// The identifier of a `form` element to associate with the element.
   [<Parameter>]
-  member val Form: string | null = null with get, set
+  member val Form = "" with get, set
 
   /// The height of the display resource, in CSS pixels.
   [<Parameter; ValidateRange(ValidateRangeKind.NonNegative)>]
@@ -24,7 +24,7 @@ type NewObjectElementCommand () =
 
   /// The name of valid browsing context (HTML 5), or the name of the control (HTML 4).
   [<Parameter>]
-  member val Name: string | null = null with get, set
+  member val Name = "" with get, set
 
   /// The media type to use, optionally including a `codecs` parameter.
   [<Parameter(Mandatory = true)>]

@@ -12,7 +12,7 @@ type NewStyleElementCommand () =
 
   /// Defines which media the style should be applied to.
   [<Parameter>]
-  member val Media: string | null = null with get, set
+  member val Media = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
