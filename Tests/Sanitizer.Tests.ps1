@@ -12,7 +12,7 @@ Describe "Protect-String" {
 		@{ Value = " foo "; Encoding = "Url"; Expected = "%20foo%20" }
 	) {
 		$actual = $value | esc -Encoding $encoding
-		if ($expected) { Should-BeLikeString $expected $actual -CaseSensitive }
-		else { Should-BeEmptyString $actual }
+		if ($expected) { $actual | Should-BeLikeString $expected -CaseSensitive }
+		else { $actual | Should-BeEmptyString }
 	}
 }

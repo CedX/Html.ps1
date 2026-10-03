@@ -6,29 +6,29 @@ using module ../Html.psd1
 #>
 Describe "New-CustomElement" {
 	It "should create a custom HTML element from the specified tag name" {
-		Should-BeString "<my-element></my-element>" (tag my-element) -CaseSensitive
+		tag my-element | Should-BeString "<my-element></my-element>" -CaseSensitive
 	}
 
 	It 'should handle the "id" attribute' {
-		Should-BeString '<my-element id="foo"></my-element>' (tag my-element -Id foo) -CaseSensitive
+		tag my-element -Id foo | Should-BeString '<my-element id="foo"></my-element>' -CaseSensitive
 	}
 
 	It 'should handle the "class" attribute' {
-		Should-BeString '<my-element class="btn btn-danger"></my-element>' (tag my-element -Class btn, btn-danger) -CaseSensitive
-		Should-BeString '<my-element class="btn btn-info btn-sm"></my-element>' (tag my-element -Class "btn btn-info", btn-sm) -CaseSensitive
+		tag my-element -Class btn, btn-danger | Should-BeString '<my-element class="btn btn-danger"></my-element>' -CaseSensitive
+		tag my-element -Class "btn btn-info", btn-sm | Should-BeString '<my-element class="btn btn-info btn-sm"></my-element>' -CaseSensitive
 	}
 
 	It 'should handle the "style" attribute' {
 		$expected = '<my-element style="font-family: &quot;Segoe UI&quot;; font-size: 1rem"></my-element>'
-		Should-BeString $expected (tag my-element -Style ([ordered]@{ FontFamily = '"Segoe UI"'; FontSize = "1rem" })) -CaseSensitive
+		tag my-element -Style ([ordered]@{ FontFamily = '"Segoe UI"'; FontSize = "1rem" }) | Should-BeString $expected -CaseSensitive
 	}
 
 	It 'should handle the "tabindex" attribute' -ForEach -1, 0 {
-		Should-BeString "<my-element tabindex=""$_""></my-element>" (tag my-element -TabIndex $_) -CaseSensitive
+		tag my-element -TabIndex $_ | Should-BeString "<my-element tabindex=""$_""></my-element>" -CaseSensitive
 	}
 
 	It 'should handle the "title" attribute' -ForEach "", 'A "custom" label.' {
-		Should-BeString ($_ ? '<my-element title="A &quot;custom&quot; label."></my-element>' : "<my-element></my-element>") (tag my-element -Title $_) -CaseSensitive
+		tag my-element -Title $_ | Should-BeString ($_ ? '<my-element title="A &quot;custom&quot; label."></my-element>' : "<my-element></my-element>") -CaseSensitive
 	}
 
 	It "should handle custom attributes" {
@@ -48,8 +48,8 @@ Describe "New-CustomElement" {
 
 	It "should handle the inner content" {
 		$expected = "<outer-element><inner-element>Foo &gt; Bar <span>Baz &lt; Qux</span></inner-element></outer-element>"
-		Should-BeString $expected (tag outer-element { tag inner-element { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } }) -CaseSensitive
-		Should-BeString $expected ({ "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } | tag inner-element | tag outer-element) -CaseSensitive
+		tag outer-element { tag inner-element { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } } | Should-BeString $expected -CaseSensitive
+		{ "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } | tag inner-element | tag outer-element | Should-BeString $expected -CaseSensitive
 	}
 }
 
@@ -62,53 +62,53 @@ Describe "New-Element" {
 		@{ Tag = "b"; Expected = "<b></b>" }
 		@{ Tag = "html"; Expected = "<html></html>" }
 	) {
-		Should-BeString $expected (& $tag) -CaseSensitive
+		& $tag | Should-BeString $expected -CaseSensitive
 	}
 
 	It "should handle void elements" -ForEach @(
 		@{ Tag = "br"; Expected = "<br>" }
 		@{ Tag = "input"; Expected = "<input>" }
 	) {
-		Should-BeString $expected (& $tag) -CaseSensitive
+		& $tag | Should-BeString $expected -CaseSensitive
 	}
 
 	It 'should handle the "aria" attributes' {
-		Should-BeString '<div aria-atomic="true"></div>' (div -Aria @{ Atomic = "true" }) -CaseSensitive
-		Should-BeString '<div aria-describedby="ID"></div>' (div -Aria @{ DescribedBy = "ID" }) -CaseSensitive
+		div -Aria @{ Atomic = "true" } | Should-BeString '<div aria-atomic="true"></div>' -CaseSensitive
+		div -Aria @{ DescribedBy = "ID" } | Should-BeString '<div aria-describedby="ID"></div>' -CaseSensitive
 	}
 
 	It 'should handle the "class" attribute' {
-		Should-BeString '<body class="btn btn-danger"></body>' (body -Class btn, btn-danger) -CaseSensitive
-		Should-BeString '<body class="btn btn-info btn-sm"></body>' (body -Class "btn btn-info", btn-sm) -CaseSensitive
+		body -Class btn, btn-danger | Should-BeString '<body class="btn btn-danger"></body>' -CaseSensitive
+		body -Class "btn btn-info", btn-sm | Should-BeString '<body class="btn btn-info btn-sm"></body>' -CaseSensitive
 	}
 
 	It 'should support the "dir" attribute' -ForEach auto, ltr, rtl {
-		Should-BeString "<html dir=""$_""></html>" (html -Dir $_) -CaseSensitive
+		html -Dir $_ | Should-BeString "<html dir=""$_""></html>" -CaseSensitive
 	}
 
 	It 'should handle the "id" attribute' {
-		Should-BeString '<article id="foo"></article>' (article -Id foo) -CaseSensitive
+		article -Id foo | Should-BeString '<article id="foo"></article>' -CaseSensitive
 	}
 
 	It 'should support the "lang" attribute' -ForEach "fr-FR", "en-US" {
-		Should-BeString "<html lang=""$_""></html>" (html -Lang $_) -CaseSensitive
+		html -Lang $_ | Should-BeString "<html lang=""$_""></html>" -CaseSensitive
 	}
 
 	It 'should handle the "role" attribute' {
-		Should-BeString '<div role="button"></div>' (div -Role button) -CaseSensitive
+		div -Role button | Should-BeString '<div role="button"></div>' -CaseSensitive
 	}
 
 	It 'should handle the "style" attribute' {
 		$expected = '<code style="font-family: &quot;Segoe UI&quot;; font-size: 1rem"></code>'
-		Should-BeString $expected (code -Style ([ordered]@{ FontFamily = '"Segoe UI"'; FontSize = "1rem" })) -CaseSensitive
+		code -Style ([ordered]@{ FontFamily = '"Segoe UI"'; FontSize = "1rem" }) | Should-BeString $expected -CaseSensitive
 	}
 
 	It 'should handle the "tabindex" attribute' -ForEach -1, 0 {
-		Should-BeString "<div tabindex=""$_""></div>" (div -TabIndex $_) -CaseSensitive
+		div -TabIndex $_ | Should-BeString "<div tabindex=""$_""></div>" -CaseSensitive
 	}
 
 	It 'should handle the "title" attribute' -ForEach "", 'A "custom" label.' {
-		Should-BeString ($_ ? '<div title="A &quot;custom&quot; label."></div>' : "<div></div>") (div -Title $_) -CaseSensitive
+		div -Title $_ | Should-BeString ($_ ? '<div title="A &quot;custom&quot; label."></div>' : "<div></div>") -CaseSensitive
 	}
 
 	It "should handle custom attributes" {
@@ -124,7 +124,7 @@ Describe "New-Element" {
 	It "should htmx attributes" {
 		$expected = '<button hx-confirm="Wat?" hx-post="/new"></button>', '<button hx-post="/new" hx-confirm="Wat?"></button>'
 		$expected | Should-ContainCollection (button -Hx @{ Confirm = "Wat?"; Post = "/new" })
-		Should-BeString '<button hx-on:app:click="alert(''Hello!'')"></button>' (button -Hx @{ "On:app:click" = "alert('Hello!')" }) -CaseSensitive
+		button -Hx @{ "On:app:click" = "alert('Hello!')" } | Should-BeString '<button hx-on:app:click="alert(''Hello!'')"></button>' -CaseSensitive
 	}
 
 	It "should handle event handler attributes" {
@@ -133,16 +133,16 @@ Describe "New-Element" {
 	}
 
 	It "should handle switch parameters in attribute values" {
-		Should-BeString "<input required>" (input -Attributes @{ disabled = $false; required = $true }) -CaseSensitive
+		input -Attributes @{ disabled = $false; required = $true } | Should-BeString "<input required>" -CaseSensitive
 	}
 
 	It "should handle the inner content" {
 		$expected = "<main><div>Foo &gt; Bar <span>Baz &lt; Qux</span></div></main>"
-		Should-BeString $expected (main { div { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } }) -CaseSensitive
-		Should-BeString $expected ({ "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } | div | main) -CaseSensitive
+		main { div { "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } } | Should-BeString $expected -CaseSensitive
+		{ "Foo &gt; Bar"; " "; span "Baz &lt; Qux" } | div | main | Should-BeString $expected -CaseSensitive
 
 		$expected = '<head><meta charset="utf-8"></head>'
-		Should-BeString $expected (head { meta -Charset utf-8 }) -CaseSensitive
-		Should-BeString $expected (meta -Charset utf-8 | head) -CaseSensitive
+		head { meta -Charset utf-8 } | Should-BeString $expected -CaseSensitive
+		meta -Charset utf-8 | head | Should-BeString $expected -CaseSensitive
 	}
 }

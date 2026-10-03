@@ -6,10 +6,10 @@ using module ../../Html.psd1
 #>
 Describe "New-DetailsElement" {
 	It 'should support the "name" attribute' {
-		Should-BeString '<details name="MyGroup"></details>' (details -Name MyGroup) -CaseSensitive
+		details -Name MyGroup | Should-BeString '<details name="MyGroup"></details>' -CaseSensitive
 	}
 
 	It 'should support the "open" attribute' {
-		Should-BeString '<details open></details>' (details -Open) -CaseSensitive
+		details -Open | Should-BeString '<details open></details>' -CaseSensitive
 	}
 }

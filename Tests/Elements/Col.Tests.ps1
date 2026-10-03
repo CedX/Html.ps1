@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-ColElement" {
 	It 'should support the "span" attribute' -ForEach 1, 25 {
-		Should-BeString "<col span=""$_"">" (col -Span $_) -CaseSensitive
+		col -Span $_ | Should-BeString "<col span=""$_"">" -CaseSensitive
 	}
 }

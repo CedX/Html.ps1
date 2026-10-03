@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-BlockquoteElement" {
 	It 'should support the "cite" attribute' {
-		Should-BeString '<blockquote cite="https://example.com/">Lorem Ipsum</blockquote>' (blockquote "Lorem Ipsum" -Cite "https://example.com/") -CaseSensitive
+		blockquote "Lorem Ipsum" -Cite "https://example.com/" | Should-BeString '<blockquote cite="https://example.com/">Lorem Ipsum</blockquote>' -CaseSensitive
 	}
 }

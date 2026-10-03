@@ -11,7 +11,7 @@ Describe "New-AElement" {
 	}
 
 	It 'should support the "href" attribute' -ForEach "./Index.html", "mailto:dummy@example.com", "tel:+33123456789" {
-		Should-BeString "<a href=""$_"">Click me</a>" (a "Click me" -Href $_) -CaseSensitive
+		a "Click me" -Href $_ | Should-BeString "<a href=""$_"">Click me</a>" -CaseSensitive
 	}
 
 	It 'should support the "ping" attribute' {

@@ -10,7 +10,7 @@ Describe "Write-View" {
 		@{ View = "Content"; Data = @{ Title = "The headline" }; Expected = '<h1>The headline</h1><div class="alert alert-success">Welcome to my website!</div>' }
 		@{ View = "Footer"; Data = @{ Year = 2025 }; Expected = '<footer class="text-center">Copyright &copy; 2025 - All rights reserved.</footer>' }
 	) {
-		Should-BeLikeString $expected (Write-HtmlView "$PSScriptRoot/../Resources/Views/$view.ps1" -Data $data) -CaseSensitive
-		Should-BeLikeString $expected ("$PSScriptRoot/../Resources/Views/$view.ps1" | Write-HtmlView -Data $data) -CaseSensitive
+		Write-HtmlView "$PSScriptRoot/../Resources/Views/$view.ps1" -Data $data | Should-BeLikeString $expected -CaseSensitive
+		"$PSScriptRoot/../Resources/Views/$view.ps1" | Write-HtmlView -Data $data | Should-BeLikeString $expected -CaseSensitive
 	}
 }

@@ -6,13 +6,13 @@ using module ../../Html.psd1
 #>
 Describe "New-AudioElement" {
 	It 'should support the "autoplay", "controls", "loop" and "muted" attributes' {
-		Should-BeString "<audio autoplay></audio>" (audio -AutoPlay) -CaseSensitive
-		Should-BeString "<audio controls></audio>" (audio -Controls) -CaseSensitive
-		Should-BeString "<audio loop></audio>" (audio -Loop) -CaseSensitive
-		Should-BeString "<audio muted></audio>" (audio -Muted) -CaseSensitive
+		audio -AutoPlay | Should-BeString "<audio autoplay></audio>" -CaseSensitive
+		audio -Controls | Should-BeString "<audio controls></audio>" -CaseSensitive
+		audio -Loop | Should-BeString "<audio loop></audio>" -CaseSensitive
+		audio -Muted | Should-BeString "<audio muted></audio>" -CaseSensitive
 	}
 
 	It 'should support the "preload" attribute' -ForEach auto, none, metadata {
-		Should-BeString "<audio preload=""$_""></audio>" (audio -Preload $_) -CaseSensitive
+		audio -Preload $_ | Should-BeString "<audio preload=""$_""></audio>" -CaseSensitive
 	}
 }

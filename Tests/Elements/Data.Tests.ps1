@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-DataElement" {
 	It 'should support the "value" attribute' -ForEach 123, "MY_KEY" {
-		Should-BeString "<data value=""$_""></data>" (dataTag -Value $_) -CaseSensitive
+		dataTag -Value $_ | Should-BeString "<data value=""$_""></data>" -CaseSensitive
 	}
 }

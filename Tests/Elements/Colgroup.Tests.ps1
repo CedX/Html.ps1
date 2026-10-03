@@ -6,6 +6,6 @@ using module ../../Html.psd1
 #>
 Describe "New-ColgroupElement" {
 	It 'should support the "span" attribute' -ForEach 1, 25 {
-		Should-BeString "<colgroup span=""$_""></colgroup>" (colgroup -Span $_) -CaseSensitive
+		colgroup -Span $_ | Should-BeString "<colgroup span=""$_""></colgroup>" -CaseSensitive
 	}
 }

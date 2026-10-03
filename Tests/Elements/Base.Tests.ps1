@@ -6,10 +6,10 @@ using module ../../Html.psd1
 #>
 Describe "New-BaseElement" {
 	It 'should support the "href" attribute' -ForEach "/base/", "https://localhost/base/" {
-		Should-BeString "<base href=""$_"">" (base -Href $_) -CaseSensitive
+		base -Href $_ | Should-BeString "<base href=""$_"">" -CaseSensitive
 	}
 
 	It 'should support the "target" attribute' -ForEach "_blank", "my-iframe" {
-		Should-BeString "<base href=""/base/"" target=""$_"">" (base -Href /base/ -Target $_) -CaseSensitive
+		base -Href /base/ -Target $_ | Should-BeString "<base href=""/base/"" target=""$_"">" -CaseSensitive
 	}
 }
