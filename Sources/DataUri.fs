@@ -6,8 +6,7 @@ open System.Management.Automation
 open System.Net.Mime
 
 /// Creates a new data URI from the specified file or byte stream.
-[<Cmdlet(VerbsCommon.New, "HtmlDataUri", DefaultParameterSetName = "Path")>]
-[<OutputType(typeof<Uri>)>]
+[<Cmdlet(VerbsCommon.New, "HtmlDataUri", DefaultParameterSetName = "Path"); OutputType(typeof<Uri>)>]
 type NewDataUriCommand() =
   inherit PSCmdlet()
 

@@ -6,8 +6,7 @@ open System.Management.Automation
 open System.Web
 
 /// Creates a new query string.
-[<Cmdlet(VerbsCommon.New, "HtmlQueryString", DefaultParameterSetName = "Default")>]
-[<OutputType(typeof<string>); OutputType(typeof<NameValueCollection>)>]
+[<Cmdlet(VerbsCommon.New, "HtmlQueryString", DefaultParameterSetName = "Default"); OutputType(typeof<string>, typeof<NameValueCollection>)>]
 type NewQueryStringCommand() =
   inherit Cmdlet()
 
