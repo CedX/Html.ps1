@@ -6,7 +6,9 @@ open System.Management.Automation
 open System.Web
 
 /// Creates a new query string.
-[<Cmdlet(VerbsCommon.New, "HtmlQueryString", DefaultParameterSetName = "Default"); OutputType(typeof<string>, typeof<NameValueCollection>)>]
+[<Cmdlet(VerbsCommon.New, "HtmlQueryString", DefaultParameterSetName = "Default")>]
+[<OutputType(typeof<string>, ParameterSetName = [| "Default"; "AddQuestionMark" |])>]
+[<OutputType(typeof<NameValueCollection>, ParameterSetName = [| "AsCollection" |])>]
 type NewQueryStringCommand() =
   inherit Cmdlet()
 
@@ -32,7 +34,8 @@ type NewQueryStringCommand() =
     for entry in Seq.cast<DictionaryEntry> this.InputObject do
       collection.Add (string entry.Key, match entry.Value with null -> null | value -> string value)
 
-    if this.AsCollection.IsPresent then this.WriteObject (collection, enumerateCollection = false)
+    if this.AsCollection.IsPresent then
+      this.WriteObject (collection, enumerateCollection = false)
     else
       let queryString = string collection
       this.WriteObject (if queryString.Length > 0 && this.AddQuestionMark.IsPresent then $"?{queryString}" else queryString)
