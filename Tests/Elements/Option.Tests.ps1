@@ -6,8 +6,8 @@ using module ../../Html.psd1
 #>
 Describe "New-OptionElement" {
 	It 'should support the "disabled" and "selected" attributes' {
-		Should-BeString "<option disabled></option>" (option -Disabled) -CaseSensitive
-		Should-BeString "<option selected></option>" (option -selected) -CaseSensitive
+		option -Disabled | Should-BeString "<option disabled></option>" -CaseSensitive
+		option -Selected | Should-BeString "<option selected></option>" -CaseSensitive
 	}
 
 	It 'should support the "label" and "value" attributes' -ForEach @(

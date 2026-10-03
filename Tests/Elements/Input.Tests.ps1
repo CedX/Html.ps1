@@ -6,23 +6,23 @@ using module ../../Html.psd1
 #>
 Describe "New-InputElement" {
 	It 'should support the "accept" attribute' {
-		Should-BeString '<input accept="image/*">' (input -Accept "image/*") -CaseSensitive
+		input -Accept "image/*" | Should-BeString '<input accept="image/*">' -CaseSensitive
 	}
 
 	It 'should support the "autocomplete" attribute' -ForEach "off", "on", @("shipping", "street-address") {
-		Should-BeString "<input autocomplete=""$($_ -join " ")"">" (input -AutoComplete $_) -CaseSensitive
+		input -AutoComplete $_ | Should-BeString "<input autocomplete=""$($_ -join " ")"">" -CaseSensitive
 	}
 
 	It 'should support the "capture" attribute' -ForEach "environment", "user" {
-		Should-BeString "<input capture=""$_"">" (input -Capture $_) -CaseSensitive
+		input -Capture $_ | Should-BeString "<input capture=""$_"">" -CaseSensitive
 	}
 
 	It 'should support the "checked" attribute' {
-		Should-BeString '<input checked>' (input -Checked) -CaseSensitive
+		input -Checked | Should-BeString '<input checked>' -CaseSensitive
 	}
 
 	It 'should support the "disabled" attribute' {
-		Should-BeString '<input disabled>' (input -Disabled) -CaseSensitive
+		input -Disabled | Should-BeString '<input disabled>' -CaseSensitive
 	}
 
 	It 'should support the "max", "min" attributes' -ForEach @(
@@ -42,23 +42,23 @@ Describe "New-InputElement" {
 	}
 
 	It 'should support the "multiple" attribute' {
-		Should-BeString '<input multiple>' (input -Multiple) -CaseSensitive
+		input -Multiple | Should-BeString '<input multiple>' -CaseSensitive
 	}
 
 	It 'should support the "pattern" attribute' -ForEach "https?://.*", "\d{8,14}", "[a-zA-Z0-9]+", "\d[a-zA-Z][a-zA-Z\d]{1,3}", "\s*[+0][\d\s\-.\/]{9,}\s*" {
-		Should-BeString "<input pattern=""$($_ -replace "\\", "\\")"">" (input -Pattern $_) -CaseSensitive
+		input -Pattern $_ | Should-BeString "<input pattern=""$($_ -replace "\\", "\\")"">" -CaseSensitive
 	}
 
 	It 'should support the "readonly" attribute' {
-		Should-BeString '<input readonly>' (input -ReadOnly) -CaseSensitive
+		input -ReadOnly | Should-BeString '<input readonly>' -CaseSensitive
 	}
 
 	It 'should support the "required" attribute' {
-		Should-BeString '<input required>' (input -Required) -CaseSensitive
+		input -Required | Should-BeString '<input required>' -CaseSensitive
 	}
 
 	It 'should support the "spellcheck" attribute' -ForEach false, true {
-		Should-BeString "<input spellcheck=""$_"">" (input -SpellCheck $_) -CaseSensitive
+		input -SpellCheck $_ | Should-BeString "<input spellcheck=""$_"">" -CaseSensitive
 	}
 
 	It 'should support the "type" and "value" attributes' -ForEach @(

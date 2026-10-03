@@ -6,11 +6,11 @@ using module ../../Html.psd1
 #>
 Describe "New-TextareaElement" {
 	It 'should support the "autocomplete" attribute' -ForEach "off", "on", @("shipping", "street-address") {
-		Should-BeString "<textarea autocomplete=""$($_ -join " ")""></textarea>" (textarea -AutoComplete $_) -CaseSensitive
+		textarea -AutoComplete $_ | Should-BeString "<textarea autocomplete=""$($_ -join " ")""></textarea>" -CaseSensitive
 	}
 
 	It 'should support the "autocorrect" attribute' -ForEach "off", "on" {
-		Should-BeString "<textarea autocorrect=""$_""></textarea>" (textarea -AutoCorrect $_) -CaseSensitive
+		textarea -AutoCorrect $_ | Should-BeString "<textarea autocorrect=""$_""></textarea>" -CaseSensitive
 	}
 
 	It 'should support the "cols" and "rows" attributes' -ForEach @(
@@ -21,7 +21,7 @@ Describe "New-TextareaElement" {
 	}
 
 	It 'should support the "disabled" attribute' {
-		Should-BeString '<textarea disabled></textarea>' (textarea -Disabled) -CaseSensitive
+		textarea -Disabled | Should-BeString '<textarea disabled></textarea>' -CaseSensitive
 	}
 
 	It 'should support the "maxlength" and "minlength" attributes' -ForEach @(
@@ -33,14 +33,14 @@ Describe "New-TextareaElement" {
 	}
 
 	It 'should support the "readonly" attribute' {
-		Should-BeString '<textarea readonly></textarea>' (textarea -ReadOnly) -CaseSensitive
+		textarea -ReadOnly | Should-BeString '<textarea readonly></textarea>' -CaseSensitive
 	}
 
 	It 'should support the "required" attribute' {
-		Should-BeString '<textarea required></textarea>' (textarea -Required) -CaseSensitive
+		textarea -Required | Should-BeString '<textarea required></textarea>' -CaseSensitive
 	}
 
 	It 'should support the "spellcheck" attribute' -ForEach false, true {
-		Should-BeString "<textarea spellcheck=""$_""></textarea>" (textarea -SpellCheck $_) -CaseSensitive
+		textarea -SpellCheck $_ | Should-BeString "<textarea spellcheck=""$_""></textarea>" -CaseSensitive
 	}
 }

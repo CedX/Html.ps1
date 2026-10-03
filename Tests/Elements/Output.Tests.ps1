@@ -6,10 +6,10 @@ using module ../../Html.psd1
 #>
 Describe "New-OutputElement" {
 	It 'should support the "for" attribute' {
-		Should-BeString '<output for="MyID1 MyID2">123</output>' (output 123 -For MyID1, MyID2) -CaseSensitive
+		output 123 -For MyID1, MyID2 | Should-BeString '<output for="MyID1 MyID2">123</output>' -CaseSensitive
 	}
 
 	It 'should support the "form" attribute' {
-		Should-BeString '<output form="MyForm"></output>' (output -Form MyForm) -CaseSensitive
+		output -Form MyForm | Should-BeString '<output form="MyForm"></output>' -CaseSensitive
 	}
 }

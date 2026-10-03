@@ -11,6 +11,6 @@ Describe "New-OptgroupElement" {
 	}
 
 	It 'should support the "label" attribute' {
-		Should-BeString '<optgroup label="MyOptiongroup"></optgroup>' (optgroup -Label MyOptiongroup) -CaseSensitive
+		optgroup -Label MyOptiongroup | Should-BeString '<optgroup label="MyOptiongroup"></optgroup>' -CaseSensitive
 	}
 }

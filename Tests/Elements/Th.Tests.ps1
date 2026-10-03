@@ -10,10 +10,10 @@ Describe "New-ThElement" {
 	}
 
 	It 'should support the "headers" attribute' {
-		Should-BeString '<th headers="tid1 tid2"></th>' (th -Headers tid1, tid2) -CaseSensitive
+		th -Headers tid1, tid2 | Should-BeString '<th headers="tid1 tid2"></th>' -CaseSensitive
 	}
 
 	It 'should support the "scope" attribute' -ForEach col, colgroup, row, rowgroup {
-		Should-BeString "<th scope=""$_""></th>" (th -Scope $_) -CaseSensitive
+		th -Scope $_ | Should-BeString "<th scope=""$_""></th>" -CaseSensitive
 	}
 }

@@ -7,11 +7,11 @@ using module ../../Html.psd1
 Describe "New-SvgElement" {
 
 	It 'should support the "preserveAspectRatio" attribute' {
-		Should-BeString '<svg preserveAspectRatio="xMaxYMin slice"></svg>' (svg -PreserveAspectRatio "xMaxYMin slice") -CaseSensitive
+		svg -PreserveAspectRatio "xMaxYMin slice" | Should-BeString '<svg preserveAspectRatio="xMaxYMin slice"></svg>' -CaseSensitive
 	}
 
 	It 'should support the "viewBox" attribute' {
-		Should-BeString '<svg viewBox="0 0 256 128"></svg>' (svg -ViewBox 0, 0, 256, 128) -CaseSensitive
+		svg -ViewBox 0, 0, 256, 128 | Should-BeString '<svg viewBox="0 0 256 128"></svg>' -CaseSensitive
 	}
 
 	It 'should support the "width" and "height" attributes' {
@@ -24,6 +24,6 @@ Describe "New-SvgElement" {
 
 	It "should allow inner content" {
 		$content = '<circle cx="25" cy="25" r="20" />'
-		Should-BeString "<svg>$content</svg>" ($content | svg) -CaseSensitive
+		$content | svg | Should-BeString "<svg>$content</svg>" -CaseSensitive
 	}
 }

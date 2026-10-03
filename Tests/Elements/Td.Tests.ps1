@@ -10,6 +10,6 @@ Describe "New-TdElement" {
 	}
 
 	It 'should support the "headers" attribute' {
-		Should-BeString '<td headers="tid1 tid2"></td>' (td -Headers tid1, tid2) -CaseSensitive
+		td -Headers tid1, tid2 | Should-BeString '<td headers="tid1 tid2"></td>' -CaseSensitive
 	}
 }
