@@ -10,7 +10,7 @@ open System.Web
 [<OutputType(typeof<string>, ParameterSetName = [| "Default"; "AddQuestionMark" |])>]
 [<OutputType(typeof<NameValueCollection>, ParameterSetName = [| "AsCollection" |])>]
 type NewQueryStringCommand() =
-  inherit Cmdlet()
+  inherit PSCmdlet()
 
   /// The name/value pairs providing the query parameters.
   [<Parameter(Position = 1, ValueFromPipeline = true); ValidateNotNull>]
