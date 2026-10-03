@@ -5,7 +5,7 @@
 	"asyncExceptionWithoutReturn": {"enabled": true},
 	"asynchronousFunctionNames": {"enabled": true, "config": {"mode": "OnlyPublicAPIsInLibraries"}},
 	"avoidSinglePipeOperator": {"enabled": true},
-	"avoidTooShortNames": {"enabled": true},
+	"avoidTooShortNames": {"enabled": false},
 	"canBeReplacedWithComposition": {"enabled": true},
 	"classMemberSpacing": {"enabled": true},
 	"cyclomaticComplexity": {"enabled": true, "config": {"maxComplexity": 50}},
