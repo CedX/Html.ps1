@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `area` element.
 [<Cmdlet(VerbsCommon.New, "HtmlAreaElement"); Alias("area"); OutputType(typeof<string>)>]
-type NewAreaElementCommand() =
+type NewAreaElement() =
   inherit NewElementCommand("area", isVoid = true)
 
   /// A text to display on browsers that do not display images.

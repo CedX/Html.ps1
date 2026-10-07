@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `th` element.
 [<Cmdlet(VerbsCommon.New, "HtmlThElement"); Alias("th"); OutputType(typeof<string>)>]
-type NewThElementCommand() =
+type NewThElement() =
   inherit NewElementCommand("th", isVoid = false)
 
   /// A short, abbreviated description of the header cell's content provided as an alternative label

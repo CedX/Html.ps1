@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `blockquote` element.
 [<Cmdlet(VerbsCommon.New, "HtmlBlockquoteElement"); Alias("blockquote"); OutputType(typeof<string>)>]
-type NewBlockquoteElementCommand() =
+type NewBlockquoteElement() =
   inherit NewElementCommand("blockquote", isVoid = false)
 
   /// A URL that designates a source document or message for the information quoted.

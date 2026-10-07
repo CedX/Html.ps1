@@ -9,7 +9,7 @@ open System.Text.RegularExpressions
 
 /// Creates a new `input` element.
 [<Cmdlet(VerbsCommon.New, "HtmlInputElement"); Alias("input"); OutputType(typeof<string>)>]
-type NewInputElementCommand() =
+type NewInputElement() =
   inherit NewElementCommand("input", isVoid = true)
 
   /// Defines which file types are selectable in a file upload control.

@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `details` element.
 [<Cmdlet(VerbsCommon.New, "HtmlDetailsElement"); Alias("details"); OutputType(typeof<string>)>]
-type NewDetailsElementCommand() =
+type NewDetailsElement() =
   inherit NewElementCommand("details", isVoid = false)
 
   /// The group name allowing multiple `details` elements to be connected, with only one open at a time.

@@ -8,7 +8,7 @@ open System.Net.Mime
 
 /// Creates a new `form` element.
 [<Cmdlet(VerbsCommon.New, "HtmlFormElement"); Alias("form"); OutputType(typeof<string>)>]
-type NewFormElementCommand() =
+type NewFormElement() =
   inherit NewElementCommand("form", isVoid = false)
 
   /// The URL that processes the form submission.

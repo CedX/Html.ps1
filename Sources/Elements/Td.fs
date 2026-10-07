@@ -6,7 +6,7 @@ open System.Management.Automation
 
 /// Creates a new `th` element.
 [<Cmdlet(VerbsCommon.New, "HtmlTdElement"); Alias("td"); OutputType(typeof<string>)>]
-type NewTdElementCommand() =
+type NewTdElement() =
   inherit NewElementCommand("td", isVoid = false)
 
   /// An integer indicating how many columns the header cell spans or extends.

@@ -9,7 +9,7 @@ open System.Web
 [<Cmdlet(VerbsCommon.New, "HtmlQueryString", DefaultParameterSetName = "Default")>]
 [<OutputType(typeof<string>, ParameterSetName = [| "Default"; "AddQuestionMark" |])>]
 [<OutputType(typeof<NameValueCollection>, ParameterSetName = [| "AsCollection" |])>]
-type NewQueryStringCommand() =
+type NewQueryString() =
   inherit PSCmdlet()
 
   /// The name/value pairs providing the query parameters.

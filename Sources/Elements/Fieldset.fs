@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `fieldset` element.
 [<Cmdlet(VerbsCommon.New, "HtmlFieldsetElement"); Alias("fieldset"); OutputType(typeof<string>)>]
-type NewFieldsetElementCommand() =
+type NewFieldsetElement() =
   inherit NewElementCommand("fieldset", isVoid = false)
 
   /// Value indicating whether all form controls that are descendants of the element, are disabled.

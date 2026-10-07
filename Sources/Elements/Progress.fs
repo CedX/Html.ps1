@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `progress` element.
 [<Cmdlet(VerbsCommon.New, "HtmlProgressElement"); Alias("progress"); OutputType(typeof<string>)>]
-type NewProgressElementCommand() =
+type NewProgressElement() =
   inherit NewElementCommand("progress", isVoid = false)
 
   /// Describes how much work the task requires.

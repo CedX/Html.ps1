@@ -216,7 +216,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 
 /// Creates a new custom element.
 [<Cmdlet(VerbsCommon.New, "HtmlCustomElement"); Alias("tag"); OutputType(typeof<string>)>]
-type NewCustomElementCommand() =
+type NewCustomElement() =
   inherit NewElementCommand("", isVoid = false)
 
   /// The tag name of the element to create.

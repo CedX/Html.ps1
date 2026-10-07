@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `del` element.
 [<Cmdlet(VerbsCommon.New, "HtmlDelElement"); Alias("delTag"); OutputType(typeof<string>)>]
-type NewDelElementCommand() =
+type NewDelElement() =
   inherit NewElementCommand("del", isVoid = false)
 
   /// A URI for a resource that explains the change.

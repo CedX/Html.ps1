@@ -8,7 +8,7 @@ open System.Xml
 
 /// Creates a new `ins` element.
 [<Cmdlet(VerbsCommon.New, "HtmlInsElement"); Alias("ins"); OutputType(typeof<string>)>]
-type NewInsElementCommand() =
+type NewInsElement() =
   inherit NewElementCommand("ins", isVoid = false)
 
   /// A URI for a resource that explains the change.

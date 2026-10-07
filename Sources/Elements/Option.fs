@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `option` element.
 [<Cmdlet(VerbsCommon.New, "HtmlOptionElement"); Alias("option"); OutputType(typeof<string>)>]
-type NewOptionElementCommand() =
+type NewOptionElement() =
   inherit NewElementCommand("option", isVoid = false)
 
   /// Value indicating whether the option is not checkable.

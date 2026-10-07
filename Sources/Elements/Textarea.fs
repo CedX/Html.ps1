@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `textarea` element.
 [<Cmdlet(VerbsCommon.New, "HtmlTextareaElement"); Alias("textarea"); OutputType(typeof<string>)>]
-type NewTextareaElementCommand() =
+type NewTextareaElement() =
   inherit NewElementCommand("textarea", isVoid = false)
 
   /// A hint for a user agent's autocomplete feature.

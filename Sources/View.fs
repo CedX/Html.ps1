@@ -5,7 +5,7 @@ open System.Management.Automation
 
 /// Renders the specified view file as an HTML string.
 [<Cmdlet(VerbsCommunications.Write, "HtmlView"); OutputType(typeof<string>)>]
-type WriteViewCommand() =
+type WriteView() =
   inherit Cmdlet()
 
   /// The script block used to invoke the view.

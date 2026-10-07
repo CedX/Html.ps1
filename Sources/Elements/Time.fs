@@ -8,7 +8,7 @@ open System.Xml
 
 /// Creates a new `time` element.
 [<Cmdlet(VerbsCommon.New, "HtmlTimeElement"); Alias("time"); OutputType(typeof<string>)>]
-type NewTimeElementCommand() =
+type NewTimeElement() =
   inherit NewElementCommand("time", isVoid = false)
 
   /// The time and/or date of the element.

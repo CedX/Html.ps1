@@ -7,7 +7,7 @@ open System.Management.Automation
 
 /// Creates a new `slot` element.
 [<Cmdlet(VerbsCommon.New, "HtmlSlotElement"); Alias("slot"); OutputType(typeof<string>)>]
-type NewSlotElementCommand() =
+type NewSlotElement() =
   inherit NewElementCommand("slot", isVoid = false)
 
   /// The slot's name.
