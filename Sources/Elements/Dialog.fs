@@ -7,7 +7,7 @@ open System.Management.Automation
 /// Creates a new `dialog` element.
 [<Cmdlet(VerbsCommon.New, "HtmlDialogElement"); Alias("dialog"); OutputType(typeof<string>)>]
 type NewDialogElement() =
-  inherit NewElementCommand("dialog", isVoid = false)
+  inherit NewElement("dialog", isVoid = false)
 
   /// Specifies the types of user actions that can be used to close the element.
   [<Parameter; ValidateSet("any", "closerequest", "none")>]

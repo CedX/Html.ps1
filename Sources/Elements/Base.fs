@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `base` element.
 [<Cmdlet(VerbsCommon.New, "HtmlBaseElement"); Alias("base"); OutputType(typeof<string>)>]
 type NewBaseElement() =
-  inherit NewElementCommand("base", isVoid = true)
+  inherit NewElement("base", isVoid = true)
 
   /// The base URL to be used throughout the document for relative URLs.
   [<Parameter(Mandatory = true)>]

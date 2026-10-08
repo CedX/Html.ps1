@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `audio` element.
 [<Cmdlet(VerbsCommon.New, "HtmlAudioElement"); Alias("audio"); OutputType(typeof<string>)>]
 type NewAudioElement() =
-  inherit NewElementCommand("audio", isVoid = false)
+  inherit NewElement("audio", isVoid = false)
 
   /// Value indicating whether playback should start automatically as soon as the audio signal allows.
   [<Parameter>]

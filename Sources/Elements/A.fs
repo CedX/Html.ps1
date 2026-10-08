@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `a` element.
 [<Cmdlet(VerbsCommon.New, "HtmlAElement"); Alias("a"); OutputType(typeof<string>)>]
 type NewAElement() =
-  inherit NewElementCommand("a", isVoid = false)
+  inherit NewElement("a", isVoid = false)
 
   /// The suggested filename when the browser treats the linked URL as a download.
   [<Parameter>]

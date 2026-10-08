@@ -9,7 +9,7 @@ open System.Management.Automation
 /// Creates a new `track` element.
 [<Cmdlet(VerbsCommon.New, "HtmlTrackElement"); Alias("track"); OutputType(typeof<string>)>]
 type NewTrackElement() =
-  inherit NewElementCommand("track", isVoid = true)
+  inherit NewElement("track", isVoid = true)
 
   /// Value indicating whether the track should be enabled unless the user's preferences indicate that another track is more appropriate.
   [<Parameter>]

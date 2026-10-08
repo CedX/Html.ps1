@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `script` element.
 [<Cmdlet(VerbsCommon.New, "HtmlScriptElement"); Alias("script"); OutputType(typeof<string>)>]
 type NewScriptElement() =
-  inherit NewElementCommand("script", isVoid = false)
+  inherit NewElement("script", isVoid = false)
 
   /// Value indicating whether the script will be fetched in parallel to parsing and evaluated as soon as it is available.
   [<Parameter>]

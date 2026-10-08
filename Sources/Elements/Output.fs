@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `output` element.
 [<Cmdlet(VerbsCommon.New, "HtmlOutputElement"); Alias("output"); OutputType(typeof<string>)>]
 type NewOutputElement() =
-  inherit NewElementCommand("output", isVoid = false)
+  inherit NewElement("output", isVoid = false)
 
   /// A list of other elements' identifiers, indicating that those elements contributed input values to the calculation.
   [<Parameter>]

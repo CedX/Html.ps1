@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `object` element.
 [<Cmdlet(VerbsCommon.New, "HtmlObjectElement"); Alias("object"); OutputType(typeof<string>)>]
 type NewObjectElement() =
-  inherit NewElementCommand("object", isVoid = false)
+  inherit NewElement("object", isVoid = false)
 
   /// The URL of the resource being embedded.
   [<Parameter(Mandatory = true)>]

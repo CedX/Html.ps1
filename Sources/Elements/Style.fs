@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `style` element.
 [<Cmdlet(VerbsCommon.New, "HtmlStyleElement"); Alias("style"); OutputType(typeof<string>)>]
 type NewStyleElement() =
-  inherit NewElementCommand("style", isVoid = false)
+  inherit NewElement("style", isVoid = false)
 
   /// Defines which media the style should be applied to.
   [<Parameter>]

@@ -7,7 +7,7 @@ open System.Management.Automation
 /// Creates a new `canvas` element.
 [<Cmdlet(VerbsCommon.New, "HtmlCanvasElement"); Alias("canvas"); OutputType(typeof<string>)>]
 type NewCanvasElement() =
-  inherit NewElementCommand("canvas", isVoid = false)
+  inherit NewElement("canvas", isVoid = false)
 
   /// The height of the coordinate space in CSS pixels.
   [<Parameter; ValidateRange(ValidateRangeKind.NonNegative)>]

@@ -45,7 +45,7 @@ module internal Element =
 
 /// Provides the abstract base class for a cmdlet rendering an HTML element.
 [<AbstractClass>]
-type NewElementCommand (tagName: string, isVoid: bool) =
+type NewElement(tagName: string, isVoid: bool) =
   inherit PSCmdlet()
 
   /// The child content of the element.
@@ -217,7 +217,7 @@ type NewElementCommand (tagName: string, isVoid: bool) =
 /// Creates a new custom element.
 [<Cmdlet(VerbsCommon.New, "HtmlCustomElement"); Alias("tag"); OutputType(typeof<string>)>]
 type NewCustomElement() =
-  inherit NewElementCommand("", isVoid = false)
+  inherit NewElement("", isVoid = false)
 
   /// The tag name of the element to create.
   [<Parameter(Mandatory = true, Position = 1)>]

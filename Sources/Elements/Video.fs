@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `video` element.
 [<Cmdlet(VerbsCommon.New, "HtmlVideoElement"); Alias("video"); OutputType(typeof<string>)>]
 type NewVideoElement() =
-  inherit NewElementCommand("video", isVoid = false)
+  inherit NewElement("video", isVoid = false)
 
   /// Value indicating whether playback should start automatically as soon as the video signal allows.
   [<Parameter>]

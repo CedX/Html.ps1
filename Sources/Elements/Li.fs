@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `li` element.
 [<Cmdlet(VerbsCommon.New, "HtmlLiElement"); Alias("li"); OutputType(typeof<string>)>]
 type NewLiElement() =
-  inherit NewElementCommand("li", isVoid = false)
+  inherit NewElement("li", isVoid = false)
 
   /// The ordinal value of the list item as defined by the `ol` element.
   [<Parameter>]

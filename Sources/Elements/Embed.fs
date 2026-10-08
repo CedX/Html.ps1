@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `embed` element.
 [<Cmdlet(VerbsCommon.New, "HtmlEmbedElement"); Alias("embed"); OutputType(typeof<string>)>]
 type NewEmbedElement() =
-  inherit NewElementCommand("embed", isVoid = true)
+  inherit NewElement("embed", isVoid = true)
 
   /// The displayed height of the resource, in CSS pixels.
   [<Parameter; ValidateRange(ValidateRangeKind.NonNegative)>]

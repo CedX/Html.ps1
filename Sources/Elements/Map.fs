@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `map` element.
 [<Cmdlet(VerbsCommon.New, "HtmlMapElement"); Alias("map"); OutputType(typeof<string>)>]
 type NewMapElement() =
-  inherit NewElementCommand("map", isVoid = false)
+  inherit NewElement("map", isVoid = false)
 
   /// The map name so that it can be referenced.
   [<Parameter>]

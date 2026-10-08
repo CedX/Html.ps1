@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `select` element.
 [<Cmdlet(VerbsCommon.New, "HtmlSelectElement"); Alias("selectTag"); OutputType(typeof<string>)>]
 type NewSelectElement() =
-  inherit NewElementCommand("select", isVoid = false)
+  inherit NewElement("select", isVoid = false)
 
   /// A hint for a user agent's autocomplete feature.
   [<Parameter>]

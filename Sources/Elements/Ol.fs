@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `ol` element.
 [<Cmdlet(VerbsCommon.New, "HtmlOlElement"); Alias("ol"); OutputType(typeof<string>)>]
 type NewOlElement() =
-  inherit NewElementCommand("ol", isVoid = false)
+  inherit NewElement("ol", isVoid = false)
 
   /// Value indicating whether the list's items are in reverse order.
   [<Parameter>]

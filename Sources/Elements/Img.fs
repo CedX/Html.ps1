@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `img` element.
 [<Cmdlet(VerbsCommon.New, "HtmlImgElement"); Alias("img"); OutputType(typeof<string>)>]
 type NewImgElement() =
-  inherit NewElementCommand("img", isVoid = true)
+  inherit NewElement("img", isVoid = true)
 
   /// A text to display on browsers that do not display images.
   [<Parameter>]

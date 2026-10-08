@@ -8,7 +8,7 @@ open System.Management.Automation
 /// Creates a new `source` element.
 [<Cmdlet(VerbsCommon.New, "HtmlSourceElement", DefaultParameterSetName = "Src"); Alias("source"); OutputType(typeof<string>)>]
 type NewSourceElement() =
-  inherit NewElementCommand("source", isVoid = true)
+  inherit NewElement("source", isVoid = true)
 
   /// The intrinsic height of the image, in CSS pixels.
   [<Parameter(ParameterSetName = "SrcSet"); ValidateRange(ValidateRangeKind.NonNegative)>]
