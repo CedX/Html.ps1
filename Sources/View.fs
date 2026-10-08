@@ -1,13 +1,12 @@
 namespace Belin.Html
 
 open System.Collections
-open System.IO
 open System.Management.Automation
 
 /// Renders the specified view file as an HTML string.
 [<Cmdlet(VerbsCommunications.Write, "HtmlView"); OutputType(typeof<string>)>]
 type WriteView() =
-  inherit Cmdlet()
+  inherit PSCmdlet()
 
   /// The script block used to invoke the view.
   static let scriptBlock = ScriptBlock.Create "& $args[0] $args[1]"
@@ -22,5 +21,5 @@ type WriteView() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
-    let path = Path.GetFullPath this.Path
+    let path = this.GetUnresolvedProviderPathFromPSPath this.Path
     scriptBlock.Invoke(path, this.Data) |> Seq.map string |> String.concat "" |> this.WriteObject

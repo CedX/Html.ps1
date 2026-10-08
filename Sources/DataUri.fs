@@ -27,6 +27,6 @@ type NewDataUri() =
     let bytes =
       match this.ParameterSetName with
       | "ByteStream" -> this.ByteStream
-      | _ -> this.Path |> Path.GetFullPath |> File.ReadAllBytes
+      | _ -> this.Path |> this.GetUnresolvedProviderPathFromPSPath |> File.ReadAllBytes
 
     this.WriteObject (Uri $"data:{this.MediaType};base64,{Convert.ToBase64String bytes}")
