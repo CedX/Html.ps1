@@ -10,7 +10,7 @@
 	<PropertyGroup>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AssemblyName>Belin.Html</AssemblyName>
-		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 		<HotReloadAutoRestart>true</HotReloadAutoRestart>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
