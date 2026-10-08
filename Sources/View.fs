@@ -1,6 +1,7 @@
 namespace Belin.Html
 
 open System.Collections
+open System.IO
 open System.Management.Automation
 
 /// Renders the specified view file as an HTML string.
@@ -21,4 +22,5 @@ type WriteView() =
 
   /// Performs execution of this command.
   override this.ProcessRecord () =
-    scriptBlock.Invoke(this.Path, this.Data) |> Seq.map string |> String.concat "" |> this.WriteObject
+    let path = Path.GetFullPath this.Path
+    scriptBlock.Invoke(path, this.Data) |> Seq.map string |> String.concat "" |> this.WriteObject
