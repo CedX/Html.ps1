@@ -40,7 +40,7 @@ module internal Element =
     match content with
     | null -> Seq.empty
     | :? PSObject as object when not (object.BaseObject :? PSObject) -> unwrapContent object.BaseObject
-    | :? ScriptBlock as scriptBlock -> scriptBlock.Invoke() |> Seq.map (fun psObject -> psObject.BaseObject)
+    | :? ScriptBlock as scriptBlock -> scriptBlock.Invoke() |> Seq.map _.BaseObject
     | value -> seq { value }
 
 /// Provides the abstract base class for a cmdlet rendering an HTML element.
