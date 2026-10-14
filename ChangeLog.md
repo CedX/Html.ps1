@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [2026.10.0](https://github.com/CedX/Html.ps1/compare/v6.0.0...v2026.10.0)
+- Switched to a year-based versioning.
+- Updated the package dependencies.
+
 ## Version [6.0.0](https://github.com/CedX/Html.ps1/compare/v5.0.0...v6.0.0)
 - Breaking change: ported the cmdlets to [F#](https://learn.microsoft.com/en-us/dotnet/fsharp).
 - Breaking change: removed the `Use-HtmlLayout` cmdlet.
