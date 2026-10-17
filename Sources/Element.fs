@@ -5,7 +5,6 @@ open System.Collections
 open System.Collections.Generic
 open System.Collections.Specialized
 open System.Globalization
-open System.Linq
 open System.Management.Automation
 open System.Text
 open System.Text.Encodings.Web
@@ -168,8 +167,9 @@ type NewElement(tagName: string, isVoid: bool) =
     // Build the map of attributes to render.
     let attributes =
       this.Attributes
-        .Cast<DictionaryEntry>()
-        .ToDictionary((fun entry -> string entry.Key), (fun entry -> entry.Value), StringComparer.OrdinalIgnoreCase)
+      |> Seq.cast<DictionaryEntry>
+      |> Seq.map (fun entry -> KeyValuePair(string entry.Key, entry.Value))
+      |> fun entries -> Dictionary(entries, StringComparer.OrdinalIgnoreCase)
 
     this.RenderAttributes attributes
 
