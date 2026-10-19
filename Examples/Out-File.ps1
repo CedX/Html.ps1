@@ -2,7 +2,7 @@
 .SYNOPSIS
 	Renders an HTML document from the given PowerShell script.
 #>
-using module Belin.Html
+Import-Module Belin.Html
 
 $data = @{ AppName = "My Application"; Title = "Hello World!"; Year = (Get-Date).Year }
 $viewPath = Join-Path $PSScriptRoot ../Resources/Views -Resolve
