@@ -54,7 +54,7 @@ type NewImgElement() =
     if this.Height >= 0 then attributes["height"] <- this.Height
     if this.IsMap.IsPresent then attributes["ismap"] <- true
     match this.Loading with null -> () | value -> attributes["loading"] <- value
-    if this.Sizes.Length > 0 then attributes["sizes"] <- String.concat ", " this.Sizes
-    if this.SrcSet.Length > 0 then attributes["srcset"] <- String.concat ", " this.SrcSet
+    if not (Array.isEmpty this.Sizes) then attributes["sizes"] <- String.concat ", " this.Sizes
+    if not (Array.isEmpty this.SrcSet) then attributes["srcset"] <- String.concat ", " this.SrcSet
     if not (String.IsNullOrWhiteSpace this.UseMap) then attributes["usemap"] <- if this.UseMap.StartsWith '#' then this.UseMap else $"#{this.UseMap}"
     if this.Width >= 0 then attributes["width"] <- this.Width

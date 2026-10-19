@@ -54,5 +54,5 @@ type NewIframeElement() =
     match this.Loading with null -> () | value -> attributes["loading"] <- value
     if not (String.IsNullOrWhiteSpace this.Name) then attributes["name"] <- this.Name
     match this.ReferrerPolicy with null -> () | value -> attributes["referrerpolicy"] <- value
-    if this.Sandbox.Length > 0 then attributes["sandbox"] <- (String.concat " " this.Sandbox).Trim()
+    if not (Array.isEmpty this.Sandbox) then attributes["sandbox"] <- (String.concat " " this.Sandbox).Trim()
     if this.Width >= 0 then attributes["width"] <- this.Width

@@ -41,7 +41,7 @@ type NewSelectElement() =
   /// Populates the specified attribute collection with the element attributes.
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
     base.RenderAttributes attributes
-    if this.AutoComplete.Length > 0 then attributes["autocomplete"] <- (String.concat " " this.AutoComplete).Trim()
+    if not (Array.isEmpty this.AutoComplete) then attributes["autocomplete"] <- (String.concat " " this.AutoComplete).Trim()
     if this.Disabled.IsPresent then attributes["disabled"] <- true
     if not (String.IsNullOrWhiteSpace this.Form) then attributes["form"] <- this.Form
     if this.Multiple.IsPresent then attributes["multiple"] <- true

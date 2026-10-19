@@ -52,5 +52,5 @@ type NewFormElement() =
     match this.Method with null -> () | value -> attributes["method"] <- value
     if not (String.IsNullOrWhiteSpace this.Name) then attributes["name"] <- this.Name
     if this.NoValidate.IsPresent then attributes["novalidate"] <- true
-    if this.Rel.Length > 0 then attributes["rel"] <- (String.concat " " this.Rel).Trim()
+    if not (Array.isEmpty this.Rel) then attributes["rel"] <- (String.concat " " this.Rel).Trim()
     if not (String.IsNullOrWhiteSpace this.Target) then attributes["target"] <- this.Target

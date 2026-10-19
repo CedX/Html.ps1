@@ -36,6 +36,6 @@ type NewThElement() =
     base.RenderAttributes attributes
     if not (String.IsNullOrWhiteSpace this.Abbr) then attributes["abbr"] <- this.Abbr
     if this.ColSpan >= 0 then attributes["colspan"] <- this.ColSpan
-    if this.Headers.Length > 0 then attributes["headers"] <- (String.concat " " this.Headers).Trim()
+    if not (Array.isEmpty this.Headers) then attributes["headers"] <- (String.concat " " this.Headers).Trim()
     if this.RowSpan >= 0 then attributes["rowspan"] <- this.RowSpan
     match this.Scope with null -> () | value -> attributes["scope"] <- value

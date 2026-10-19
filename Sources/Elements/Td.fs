@@ -25,5 +25,5 @@ type NewTdElement() =
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
     base.RenderAttributes attributes
     if this.ColSpan >= 0 then attributes["colspan"] <- this.ColSpan
-    if this.Headers.Length > 0 then attributes["headers"] <- (String.concat " " this.Headers).Trim()
+    if not (Array.isEmpty this.Headers) then attributes["headers"] <- (String.concat " " this.Headers).Trim()
     if this.RowSpan >= 0 then attributes["rowspan"] <- this.RowSpan

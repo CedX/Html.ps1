@@ -49,6 +49,6 @@ type NewSourceElement() =
       attributes["srcset"] <- String.concat ", " this.SrcSet
       if this.Height >= 0 then attributes["height"] <- this.Height
       if not (String.IsNullOrWhiteSpace this.Media) then attributes["media"] <- this.Media
-      if this.Sizes.Length > 0 then attributes["sizes"] <- String.concat ", " this.Sizes
+      if not (Array.isEmpty this.Sizes) then attributes["sizes"] <- String.concat ", " this.Sizes
       if this.Width >= 0 then attributes["width"] <- this.Width
     | _ -> ()

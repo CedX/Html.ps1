@@ -164,7 +164,7 @@ type NewInputElement() =
     base.RenderAttributes attributes
     if not (String.IsNullOrWhiteSpace this.Accept) then attributes["accept"] <- this.Accept
     match this.Alt with null -> () | value -> attributes["alt"] <- value
-    if this.AutoComplete.Length > 0 then attributes["autocomplete"] <- (String.concat " " this.AutoComplete).Trim()
+    if not (Array.isEmpty this.AutoComplete) then attributes["autocomplete"] <- (String.concat " " this.AutoComplete).Trim()
     match this.Capture with null -> () | value -> attributes["capture"] <- value
     if this.Checked.IsPresent then attributes["checked"] <- true
     if not (String.IsNullOrWhiteSpace this.DirName) then attributes["dirname"] <- this.DirName

@@ -39,7 +39,7 @@ type NewSvgElement() =
     base.RenderAttributes attributes
     if not (String.IsNullOrWhiteSpace this.Height) then attributes["height"] <- this.Height
     if not (String.IsNullOrWhiteSpace this.PreserveAspectRatio) then attributes["preserveAspectRatio"] <- this.PreserveAspectRatio
-    if this.ViewBox.Length > 0 then attributes["viewBox"] <- this.ViewBox |> Array.map string |> String.concat " "
+    if not (Array.isEmpty this.ViewBox) then attributes["viewBox"] <- this.ViewBox |> Array.map string |> String.concat " "
     if not (String.IsNullOrWhiteSpace this.Width) then attributes["width"] <- this.Width
     if not (String.IsNullOrWhiteSpace this.X) then attributes["x"] <- this.X
     if not (String.IsNullOrWhiteSpace this.Y) then attributes["y"] <- this.Y

@@ -51,5 +51,5 @@ type NewLinkElement() =
     match this.CrossOrigin with null -> () | value -> attributes["crossorigin"] <- value
     if not (String.IsNullOrWhiteSpace this.Integrity) then attributes["integrity"] <- this.Integrity
     if not (String.IsNullOrWhiteSpace this.Media) then attributes["media"] <- this.Media
-    if this.Sizes.Length > 0 then attributes["sizes"] <- (String.concat " " this.Sizes).Trim()
+    if not (Array.isEmpty this.Sizes) then attributes["sizes"] <- (String.concat " " this.Sizes).Trim()
     if not (String.IsNullOrWhiteSpace this.Type) then attributes["type"] <- this.Type

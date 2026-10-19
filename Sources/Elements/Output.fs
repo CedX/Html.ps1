@@ -25,6 +25,6 @@ type NewOutputElement() =
   /// Populates the specified attribute collection with the element attributes.
   override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
     base.RenderAttributes attributes
-    if this.For.Length > 0 then attributes["for"] <- (String.concat " " this.For).Trim()
+    if not (Array.isEmpty this.For) then attributes["for"] <- (String.concat " " this.For).Trim()
     if not (String.IsNullOrWhiteSpace this.Form) then attributes["form"] <- this.Form
     if not (String.IsNullOrWhiteSpace this.Name) then attributes["name"] <- this.Name
