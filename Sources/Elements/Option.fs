@@ -27,7 +27,7 @@ type NewOptionElement() =
   member val Value: string | null = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if this.Disabled.IsPresent then attributes["disabled"] <- true
     if not (String.IsNullOrWhiteSpace this.Label) then attributes["label"] <- this.Label

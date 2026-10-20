@@ -16,7 +16,7 @@ type NewTimeElement() =
   member val DateTime: objnull = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
 
     let result: Result<string | null, NotSupportedException> =

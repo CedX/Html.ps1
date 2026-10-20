@@ -18,7 +18,7 @@ type NewOptgroupElement() =
   member val Label = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     attributes["label"] <- this.Label
     if this.Disabled.IsPresent then attributes["disabled"] <- true

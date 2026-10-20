@@ -35,7 +35,7 @@ type NewSvgElement() =
   member val Y = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if not (String.IsNullOrWhiteSpace this.Height) then attributes["height"] <- this.Height
     if not (String.IsNullOrWhiteSpace this.PreserveAspectRatio) then attributes["preserveAspectRatio"] <- this.PreserveAspectRatio

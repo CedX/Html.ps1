@@ -18,7 +18,7 @@ type NewCanvasElement() =
   member val Width = -1 with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if this.Height >= 0 then attributes["height"] <- this.Height
     if this.Width >= 0 then attributes["width"] <- this.Width

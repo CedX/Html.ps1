@@ -68,7 +68,7 @@ type NewButtonElement() =
   member val Value: objnull = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if not (String.IsNullOrWhiteSpace this.Command) then attributes["command"] <- this.Command
     if not (String.IsNullOrWhiteSpace this.CommandFor) then attributes["commandfor"] <- this.CommandFor

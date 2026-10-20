@@ -32,7 +32,7 @@ type NewThElement() =
   member val Scope: string | null = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if not (String.IsNullOrWhiteSpace this.Abbr) then attributes["abbr"] <- this.Abbr
     if this.ColSpan >= 0 then attributes["colspan"] <- this.ColSpan

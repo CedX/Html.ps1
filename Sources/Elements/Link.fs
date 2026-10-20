@@ -43,7 +43,7 @@ type NewLinkElement() =
   member val Type = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     attributes["rel"] <- (String.concat " " this.Rel).Trim()
     attributes["href"] <- this.Href

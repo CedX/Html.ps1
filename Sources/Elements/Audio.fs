@@ -43,7 +43,7 @@ type NewAudioElement() =
   member val Src: Uri | null = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if this.AutoPlay.IsPresent then attributes["autoplay"] <- true
     if this.Controls.IsPresent then attributes["controls"] <- true

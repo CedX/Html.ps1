@@ -186,10 +186,10 @@ type NewElement(tagName: string, isVoid: bool) =
     this.WriteObject (string builder)
 
   /// Populates the specified attribute collection with the element attributes.
-  abstract member RenderAttributes: IDictionary<string, objnull> -> unit
+  abstract member RenderAttributes: Dictionary<string, objnull> -> unit
 
   /// Populates the specified attribute collection with the element attributes.
-  default this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  default this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     for entry in Seq.cast<DictionaryEntry> this.Aria do attributes[$"aria-{(string entry.Key).ToLowerInvariant()}"] <- entry.Value
     match this.AutoCapitalize with null -> () | value -> attributes["autocapitalize"] <- value
     if this.AutoFocus.IsPresent then attributes["autofocus"] <- true

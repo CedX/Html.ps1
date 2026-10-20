@@ -19,7 +19,7 @@ type NewDetailsElement() =
   member val Open = SwitchParameter false with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if not (String.IsNullOrWhiteSpace this.Name) then attributes["name"] <- this.Name
     if this.Open.IsPresent then attributes["open"] <- true

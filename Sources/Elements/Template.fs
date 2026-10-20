@@ -26,7 +26,7 @@ type NewTemplateElement() =
   member val ShadowRootSerializable = SwitchParameter false with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     match this.ShadowRootMode with null -> () | value -> attributes["shadowrootmode"] <- value
     if this.ShadowRootClonable.IsPresent then attributes["shadowrootclonable"] <- true

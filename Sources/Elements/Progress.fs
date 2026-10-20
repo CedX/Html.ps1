@@ -19,7 +19,7 @@ type NewProgressElement() =
   member val Value = Nullable<double>() with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if this.Max.HasValue then attributes["max"] <- this.Max.Value
     if this.Value.HasValue then attributes["value"] <- this.Value.Value

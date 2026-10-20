@@ -32,7 +32,7 @@ type NewTrackElement() =
   member val SrcLang: CultureInfo | null = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     attributes["src"] <- this.Src
     if this.Default.IsPresent then attributes["default"] <- true

@@ -35,7 +35,7 @@ type NewScriptElement() =
   member val Type = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     match this.Src with null -> () | value -> attributes["src"] <- value
     if this.Async.IsPresent then attributes["async"] <- true

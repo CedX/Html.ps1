@@ -22,7 +22,7 @@ type NewTdElement() =
   member val RowSpan = -1 with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if this.ColSpan >= 0 then attributes["colspan"] <- this.ColSpan
     if not (Array.isEmpty this.Headers) then attributes["headers"] <- (String.concat " " this.Headers).Trim()

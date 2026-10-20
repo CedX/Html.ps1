@@ -15,6 +15,6 @@ type NewBlockquoteElement() =
   member val Cite: Uri | null = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     match this.Cite with null -> () | value -> attributes["cite"] <- value

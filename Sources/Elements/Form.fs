@@ -44,7 +44,7 @@ type NewFormElement() =
   member val Target = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     match this.Action with null -> () | value -> attributes["action"] <- value
     match this.AutoComplete with null -> () | value -> attributes["autocomplete"] <- value

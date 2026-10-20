@@ -39,7 +39,7 @@ type NewSelectElement() =
   member val Size = -1 with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if not (Array.isEmpty this.AutoComplete) then attributes["autocomplete"] <- (String.concat " " this.AutoComplete).Trim()
     if this.Disabled.IsPresent then attributes["disabled"] <- true

@@ -31,7 +31,7 @@ type NewAElement() =
   member val Target = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     attributes["href"] <- this.Href
     if not (String.IsNullOrWhiteSpace this.Download) then attributes["download"] <- this.Download

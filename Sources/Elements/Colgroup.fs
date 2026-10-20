@@ -14,6 +14,6 @@ type NewColgroupElement() =
   member val Span = 0 with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if this.Span > 0 then attributes["span"] <- this.Span

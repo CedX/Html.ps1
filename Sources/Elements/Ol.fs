@@ -23,7 +23,7 @@ type NewOlElement() =
   member val Type: string | null = null with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if this.Reversed.IsPresent then attributes["reversed"] <- true
     if this.Start.HasValue then attributes["start"] <- this.Start.Value

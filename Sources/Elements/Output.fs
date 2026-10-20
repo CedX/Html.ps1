@@ -23,7 +23,7 @@ type NewOutputElement() =
   member val Name = "" with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     if not (Array.isEmpty this.For) then attributes["for"] <- (String.concat " " this.For).Trim()
     if not (String.IsNullOrWhiteSpace this.Form) then attributes["form"] <- this.Form

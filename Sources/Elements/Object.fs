@@ -35,7 +35,7 @@ type NewObjectElement() =
   member val Width = -1 with get, set
 
   /// Populates the specified attribute collection with the element attributes.
-  override this.RenderAttributes (attributes: IDictionary<string, objnull>) =
+  override this.RenderAttributes(attributes: Dictionary<string, objnull>) =
     base.RenderAttributes attributes
     attributes["data"] <- this.Data
     attributes["type"] <- this.Type
