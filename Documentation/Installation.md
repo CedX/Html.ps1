@@ -1,12 +1,14 @@
 # Installation
 
 ## Requirements
-Before installing **HTML Renderer for PowerShell**, you need to make sure you have [PowerShell](https://learn.microsoft.com/en-us/powershell) up and running.  
+Before installing **HTML Renderer for PowerShell**, you need to make sure
+you have [PowerShell](https://learn.microsoft.com/en-us/powershell) up and running.
+
 You can verify if you're already good to go with the following command:
 
 ```powershell
 pwsh --version
-# PowerShell 7.6.0
+# PowerShell 7.7.0
 ```
 
 ## Installing with PSResourceGet package manager

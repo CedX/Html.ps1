@@ -1,6 +1,6 @@
 @{
 	ModuleVersion = "2026.10.0"
-	PowerShellVersion = "7.6"
+	PowerShellVersion = "7.7"
 	RootModule = "Binaries/Belin.Html.dll"
 
 	Author = "Cédric Belin <cedx@outlook.com>"
@@ -136,7 +136,7 @@
 	)
 
 	RequiredModules = @(
-		@{ ModuleName = "Belin.FSharp"; ModuleVersion = "10.1.403" }
+		@{ ModuleName = "Belin.FSharp"; ModuleVersion = "11.0.101" }
 	)
 
 	PrivateData = @{
