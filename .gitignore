@@ -1,7 +1,7 @@
-/**/*.user
 /.idea/
 /.vs/
-/*/obj/
+/**/obj/
+/**/*.user
 /Binaries/
 /Sources/Generated/
 /Temp/
