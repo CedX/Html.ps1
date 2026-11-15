@@ -48,7 +48,7 @@ type NewAreaElement() =
     attributes["href"] <- this.Href
     match this.Alt with null -> () | value -> attributes["alt"] <- value
     if not (String.IsNullOrWhiteSpace this.Download) then attributes["download"] <- this.Download
-    if not (Array.isEmpty this.Ping) then attributes["ping"] <- (this.Ping |> Array.map string |> String.concat " ").Trim()
+    if not (Array.isEmpty this.Ping) then attributes["ping"] <- (this.Ping |> Seq.map string |> String.concat " ").Trim()
     if not (Array.isEmpty this.Rel) then attributes["rel"] <- (String.concat " " this.Rel).Trim()
     if not (String.IsNullOrWhiteSpace this.Target) then attributes["target"] <- this.Target
 
@@ -56,4 +56,4 @@ type NewAreaElement() =
     | null -> ()
     | shape ->
       attributes["shape"] <- shape
-      if shape <> "default" && not (Array.isEmpty this.Coords) then attributes["coords"] <- this.Coords |> Array.map string |> String.concat ","
+      if shape <> "default" && not (Array.isEmpty this.Coords) then attributes["coords"] <- this.Coords |> Seq.map string |> String.concat ","
